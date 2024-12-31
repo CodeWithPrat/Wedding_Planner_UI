@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Star, ChevronLeft, ChevronRight, MessageCircle, Heart } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 import pic15 from "../../assets/imgs/TestimonialImgs/pic15.jpg"
