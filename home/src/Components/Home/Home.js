@@ -137,7 +137,7 @@ const Home = () => {
             }, 5000);
             return () => clearInterval(timer);
         }
-    }, [isHovered]);
+    }, [isHovered, heroSlides.length]); // Add heroSlides.length to the dependency array
 
     const slideVariants = {
         enter: { opacity: 0, scale: 1.1 },
@@ -149,7 +149,7 @@ const Home = () => {
         <div className="min-h-screen bg-gradient-to-b from-f8f7ff to-fffcf2">
             {/* Hero Section */}
             <div 
-                className="relative h-screen overflow-hidden"
+                className="relative h-screen overflow-hidden" 
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >

@@ -70,13 +70,13 @@ const Testimonials = () => {
     }
   ];
 
-  const handleNext = () => {
+  const handleNext = React.useCallback(() => {
     if (!isAnimating) {
       setIsAnimating(true);
       setActiveIndex((prev) => (prev + 1) % testimonials.length);
       setTimeout(() => setIsAnimating(false), 500);
     }
-  };
+  }, [isAnimating, testimonials.length]);
 
   const handlePrev = () => {
     if (!isAnimating) {
@@ -89,7 +89,7 @@ const Testimonials = () => {
   useEffect(() => {
     const timer = setInterval(handleNext, 5000);
     return () => clearInterval(timer);
-  }, [activeIndex]);
+  }, [handleNext]);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#fffcf2] to-[#faedcd]">
