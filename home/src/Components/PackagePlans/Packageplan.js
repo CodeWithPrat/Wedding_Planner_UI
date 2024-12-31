@@ -6,9 +6,9 @@ const Packages = () => {
     {
       name: "Basic",
       subtitle: "Perfect for intimate celebrations",
-      price: "4,999",
-      originalPrice: "7,999",
-      savePercent: "37",
+      price: "755,000",
+      originalPrice: "900,000",
+      savePercent: "16",
       features: [
         "Up to 200 guests",
         "Basic stage with backdrop décor",
@@ -27,9 +27,9 @@ const Packages = () => {
     {
       name: "Premium",
       subtitle: "Everything you need for your dream wedding",
-      price: "9,999",
-      originalPrice: "14,999",
-      savePercent: "33",
+      price: "1,512,000",
+      originalPrice: "1,800,000",
+      savePercent: "16",
       isPopular: true,
       features: [
         "Up to 500 guests",
@@ -49,9 +49,9 @@ const Packages = () => {
     {
       name: "Luxury",
       subtitle: "The ultimate wedding experience",
-      price: "19,999",
-      originalPrice: "29,999",
-      savePercent: "33",
+      price: "3,024,000",
+      originalPrice: "3,600,000",
+      savePercent: "16",
       features: [
         "1000+ guests capacity",
         "Designer stage & décor",

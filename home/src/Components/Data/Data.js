@@ -7,9 +7,9 @@ export const companyData = {
     logo: cultlogo, // Replace with actual logo path
     description: "Creating unforgettable wedding experiences with elegance and precision",
     contact: {
-      email: "info@eternalmoments.com",
-      phone: "+1 (555) 123-4567",
-      address: "123 Wedding Plaza, Suite 100, Los Angeles, CA 90001"
+      email: "hello@culteventsindia.com",
+      phone: "+91 94825 88199",
+      address: "JP Nagar, Bengaluru, Karnataka"
     },
     socialMedia: {
       facebook: "https://facebook.com/eternalmoments",
