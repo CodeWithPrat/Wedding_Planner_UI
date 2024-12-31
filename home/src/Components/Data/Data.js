@@ -1,9 +1,10 @@
 // data.js
 import eventlogo from "./../../assets/imgs/eventlogo.png"
+import cultlogo from "../../assets/imgs/CultEventLogo.png"
 
 export const companyData = {
     name: "Cult Events",
-    logo: eventlogo, // Replace with actual logo path
+    logo: cultlogo, // Replace with actual logo path
     description: "Creating unforgettable wedding experiences with elegance and precision",
     contact: {
       email: "info@eternalmoments.com",
