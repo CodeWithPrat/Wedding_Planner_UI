@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
-    Heart, Calendar, Sparkles, Award, Globe,
+    Heart, Calendar, Award, Globe,
     Clock, Users, Star, ChevronRight, ArrowRight,
-    ChevronLeft, ChevronDown
+    ChevronDown
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import pic1 from "./../../assets/imgs/HomeImgs/pic1.jpg"
-import pic2 from "./../../assets/imgs/HomeImgs/pic2.jpg"
 import pic3 from "./../../assets/imgs/HomeImgs/pic3.jpg"
 import pic4 from "./../../assets/imgs/HomeImgs/pic4.jpg"
 import pic5 from "./../../assets/imgs/HomeImgs/pic5.jpg"

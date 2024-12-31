@@ -1,5 +1,3 @@
-// data.js
-import eventlogo from "./../../assets/imgs/eventlogo.png"
 import cultlogo from "../../assets/imgs/CultEventLogo.png"
 
 export const companyData = {

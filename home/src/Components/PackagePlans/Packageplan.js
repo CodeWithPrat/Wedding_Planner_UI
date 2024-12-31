@@ -1,13 +1,13 @@
 import React from 'react';
-import { Check, Heart, Crown, Diamond, Star } from 'lucide-react';
+import { Check, Heart, Crown, Diamond} from 'lucide-react';
 
 const Packages = () => {
   const packages = [
     {
       name: "Basic",
       subtitle: "Perfect for intimate celebrations",
-      price: "755,000",
-      originalPrice: "900,000",
+      price: "7 Lakhs",
+      originalPrice: "9 Lakhs",
       savePercent: "16",
       features: [
         "Up to 200 guests",
@@ -27,8 +27,8 @@ const Packages = () => {
     {
       name: "Premium",
       subtitle: "Everything you need for your dream wedding",
-      price: "1,512,000",
-      originalPrice: "1,800,000",
+      price: "15 Lakhs",
+      originalPrice: "18 Lakhs",
       savePercent: "16",
       isPopular: true,
       features: [
@@ -49,8 +49,8 @@ const Packages = () => {
     {
       name: "Luxury",
       subtitle: "The ultimate wedding experience",
-      price: "3,024,000",
-      originalPrice: "3,600,000",
+      price: "30 Lakhs",
+      originalPrice: "36 Lakhs",
       savePercent: "16",
       features: [
         "1000+ guests capacity",

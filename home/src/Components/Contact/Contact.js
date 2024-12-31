@@ -97,7 +97,9 @@ const Contact = () => {
         method: 'GET', // Changed from POST to GET
         mode: 'no-cors',
       });
-  
+
+      console.log('Success:', response);
+      
       // Since we're using no-cors mode, we won't get a readable response
       showToast('Your quote request has been submitted successfully!');
       

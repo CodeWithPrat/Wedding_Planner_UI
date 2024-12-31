@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Heart, Map, Package, Users, Palette, PhoneCall, Globe2, Lightbulb, PiggyBank, Sparkles } from 'lucide-react';
+import { Heart, Map, Package, Users, Palette} from 'lucide-react';
 import pic8 from "../../assets/imgs/AboutImgs/pic8.jpg"
 import pic9 from "../../assets/imgs/AboutImgs/pic9.jpg"
 import pic10 from "../../assets/imgs/AboutImgs/pic10.jpg"
@@ -175,3 +175,4 @@ const About = () => {
 };
 
 export default About;
+
