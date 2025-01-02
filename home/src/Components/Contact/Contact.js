@@ -133,6 +133,7 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-background p-4 md:p-8">
+      
       <div className="max-w-4xl mx-auto">
         <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8">
           {/* Form Header */}
