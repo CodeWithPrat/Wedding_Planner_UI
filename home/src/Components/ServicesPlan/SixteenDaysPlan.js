@@ -3,9 +3,25 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Gift, Sun, Brush, Music, HandHelping, Camera, Users, 
   Flower, PartyPopper, Gem, Eclipse, Star, Headphones, 
-  Send, HandHeart, Calendar, Phone, ChevronUp, ChevronDown,HandPlatter,
-  X
+  Send, HandHeart, Calendar, Phone, ChevronDown, HandPlatter
 } from "lucide-react";
+
+import pic401 from "../../assets/imgs/SixteenDaysImgs/pic401.png"
+import pic402 from "../../assets/imgs/SixteenDaysImgs/pic402.jpg"
+import pic403 from "../../assets/imgs/SixteenDaysImgs/pic403.jpg"
+import pic404 from "../../assets/imgs/SixteenDaysImgs/pic404.jpg"
+import pic405 from "../../assets/imgs/SixteenDaysImgs/pic405.jpg"
+import pic406 from "../../assets/imgs/SixteenDaysImgs/pic406.jpg"
+import pic407 from "../../assets/imgs/SixteenDaysImgs/pic407.jpg"
+import pic408 from "../../assets/imgs/SixteenDaysImgs/pic408.jpg"
+import pic409 from "../../assets/imgs/SixteenDaysImgs/pic409.jpg"
+import pic410 from "../../assets/imgs/SixteenDaysImgs/pic410.jpg"
+import pic411 from "../../assets/imgs/SixteenDaysImgs/pic411.jpg"
+import pic412 from "../../assets/imgs/SixteenDaysImgs/pic412.jpg"
+import pic413 from "../../assets/imgs/SixteenDaysImgs/pic413.jpeg"
+import pic414 from "../../assets/imgs/SixteenDaysImgs/pic414.jpg"
+import pic415 from "../../assets/imgs/SixteenDaysImgs/pic415.jpg"
+import pic416 from "../../assets/imgs/SixteenDaysImgs/pic416.jpg"
 
 const SixteenDaysPlan = () => {
   const [expandedDay, setExpandedDay] = useState(null);
@@ -37,7 +53,9 @@ const SixteenDaysPlan = () => {
         "Simple stage for rituals",
         "Live music or traditional instrumental"
       ],
-      icon: Gift
+      icon: Gift,
+      image: pic401,
+      desc: "The engagement ceremony marks the official announcement of the wedding, featuring rituals, music, and a traditionally decorated venue."
     },
     {
       day: 2,
@@ -47,7 +65,9 @@ const SixteenDaysPlan = () => {
         "Outdoor or indoor setup",
         "Photo and video coverage"
       ],
-      icon: Sun
+      icon: Sun,
+      image: pic402,
+      desc: "A vibrant and colorful pre-wedding ritual where turmeric is applied to the bride and groom for blessings and radiance."
     },
     {
       day: 3,
@@ -57,7 +77,9 @@ const SixteenDaysPlan = () => {
         "Professional mehndi artists for guests",
         "Music or DJ setup with traditional songs"
       ],
-      icon: Brush
+      icon: Brush,
+      image: pic403,
+      desc: "An evening of celebration where intricate mehndi designs are applied, accompanied by music and dance."
     },
     {
       day: 4,
@@ -68,7 +90,9 @@ const SixteenDaysPlan = () => {
         "Sound, lighting, and visuals",
         "Celebrity performer or live band (optional)"
       ],
-      icon: Music
+      icon: Music,
+      image: pic404,
+      desc: "A lively night of music, dance, and performances by family and friends to celebrate the upcoming wedding."
     },
     {
       day: 5,
@@ -77,7 +101,9 @@ const SixteenDaysPlan = () => {
         "Mandap décor for pooja",
         "Floral and spiritual arrangements"
       ],
-      icon: HandHelping
+      icon: HandHelping,
+      image: pic405,
+      desc: "A sacred ritual to invoke blessings from Lord Ganesh for the smooth conduct of the wedding ceremonies."
     },
     {
       day: 6,
@@ -86,7 +112,9 @@ const SixteenDaysPlan = () => {
         "Destination or themed shoot with professional photographers",
         "Drone and cinematic shots included"
       ],
-      icon: Camera
+      icon: Camera,
+      image: pic406,
+      desc: "A creative and memorable photo shoot capturing the love story of the couple in stunning locations."
     },
     {
       day: 7,
@@ -95,7 +123,9 @@ const SixteenDaysPlan = () => {
         "Groom's special ritual setup",
         "Traditional seating arrangement for families"
       ],
-      icon: Users
+      icon: Users,
+      image: pic407,
+      desc: "A ceremony to honor the groom and his family, signifying the union of two families."
     },
     {
       day: 8,
@@ -103,7 +133,9 @@ const SixteenDaysPlan = () => {
       items: [
         "Exclusive floral arrangements for the bride’s rituals"
       ],
-      icon: Flower
+      icon: Flower,
+      image: pic408,
+      desc: "A ritual dedicated to Goddess Gauri, seeking her blessings for a prosperous married life."
     },
     {
       day: 9,
@@ -114,7 +146,9 @@ const SixteenDaysPlan = () => {
         "Multi-cuisine buffet with live counters",
         "Entertainment (live music, fireworks)"
       ],
-      icon: PartyPopper
+      icon: PartyPopper,
+      image: pic409,
+      desc: "A grand celebration to introduce the newlyweds to friends and family, with food, entertainment, and festivities."
     },
     {
       day: 10,
@@ -126,7 +160,9 @@ const SixteenDaysPlan = () => {
         "Photography and videography coverage of the entire event",
         "Guest hospitality and logistics"
       ],
-      icon: Gem
+      icon: Gem,
+      image: pic410,
+      desc: "The most auspicious day when the couple takes their wedding vows in a beautifully decorated mandap."
     },
     {
       day: 11,
@@ -134,7 +170,9 @@ const SixteenDaysPlan = () => {
       items: [
         "Traditional meal arrangement for close family and friends"
       ],
-      icon: Eclipse 
+      icon: Eclipse,
+      image: pic411,
+      desc: "An intimate lunch gathering for the families and close friends to celebrate the union."
     },
     {
       day: 12,
@@ -143,7 +181,9 @@ const SixteenDaysPlan = () => {
         "Simple mandap décor",
         "Comfortable seating arrangements"
       ],
-      icon: Star
+      icon: Star,
+      image: pic412,
+      desc: "A spiritual ritual conducted to seek blessings for peace and prosperity in the couple’s new life together."
     },
     {
       day: 13,
@@ -152,7 +192,9 @@ const SixteenDaysPlan = () => {
         "Interactive games, cultural performances, and entertainment",
         "Open-mic style speeches for family and friends"
       ],
-      icon: Headphones
+      icon: Headphones,
+      image: pic413,
+      desc: "A fun-filled night of cultural activities, games, and performances to engage all family members."
     },
     {
       day: 14,
@@ -161,7 +203,9 @@ const SixteenDaysPlan = () => {
         "Elegant setup for farewell rituals",
         "Floral décor and vehicle arrangement for bride and groom’s send-off"
       ],
-      icon: Send
+      icon: Send,
+      image: pic414,
+      desc: "An emotional ceremony marking the bride and groom’s departure as a married couple."
     },
     {
       day: 15,
@@ -170,7 +214,9 @@ const SixteenDaysPlan = () => {
         "Venue and décor similar to Day 9 reception",
         "Coordination for catering and entertainment at groom’s location"
       ],
-      icon: HandHeart
+      icon: HandHeart,
+      image: pic415,
+      desc: "A celebratory reception hosted by the groom’s family to welcome the bride."
     },
     {
       day: 16,
@@ -179,9 +225,12 @@ const SixteenDaysPlan = () => {
         "Intimate setup for the couple, family, and key guests",
         "Simple décor and gourmet dining experience"
       ],
-      icon: HandPlatter
+      icon: HandPlatter,
+      image: pic416,
+      desc: "A warm and intimate dinner to express gratitude to those who made the wedding a success."
     }
   ];
+
 
   const packageIncludes = [
     {
@@ -211,7 +260,7 @@ const SixteenDaysPlan = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
+    <div className="min-h-screen bg-gradient-to-b from-[#f4f3ee] to-[#f4f3ee]">
       {/* Hero Section */}
       <motion.div 
         initial={{ opacity: 0 }}
@@ -222,9 +271,9 @@ const SixteenDaysPlan = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="relative z-10 max-w-6xl mx-auto"
+          className="relative z-10 max-w-7xl mx-auto"
         >
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold bg-gradient-to-r from-[#252422] to-[#252422] bg-clip-text text-transparent">
             16-Day Grand
             <span className="block">Wedding Package</span>
           </h1>
@@ -263,8 +312,8 @@ const SixteenDaysPlan = () => {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-pink-200/30 rounded-full filter blur-3xl" />
       </motion.div>
 
-       {/* Timeline Grid */}
-       <div className="max-w-7xl mx-auto px-4 py-16">
+      {/* Timeline Grid */}
+      <div className="max-w-7xl mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {weddingDays.map((day, index) => (
             <motion.div
@@ -275,7 +324,7 @@ const SixteenDaysPlan = () => {
               className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow"
               style={{
                 height: expandedDay === day.day ? 'auto' : 'fit-content',
-                alignSelf: 'start'  // This prevents cards from stretching
+                alignSelf: 'start'
               }}
             >
               <div
@@ -308,6 +357,19 @@ const SixteenDaysPlan = () => {
                     className="overflow-hidden"
                   >
                     <div className="p-6 bg-white">
+                      {/* Image */}
+                      <div className="mb-4 rounded-lg overflow-hidden">
+                        <img 
+                          src={day.image} 
+                          alt={day.title} 
+                          className="w-full h-48 object-cover"
+                        />
+                      </div>
+                      
+                      {/* Description */}
+                      <p className="text-gray-700 mb-4">{day.desc}</p>
+                      
+                      {/* Items */}
                       <ul className="space-y-3">
                         {day.items.map((item, i) => (
                           <motion.li

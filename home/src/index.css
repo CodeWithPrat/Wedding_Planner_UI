@@ -1,3 +1,47 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+@font-face {
+    font-family: 'Savoy-Bold';
+    src: url('./assets/fonts/Fontspring-DEMO-Savoy-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Savoy-Italic';
+    src: url('./assets/fonts/Fontspring-DEMO-Savoy-Italic.otf') format('opentype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Savoy-Roman';
+    src: url('./assets/fonts/Fontspring-DEMO-Savoy-Roman.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SavoyCaps-Bold';
+    src: url('./assets/fonts/Fontspring-DEMO-SavoyCaps-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SavoyCaps';
+    src: url('./assets/fonts/Fontspring-DEMO-SavoyCaps.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'SavoyRegular';
+  src: url('./assets/fonts/Savoy-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

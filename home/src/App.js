@@ -10,6 +10,7 @@ import Services from './Components/ServicesPlan/Services';
 import Testimonials from './Components/Testimonials/Testimonials';
 import Contact from './Components/Contact/Contact';
 import SixteenDaysPlan from './Components/ServicesPlan/SixteenDaysPlan';
+import DestinationWedding from './Components/ServicesPlan/DestinationWedding';
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -65,7 +66,7 @@ const App = () => {
                   className="flex-shrink-0 flex items-center space-x-4 group cursor-pointer"
                   whileHover={{ scale: 1.05 }}
                 >
-                  <div className="relative">
+                  <div className="relative font-savoy">
                     <img
                       className="h-14 w-14 rounded-xl shadow-lg transition-all duration-300"
                       src={companyData.logo}
@@ -183,6 +184,7 @@ const App = () => {
                 <Route path="/testimonials" element={<Testimonials />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/sixteendays" element={<SixteenDaysPlan />} />
+                <Route path="/destination-wedding" element={<DestinationWedding />} />
               </Routes>
             </AnimatePresence>
           </main>

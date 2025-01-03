@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
@@ -6,6 +7,14 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      fontFamily: {
+        'savoy-regular': ['SavoyRegular', 'serif'],
+        'savoy-bold': ['Savoy-Bold', 'serif'],
+        'savoy-italic': ['Savoy-Italic', 'serif'],
+        'savoy-roman': ['Savoy-Roman', 'serif'],
+        'savoy-caps': ['SavoyCaps', 'serif'],
+        'savoy-caps-bold': ['SavoyCaps-Bold', 'serif']
+      },
       colors: {
         primary: {
           DEFAULT: '#faedcd',
