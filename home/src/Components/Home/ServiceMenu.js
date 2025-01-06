@@ -1,251 +1,265 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp, ArrowLeft, ArrowRight, Plus, Minus } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const ServiceMenu = ({ serviceCategories }) => {
+  const navigate = useNavigate();
+
+  // State management
   const [activeCategory, setActiveCategory] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [hoveredCard, setHoveredCard] = useState(null);
-  const [autoplay, setAutoplay] = useState(true);
-  const [scrollY, setScrollY] = useState(0);
+  const [autoplayEnabled, setAutoplayEnabled] = useState(true);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStartX, setDragStartX] = useState(0);
+  const [dragDelta, setDragDelta] = useState(0);
+  const [animationDirection, setAnimationDirection] = useState(0);
+  const [isHovered, setIsHovered] = useState(null);
 
-  // Enhanced responsive sizing
-  const getItemsToShow = () => {
-    if (typeof window !== 'undefined') {
-      if (window.innerWidth < 640) return 1;
-      if (window.innerWidth < 1024) return 2;
-      if (window.innerWidth < 1536) return 3;
-      return 4;
-    }
-    return 3;
-  };
+  // Constants for better performance and configurability
+  const AUTOPLAY_DELAY = 5000;
+  const DRAG_THRESHOLD = 50;
+  const ANIMATION_DURATION = 300;
+  const SLIDE_TRANSITION = `transform ${ANIMATION_DURATION}ms cubic-bezier(0.4, 0, 0.2, 1)`;
 
-  const [itemsToShow, setItemsToShow] = useState(getItemsToShow());
-
-  // Scroll handler for parallax effect
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+  // Responsive sizing with memoization
+  const itemsToShow = useMemo(() => {
+    if (typeof window === 'undefined') return 3;
+    if (window.innerWidth < 640) return 1;
+    if (window.innerWidth < 1024) return 2;
+    if (window.innerWidth < 1536) return 3;
+    return 5;
   }, []);
 
-  // Enhanced resize handler with debounce
+  // Maximum number of slides
+  const maxSlides = Math.max(0, serviceCategories.length - itemsToShow);
+
+  // Slide control functions
+  const goToSlide = useCallback((index) => {
+    const newIndex = Math.max(0, Math.min(index, maxSlides));
+    setCurrentSlide(newIndex);
+    setAnimationDirection(newIndex > currentSlide ? 1 : -1);
+  }, [currentSlide, maxSlides]);
+
+  const nextSlide = useCallback(() => {
+    goToSlide(currentSlide === maxSlides ? 0 : currentSlide + 1);
+  }, [currentSlide, maxSlides, goToSlide]);
+
+  const prevSlide = useCallback(() => {
+    goToSlide(currentSlide === 0 ? maxSlides : currentSlide - 1);
+  }, [currentSlide, maxSlides, goToSlide]);
+
+  // Enhanced drag handlers with improved sensitivity
+  const handleDragStart = useCallback((e) => {
+    setIsDragging(true);
+    setAutoplayEnabled(false);
+    setDragStartX(e.type === 'mousedown' ? e.clientX : e.touches[0].clientX);
+    setDragDelta(0);
+  }, []);
+
+  const handleDragMove = useCallback((e) => {
+    if (!isDragging) return;
+
+    const currentX = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
+    const delta = ((currentX - dragStartX) / window.innerWidth) * 100;
+
+    // Add resistance at edges
+    if ((currentSlide === 0 && delta > 0) || (currentSlide === maxSlides && delta < 0)) {
+      setDragDelta(delta * 0.2);
+    } else {
+      setDragDelta(delta);
+    }
+  }, [isDragging, dragStartX, currentSlide, maxSlides]);
+
+  const handleDragEnd = useCallback(() => {
+    if (!isDragging) return;
+
+    if (Math.abs(dragDelta) > DRAG_THRESHOLD / window.innerWidth * 100) {
+      if (dragDelta > 0) {
+        prevSlide();
+      } else {
+        nextSlide();
+      }
+    }
+
+    setIsDragging(false);
+    setDragDelta(0);
+    setAutoplayEnabled(true);
+  }, [isDragging, dragDelta, nextSlide, prevSlide]);
+
+  // Autoplay effect with cleanup
   useEffect(() => {
     let timeoutId;
+    if (autoplayEnabled && !isDragging) {
+      timeoutId = setTimeout(nextSlide, AUTOPLAY_DELAY);
+    }
+    return () => clearTimeout(timeoutId);
+  }, [autoplayEnabled, isDragging, nextSlide]);
+
+  // Resize handler with debounce
+  useEffect(() => {
+    let resizeTimeout;
     const handleResize = () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
-        setItemsToShow(getItemsToShow());
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        setCurrentSlide(prev => Math.min(prev, maxSlides));
       }, 150);
     };
 
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
-      clearTimeout(timeoutId);
+      clearTimeout(resizeTimeout);
     };
-  }, []);
+  }, [maxSlides]);
 
-  // Enhanced autoplay with pause on user interaction
-  useEffect(() => {
-    let interval;
-    if (autoplay && !hoveredCard) {
-      interval = setInterval(nextSlide, 5000);
-    }
-    return () => clearInterval(interval);
-  }, [currentSlide, autoplay, hoveredCard]);
-
-  const nextSlide = useCallback(() => {
-    setCurrentSlide((prev) => 
-      prev === serviceCategories.length - itemsToShow ? 0 : prev + 1
-    );
-  }, [serviceCategories.length, itemsToShow]);
-
-  const prevSlide = useCallback(() => {
-    setCurrentSlide((prev) => 
-      prev === 0 ? serviceCategories.length - itemsToShow : prev - 1
-    );
-  }, [serviceCategories.length, itemsToShow]);
-
-  const toggleDropdown = (id) => {
-    setActiveCategory(activeCategory === id ? null : id);
-    setAutoplay(false);
-  };
-
-  // Card animations
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
-    hover: { scale: 1.05, y: -10 }
-  };
-
-  // Service item animations
-  const serviceItemVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: { opacity: 1, x: 0 }
-  };
+  // Calculate transform styles
+  const getTransformStyle = useCallback(() => {
+    const baseTransform = -(currentSlide * (100 / itemsToShow));
+    const dragOffset = isDragging ? dragDelta : 0;
+    return {
+      transform: `translateX(${baseTransform + dragOffset}%)`,
+      transition: isDragging ? 'none' : SLIDE_TRANSITION
+    };
+  }, [currentSlide, itemsToShow, isDragging, dragDelta]);
 
   return (
-    <div className="min-h-24 min-w-full bg-gradient-to-b from-[#f4f3ee] via-[#f4f3ee] to-[#dda15e] relative overflow-hidden">
-      {/* Decorative background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-full bg-grid-pattern opacity-5" 
-             style={{ transform: `translateY(${scrollY * 0.2}px)` }} />
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#dda15e] rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000" />
-      </div>
+    <div className="relative overflow-hidden bg-gradient-to-b from-[#f4f3ee] via-white to-[#f4f3ee] py-16 px-4 sm:px-6 lg:px-8">
+      {/* Enhanced Navigation Buttons */}
+      <button
+        onClick={prevSlide}
+        disabled={currentSlide === 0 && !isDragging}
+        className="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-20 
+                 bg-white/90 p-4 rounded-full shadow-lg backdrop-blur-md
+                 transition-all duration-300 hover:bg-blue-50 hover:scale-110
+                 disabled:opacity-50 disabled:hover:scale-100
+                 border border-gray-100 group"
+      >
+        <ChevronLeft className="w-6 h-6 text-[#dda15e] group-hover:text-[#ac7638]" />
+      </button>
 
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative">
-        {/* Navigation Arrows */}
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={prevSlide}
-          className="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-10 
-                   bg-white/90 p-3 rounded-full shadow-lg backdrop-blur-sm
-                   transition-all duration-300 hover:bg-blue-50"
-          aria-label="Previous slide"
+      <button
+        onClick={nextSlide}
+        disabled={currentSlide === maxSlides && !isDragging}
+        className="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-20 
+                 bg-white/90 p-4 rounded-full shadow-lg backdrop-blur-md
+                 transition-all duration-300 hover:bg-blue-50 hover:scale-110
+                 disabled:opacity-50 disabled:hover:scale-100
+                 border border-gray-100 group"
+      >
+        <ChevronRight className="w-6 h-6 text-[#dda15e] group-hover:text-[#ac7638]" />
+      </button>
+
+      {/* Enhanced Carousel Container */}
+      <div
+        className="overflow-hidden rounded-2xl"
+        onMouseDown={handleDragStart}
+        onMouseMove={handleDragMove}
+        onMouseUp={handleDragEnd}
+        onMouseLeave={handleDragEnd}
+        onTouchStart={handleDragStart}
+        onTouchMove={handleDragMove}
+        onTouchEnd={handleDragEnd}
+      >
+        <div
+          className="flex transition-transform"
+          style={getTransformStyle()}
         >
-          <ChevronLeft className="w-6 h-6 text-[#dda15e]" />
-        </motion.button>
-
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={nextSlide}
-          className="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-10 
-                   bg-white/90 p-3 rounded-full shadow-lg backdrop-blur-sm
-                   transition-all duration-300 hover:bg-blue-50"
-          aria-label="Next slide"
-        >
-          <ChevronRight className="w-6 h-6 text-[#dda15e]" />
-        </motion.button>
-
-        {/* Carousel Container */}
-        <div className="overflow-hidden rounded-3xl">
-          <motion.div 
-            className="flex"
-            initial={false}
-            animate={{ x: `${-currentSlide * (100 / itemsToShow)}%` }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          >
-            {serviceCategories.map((category) => (
-              <motion.div
-                key={category.id}
-                className="flex-shrink-0 p-4"
-                style={{ width: `${100 / itemsToShow}%` }}
-                variants={cardVariants}
-                initial="hidden"
-                animate="visible"
-                whileHover="hover"
-                transition={{ duration: 0.3 }}
-              >
-                <div
-                  className="bg-white/80 backdrop-blur-md rounded-2xl overflow-hidden shadow-xl
-                           border border-gray-100 h-full transform-gpu"
-                  onMouseEnter={() => {
-                    setHoveredCard(category.id);
-                    setAutoplay(false);
-                  }}
-                  onMouseLeave={() => {
-                    setHoveredCard(null);
-                    setAutoplay(true);
-                  }}
-                >
-                  <div className="relative h-56 lg:h-64 overflow-hidden">
-                    <motion.img
-                      src={category.image}
-                      alt={category.title}
-                      className="w-full h-full object-cover"
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ duration: 0.6 }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60" />
-                    <motion.h2 
-                      className="absolute bottom-6 left-6 text-3xl font-garamond font-bold text-white"
-                      initial={{ y: 20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ delay: 0.2 }}
-                    >
-                      {category.title}
-                    </motion.h2>
-                  </div>
-
-                  <div className="p-6">
-                    <motion.div
-                      className="cursor-pointer"
-                      onClick={() => toggleDropdown(category.id)}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <div className="flex items-center justify-between mb-4">
-                        <p className="text-lg text-gray-700 font-garamond font-medium line-clamp-2">
-                          {category.description}
-                        </p>
-                        <motion.div
-                          animate={{ rotate: activeCategory === category.id ? 180 : 0 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          {activeCategory === category.id ? (
-                            <Minus className="w-6 h-6 text-[#dda15e]" />
-                          ) : (
-                            <Plus className="w-6 h-6 text-[#dda15e]" />
-                          )}
-                        </motion.div>
-                      </div>
-                    </motion.div>
-
-                    <AnimatePresence>
-                      {activeCategory === category.id && (
-                        <motion.ul
-                          className="space-y-3 mt-4"
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          {category.services.map((service, index) => (
-                            <motion.li
-                              key={index}
-                              variants={serviceItemVariants}
-                              initial="hidden"
-                              animate="visible"
-                              exit="hidden"
-                              transition={{ delay: index * 0.1 }}
-                              className="bg-blue-50/50 backdrop-blur-sm rounded-xl px-6 py-4 
-                                       text-gray-800 font-medium font-garamond shadow-sm hover:shadow-md
-                                       transform-gpu transition-all duration-300
-                                       hover:bg-blue-100/50 hover:translate-x-2"
-                            >
-                              {service}
-                            </motion.li>
-                          ))}
-                        </motion.ul>
-                      )}
-                    </AnimatePresence>
+          {serviceCategories.map((category) => (
+            <div
+              key={category.id}
+              className="flex-shrink-0 p-4"
+              style={{ width: `${100 / itemsToShow}%` }}
+              onMouseEnter={() => setIsHovered(category.id)}
+              onMouseLeave={() => setIsHovered(null)}
+            >
+              <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transform transition-all duration-300
+                           hover:-translate-y-1 overflow-hidden border border-gray-100 backdrop-blur-lg">
+                <div className="relative h-64 lg:h-72 overflow-hidden group font-garamond">
+                  <img
+                    src={category.image}
+                    alt={category.title}
+                    className="w-full h-full object-cover transition-transform duration-500
+                             group-hover:scale-110 transform-gpu font-garamond"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/80
+                               opacity-80 transition-opacity duration-300" />
+                  <div className="absolute inset-x-6 bottom-6 transition-transform duration-300
+                               transform group-hover:translate-y-0 translate-y-2">
+                    <h2 className="text-2xl lg:text-3xl font-bold text-white mb-2
+                                tracking-tight font-garamond">{category.title}</h2>
+                    <p className="text-white/90 text-sm lg:text-base line-clamp-2
+                               font-light font-garamond opacity-0 group-hover:opacity-100
+                               transition-opacity duration-300">{category.description}</p>
                   </div>
                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
 
-        {/* Pagination Dots */}
-        <div className="flex justify-center mt-8 gap-2">
-          {Array.from({ length: serviceCategories.length - itemsToShow + 1 }).map((_, index) => (
-            <motion.button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`h-2 rounded-full transition-all duration-300
-                ${currentSlide === index ? 'bg-[#dda15e] w-10' : 'bg-blue-200 w-2'}`}
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.8 }}
-              aria-label={`Go to slide ${index + 1}`}
-            />
+                <div className="p-6 lg:p-8">
+                  <p className="text-gray-600 mb-6 line-clamp-3 font-garamond text-lg">{category.description}</p>
+
+                  <div className="flex items-center justify-between">
+                    <button
+                      onClick={() => navigate(`/services/${category.id}`)}
+                      className="bg-[#dda15e] text-white px-6 py-3 rounded-xl font-medium
+                               hover:bg-[#ac7638] transition-all duration-300 shadow-md
+                               hover:shadow-lg transform hover:-translate-y-0.5
+                               active:translate-y-0 relative overflow-hidden group"
+                    >
+                      <span className="relative z-10">Learn More</span>
+                      <div className="absolute inset-0 bg-[#dda15e] transform scale-x-0 
+                                  group-hover:scale-x-100 transition-transform 
+                                  duration-300 origin-left" />
+                    </button>
+
+                    <button
+                      onClick={() => setActiveCategory(
+                        activeCategory === category.id ? null : category.id
+                      )}
+                      className="p-3 hover:bg-gray-100 rounded-full transition-all duration-300
+                               hover:shadow-md"
+                    >
+                      {activeCategory === category.id ? (
+                        <ChevronUp className="w-6 h-6 text-[#dda15e]" />
+                      ) : (
+                        <ChevronDown className="w-6 h-6 text-[#dda15e]" />
+                      )}
+                    </button>
+                  </div>
+
+                  {activeCategory === category.id && (
+                    <ul className="mt-6 space-y-3">
+                      {category.services.map((service, index) => (
+                        <li
+                          key={index}
+                          className="bg-gray-50/80 p-4 rounded-xl text-gray-700
+                                   hover:bg-blue-50/80 transition-all duration-300
+                                   shadow-sm hover:shadow-md transform hover:-translate-x-1
+                                   backdrop-blur-sm border border-gray-100/50"
+                        >
+                          {service}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
+            </div>
           ))}
         </div>
+      </div>
+
+      {/* Enhanced Pagination */}
+      <div className="flex justify-center mt-8 gap-3">
+        {Array.from({ length: maxSlides + 1 }).map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={`rounded-full transition-all duration-300 transform
+                     hover:scale-110 ${currentSlide === index
+                ? 'bg-[#dda15e] w-8 h-3 shadow-md'
+                : 'bg-gray-300 w-3 h-3 hover:bg-blue-400'}`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
       </div>
     </div>
   );

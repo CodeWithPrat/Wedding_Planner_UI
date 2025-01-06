@@ -1,4 +1,4 @@
-import cultlogo from "../../assets/imgs/CultEventLogo.png"
+import cultlogo from "../../assets/imgs/CultEventOfficialLogo2.png"
 
 export const companyData = {
     name: "Cult Events",

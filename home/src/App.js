@@ -12,6 +12,8 @@ import Contact from './Components/Contact/Contact';
 import SixteenDaysPlan from './Components/ServicesPlan/SixteenDaysPlan';
 import DestinationWedding from './Components/ServicesPlan/DestinationWedding';
 
+import companyLogo from "./assets/imgs/CultBlackLogo2.png"
+
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -41,13 +43,13 @@ const App = () => {
     primary: '#252422',    // Deep Forest Green
     secondary: '#f4f3ee',  // Cream
     accent: '#dda15e',     // Warm Orange/Brown
-    navbarcolor : '#f8f9fa'
+    navbarcolor: '#f8f9fa'
   };
 
   return (
     <Router>
       <div className={`min-h-screen ${isDarkMode ? 'dark' : ''} font-garamond`}>
-        <div style={{ 
+        <div style={{
           background: `linear-gradient(to bottom right, ${styles.secondary}, ${styles.secondary})`
         }} className="min-h-screen transition-colors duration-300">
           {/* Enhanced Navbar with Custom Colors */}
@@ -63,24 +65,41 @@ const App = () => {
             <div className="max-w-[1920px] mx-auto px-6 lg:px-12 font-garamond text-slate-950">
               <div className="flex items-center justify-between h-24">
                 {/* Logo */}
-                <motion.div 
-                  className="flex-shrink-0 flex items-center space-x-4 group cursor-pointer"
-                  whileHover={{ scale: 1.05 }}
+                <motion.div
+                  className="flex items-center space-x-6"
+                  whileHover={{ scale: 1.02 }}
                 >
-                  <div className="relative font-garamond">
+                  {/* Plain company logo with hover effect */}
+                  <motion.div
+                    className="flex-shrink-0"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.2 }}
+                  >
                     <img
-                      className="h-14 w-14 rounded-xl shadow-lg transition-all duration-300"
-                      src={companyData.logo}
+                      src={companyLogo}
                       alt={companyData.name}
+                      className="h-16 w-24 object-contain"
                     />
-                    <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
-                         style={{ backgroundColor: `${styles.accent}33` }} />
-                  </div>
-                  <span style={{ color: scrolled ? styles.primary : styles.primary }} 
-                        className="text-3xl font-garamond font-bold tracking-wide transition-colors duration-300">
-                    {companyData.name}
-                  </span>
+                  </motion.div>
+
+                  {/* Stylized company name */}
+                  <motion.div
+                    className="relative"
+                    whileHover={{ y: -2 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <span
+                      style={{ color: scrolled ? styles.primary : styles.primary }}
+                      className="text-4xl font-garamond font-bold tracking-wider relative"
+                    >
+                      {companyData.name}
+                      <span
+                        className="absolute -bottom-1 left-0 w-0 h-0.5 bg-current transition-all duration-300 group-hover:w-full"
+                      />
+                    </span>
+                  </motion.div>
                 </motion.div>
+
 
                 {/* Desktop Navigation */}
                 <div className="hidden lg:block">
@@ -96,14 +115,14 @@ const App = () => {
                       >
                         <Link
                           to={link.path}
-                          style={{ 
+                          style={{
                             color: scrolled ? styles.primary : styles.primary,
                           }}
                           className="px-6 py-3 rounded-xl font-garamond text-base font-medium transition-all duration-300 relative overflow-hidden group"
                         >
                           <span className="relative font-garamond z-10">{link.name}</span>
                           <div className="absolute inset-0 transform font-garamond scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
-                               style={{ backgroundColor: `${styles.accent}33` }} />
+                            style={{ backgroundColor: `${styles.accent}33` }} />
                         </Link>
                       </motion.div>
                     ))}
@@ -126,10 +145,10 @@ const App = () => {
                 </div>
 
                 {/* Mobile Menu Button */}
-                <motion.button 
+                <motion.button
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  style={{ 
+                  style={{
                     backgroundColor: `${styles.accent}22`,
                     color: scrolled ? styles.primary : styles.primary
                   }}
@@ -195,7 +214,7 @@ const App = () => {
             <div className="max-w-[1920px] mx-auto px-6 lg:px-12 py-16">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
                 {/* Company Info */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -203,12 +222,12 @@ const App = () => {
                 >
                   <div className="flex items-center space-x-4 group">
                     <img
-                      className="h-12 w-12 rounded-xl shadow-lg font-garamond transition-all duration-300"
+                      className="h-14 w-24 rounded-xl shadow-lg font-garamond transition-all duration-300"
                       src={companyData.logo}
                       alt={companyData.name}
                     />
-                    <span style={{ color: styles.secondary }} 
-                          className="text-2xl font-garamond font-bold tracking-wide">
+                    <span style={{ color: styles.secondary }}
+                      className="text-2xl font-garamond font-bold tracking-wide">
                       {companyData.name}
                     </span>
                   </div>
@@ -226,7 +245,7 @@ const App = () => {
                 </motion.div>
 
                 {/* Quick Links */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -255,7 +274,7 @@ const App = () => {
                 </motion.div>
 
                 {/* Resources */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -265,7 +284,7 @@ const App = () => {
                     Resources
                   </h3>
                   <div className="space-y-4 font-garamond">
-                    {['Privacy Policy', 'Terms of Service', 'FAQ', 'Blog', 'Support'].map((item) => (
+                    {['Terms of Service', 'FAQ', 'Support'].map((item) => (
                       <motion.div
                         key={item}
                         whileHover={{ x: 5 }}

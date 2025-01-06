@@ -33,7 +33,7 @@ const DestinationWedding = () => {
     const packages = [
         {
             name: 'Gold Package',
-            price: '₹15 Lakhs',
+            price: '₹30 Lakhs',
             destination: 'Goa or Coorg',
             guests: '50-100',
             features: ['Basic décor', 'Transportation', 'Catering', 'Photography'],
@@ -41,7 +41,7 @@ const DestinationWedding = () => {
         },
         {
             name: 'Platinum Package',
-            price: '₹50 Lakhs',
+            price: '₹1 Crores',
             destination: 'Udaipur Palace or International Beach',
             guests: '150-200',
             features: ['Luxury décor', 'Gourmet catering', 'Live music', 'Full event coverage'],
