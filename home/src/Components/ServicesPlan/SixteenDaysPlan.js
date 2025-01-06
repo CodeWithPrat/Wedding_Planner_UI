@@ -260,12 +260,12 @@ const SixteenDaysPlan = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#f4f3ee] to-[#f4f3ee]">
+    <div className="min-h-screen bg-gradient-to-b from-[#f4f3ee] to-[#f4f3ee] font-garamond">
       {/* Hero Section */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="relative overflow-hidden rounded-b-3xl bg-gradient-to-r from-pink-50 via-purple-50 to-indigo-50 p-6 md:p-12 lg:p-16"
+        className="relative overflow-hidden rounded-b-3xl font-garamond bg-gradient-to-r from-pink-50 via-purple-50 to-indigo-50 p-6 md:p-12 lg:p-16"
       >
         <motion.div
           initial={{ y: 50, opacity: 0 }}
@@ -273,9 +273,9 @@ const SixteenDaysPlan = () => {
           transition={{ duration: 0.8 }}
           className="relative z-10 max-w-7xl mx-auto"
         >
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold bg-gradient-to-r from-[#252422] to-[#252422] bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-garamond font-bold bg-gradient-to-r from-[#252422] to-[#252422] bg-clip-text text-transparent">
             16-Day Grand
-            <span className="block">Wedding Package</span>
+            <span className="block font-garamond">Wedding Package</span>
           </h1>
           
           <div className="mt-8 flex flex-col md:flex-row gap-6 items-start md:items-center">
@@ -283,7 +283,7 @@ const SixteenDaysPlan = () => {
               whileHover={{ scale: 1.05 }}
               className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-xl shadow-lg"
             >
-              <span className="text-2xl font-bold text-purple-600">₹30L - 1Cr</span>
+              <span className="text-2xl font-bold font-garamond text-purple-600">₹30L - 1Cr</span>
               <span className="text-gray-600">Starting Range</span>
             </motion.div>
             
@@ -298,7 +298,7 @@ const SixteenDaysPlan = () => {
                   {icon === 'Calendar' ? <Calendar className="text-purple-600" /> :
                    icon === 'Phone' ? <Phone className="text-purple-600" /> :
                    <Camera className="text-purple-600" />}
-                  <span className="font-medium text-gray-800">
+                  <span className="font-medium font-garamond text-gray-800">
                     {icon === 'Calendar' ? 'Plan Wedding' :
                      icon === 'Phone' ? 'Contact Us' : 'View Gallery'}
                   </span>
@@ -331,14 +331,14 @@ const SixteenDaysPlan = () => {
                 onClick={() => handleDayClick(day.day)}
                 className="cursor-pointer p-6 bg-gradient-to-r from-purple-50 to-pink-50"
               >
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center font-garamond">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center">
                       <day.icon className="w-6 h-6 text-purple-600" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900">Day {day.day}</h3>
-                      <p className="text-gray-600">{day.title}</p>
+                      <h3 className="font-semibold font-garamond text-gray-900">Day {day.day}</h3>
+                      <p className="text-gray-600 font-garamond">{day.title}</p>
                     </div>
                   </div>
                   <motion.div animate={{ rotate: expandedDay === day.day ? 180 : 0 }}>
@@ -356,7 +356,7 @@ const SixteenDaysPlan = () => {
                     transition={{ duration: 0.3 }}
                     className="overflow-hidden"
                   >
-                    <div className="p-6 bg-white">
+                    <div className="p-6 bg-white font-garamond">
                       {/* Image */}
                       <div className="mb-4 rounded-lg overflow-hidden">
                         <img 
@@ -367,7 +367,7 @@ const SixteenDaysPlan = () => {
                       </div>
                       
                       {/* Description */}
-                      <p className="text-gray-700 mb-4">{day.desc}</p>
+                      <p className="text-gray-700 mb-4 font-garamond">{day.desc}</p>
                       
                       {/* Items */}
                       <ul className="space-y-3">
@@ -377,10 +377,10 @@ const SixteenDaysPlan = () => {
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: i * 0.1 }}
-                            className="flex items-center gap-3"
+                            className="flex items-center gap-3 font-garamond"
                           >
-                            <div className="w-1.5 h-1.5 rounded-full bg-purple-400" />
-                            <span className="text-gray-700">{item}</span>
+                            <div className="w-1.5 h-1.5 rounded-full bg-purple-400 font-garamond" />
+                            <span className="text-gray-700 font-garamond">{item}</span>
                           </motion.li>
                         ))}
                       </ul>

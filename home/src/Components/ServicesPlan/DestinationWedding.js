@@ -70,7 +70,7 @@ const DestinationWedding = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-[#f4f3ee]">
+        <div className="min-h-screen bg-[#f4f3ee] font-garamond">
             {/* Hero Section with Image Carousel */}
             <motion.div
                 initial={{ opacity: 0 }}
@@ -96,7 +96,7 @@ const DestinationWedding = () => {
                             initial={{ y: 20, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             transition={{ delay: 0.2 }}
-                            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
+                            className="text-4xl md:text-6xl lg:text-7xl font-bold font-garamond mb-6"
                         >
                             Your Dream Destination Wedding
                         </motion.h1>
@@ -104,7 +104,7 @@ const DestinationWedding = () => {
                             initial={{ y: 20, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             transition={{ delay: 0.4 }}
-                            className="text-lg md:text-xl lg:text-2xl mb-8"
+                            className="text-lg md:text-xl lg:text-2xl mb-8 font-garamond"
                         >
                             Create unforgettable memories in breathtaking locations
                         </motion.p>
@@ -114,7 +114,7 @@ const DestinationWedding = () => {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             transition={{ delay: 0.6 }}
-                            className="bg-[#dda15e] text-white px-6 md:px-8 py-2 md:py-3 rounded-full text-base md:text-lg hover:bg-[#252422] transition-all"
+                            className="bg-[#dda15e] text-white px-6 md:px-8 font-garamond py-2 md:py-3 rounded-full text-base md:text-lg hover:bg-[#252422] transition-all"
                         >
                             Start Planning
                         </motion.button>
@@ -152,7 +152,7 @@ const DestinationWedding = () => {
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    className="text-4xl font-bold text-center text-[#252422] mb-16"
+                    className="text-4xl font-bold font-garamond text-center text-[#252422] mb-16"
                 >
                     Our Services
                 </motion.h2>
@@ -166,23 +166,23 @@ const DestinationWedding = () => {
                             whileHover={{ scale: 1.02 }}
                             className="bg-white rounded-xl shadow-lg overflow-hidden group"
                         >
-                            <div className="relative h-48 overflow-hidden">
+                            <div className="relative h-48 overflow-hidden font-garamond">
                                 <img
                                     src={feature.image}
                                     alt={feature.title}
                                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                                <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                                <div className="absolute bottom-0 left-0 right-0 p-4 font-garamond text-white">
                                     <div className="flex items-center">
                                         <div className="p-3 bg-[#dda15e] rounded-full mr-4">
                                             {feature.icon}
                                         </div>
-                                        <h3 className="text-xl font-semibold">{feature.title}</h3>
+                                        <h3 className="text-xl font-semibold font-garamond">{feature.title}</h3>
                                     </div>
                                 </div>
                             </div>
-                            <div className="p-6">
+                            <div className="p-6 font-garamond">
                                 <p className="text-gray-600">{feature.description}</p>
                             </div>
                         </motion.div>
@@ -191,25 +191,25 @@ const DestinationWedding = () => {
             </div>
 
             {/* Packages Section */}
-            <div className="bg-[#252422] py-20 px-4 md:px-8">
+            <div className="bg-[#252422] py-20 px-4 md:px-8 font-garamond">
                 <div className="max-w-7xl mx-auto">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        className="text-4xl font-bold text-center text-white mb-16"
+                        className="text-4xl font-bold font-garamond text-center text-white mb-16"
                     >
                         Wedding Packages
                     </motion.h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 font-garamond">
                         {packages.map((pkg, index) => (
                             <motion.div
                                 key={index}
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 whileHover={{ y: -10 }}
-                                className="bg-white rounded-xl overflow-hidden shadow-xl"
+                                className="bg-white rounded-xl overflow-hidden shadow-xl font-garamond"
                             >
-                                <div className="relative h-48">
+                                <div className="relative h-48 font-garamond">
                                     <img
                                         src={pkg.image}
                                         alt={pkg.name}
@@ -217,29 +217,29 @@ const DestinationWedding = () => {
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                                     <div className="absolute bottom-0 left-0 right-0 p-4">
-                                        <h3 className="text-2xl font-bold text-white mb-2">{pkg.name}</h3>
-                                        <p className="text-3xl font-bold text-[#dda15e]">{pkg.price}</p>
+                                        <h3 className="text-2xl font-bold font-garamond text-white mb-2">{pkg.name}</h3>
+                                        <p className="text-3xl font-bold font-garamond text-[#dda15e]">{pkg.price}</p>
                                     </div>
                                 </div>
-                                <div className="p-6">
+                                <div className="p-6 font-garamond">
                                     <div className="mb-6">
-                                        <p className="text-gray-600 mb-2">
-                                            <MapPin className="inline w-4 h-4 mr-2" />{pkg.destination}
+                                        <p className="text-gray-600 mb-2 font-garamond">
+                                            <MapPin className="inline w-4 h-4 mr-2 font-garamond" />{pkg.destination}
                                         </p>
-                                        <p className="text-gray-600">
+                                        <p className="text-gray-600 font-garamond">
                                             <Users className="inline w-4 h-4 mr-2" />{pkg.guests} Guests
                                         </p>
                                     </div>
-                                    <ul className="text-left mb-6">
+                                    <ul className="text-left mb-6 font-garamond">
                                         {pkg.features.map((feature, i) => (
                                             <motion.li
                                                 key={i}
-                                                className="mb-2 flex items-center"
+                                                className="mb-2 flex items-center font-garamond"
                                                 initial={{ opacity: 0, x: -20 }}
                                                 whileInView={{ opacity: 1, x: 0 }}
                                                 transition={{ delay: i * 0.1 }}
                                             >
-                                                <ChevronDown className="w-4 h-4 text-[#dda15e] mr-2" />
+                                                <ChevronDown className="w-4 h-4 text-[#dda15e] mr-2 font-garamond" />
                                                 {feature}
                                             </motion.li>
                                         ))}
@@ -247,7 +247,7 @@ const DestinationWedding = () => {
                                     <motion.button
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
-                                        className="w-full bg-[#dda15e] text-white py-3 rounded-lg hover:bg-[#252422] transition-colors"
+                                        className="w-full font-garamond bg-[#dda15e] text-white py-3 rounded-lg hover:bg-[#252422] transition-colors"
                                     >
                                         Choose Package
                                     </motion.button>
@@ -264,11 +264,11 @@ const DestinationWedding = () => {
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        className="text-4xl font-bold text-center text-[#252422] mb-16"
+                        className="text-4xl font-bold font-garamond text-center text-[#252422] mb-16"
                     >
                         Why Choose Us
                     </motion.h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 font-garamond">
                         {[
                             { title: 'Expertise in Destination Weddings', desc: 'Our team specializes in planning destination weddings across India and internationally.' },
                             { title: 'Tailored Packages', desc: 'Customizable wedding packages that cater to your unique vision and requirements.' },
@@ -279,10 +279,10 @@ const DestinationWedding = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 whileHover={{ scale: 1.03 }}
-                                className="bg-white p-6 rounded-xl shadow-lg backdrop-blur-md bg-white/90"
+                                className="bg-white p-6 rounded-xl shadow-lg backdrop-blur-md font-garamond bg-white/90"
                             >
-                                <h3 className="text-xl font-semibold text-[#252422] mb-4">{item.title}</h3>
-                                <p className="text-gray-600">{item.desc}</p>
+                                <h3 className="text-xl font-semibold font-garamond text-[#252422] mb-4">{item.title}</h3>
+                                <p className="text-gray-600 font-garamond">{item.desc}</p>
                             </motion.div>
                         ))}
                     </div>
@@ -293,7 +293,7 @@ const DestinationWedding = () => {
             <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                className="bg-[#252422] text-white py-20 px-4 text-center relative overflow-hidden"
+                className="bg-[#252422] text-white font-garamond py-20 px-4 text-center relative overflow-hidden"
             >
                 <motion.div
                     className="absolute inset-0 opacity-30"
@@ -307,13 +307,13 @@ const DestinationWedding = () => {
                         ease: "linear"
                     }}
                 >
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#dda15e] to-[#252422]"></div>
+                    <div className="absolute font-garamond inset-0 bg-gradient-to-r from-[#dda15e] to-[#252422]"></div>
                 </motion.div>
-                <div className="relative z-10 max-w-3xl mx-auto">
+                <div className="relative z-10 max-w-3xl mx-auto font-garamond">
                     <motion.h2
                         initial={{ y: 20, opacity: 0 }}
                         whileInView={{ y: 0, opacity: 1 }}
-                        className="text-4xl font-bold mb-6"
+                        className="text-4xl font-bold mb-6 font-garamond"
                     >
                         Ready to Start Planning?
                     </motion.h2>
@@ -321,7 +321,7 @@ const DestinationWedding = () => {
                         initial={{ y: 20, opacity: 0 }}
                         whileInView={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.2 }}
-                        className="text-xl mb-8"
+                        className="text-xl mb-8 font-garamond"
                     >
                         Let's create your perfect destination wedding together
                     </motion.p>
@@ -331,7 +331,7 @@ const DestinationWedding = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         transition={{ delay: 0.4 }}
-                        className="bg-[#dda15e] text-white px-8 py-3 rounded-full text-lg hover:bg-white hover:text-[#252422] transition-all"
+                        className="bg-[#dda15e] font-garamond text-white px-8 py-3 rounded-full text-lg hover:bg-white hover:text-[#252422] transition-all"
                     >
                         Contact Us Today
                     </motion.button>

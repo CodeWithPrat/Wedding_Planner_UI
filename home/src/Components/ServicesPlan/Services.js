@@ -227,7 +227,7 @@ const ServicesPage = () => {
   ];
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen font-garamond">
       {/* Progress bar */}
       <div 
         className="fixed top-0 left-0 h-1 bg-gradient-to-r from-[#dda15e] to-[#252422] z-50 transition-all duration-300"
@@ -269,7 +269,7 @@ const ServicesPage = () => {
         </div>
 
         {/* Hero Content */}
-        <div className="relative h-full flex flex-col items-center justify-center px-4 text-center">
+        <div className="relative h-full flex flex-col items-center justify-center px-4 text-center font-garamond">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -277,20 +277,20 @@ const ServicesPage = () => {
             className="space-y-8 max-w-4xl mx-auto"
           >
             <div className="space-y-4">
-              <h1 className="text-5xl md:text-7xl font-serif font-bold text-[#f4f3ee] leading-tight">
+              <h1 className="text-5xl md:text-7xl font-garamond font-bold text-[#f4f3ee] leading-tight">
                 Crafting Your Perfect
-                <span className="block text-[#dda15e]">Wedding Journey</span>
+                <span className="block text-[#dda15e] font-garamond">Wedding Journey</span>
               </h1>
-              <p className="text-lg md:text-xl text-[#f4f3ee]/90 max-w-2xl mx-auto font-light">
+              <p className="text-lg md:text-xl text-[#f4f3ee]/90 max-w-2xl mx-auto font-garamond font-light">
                 Where every detail is thoughtfully curated to create unforgettable moments
               </p>
             </div>
 
-            <div className="flex justify-center space-x-4">
-              <button className="px-8 py-3 bg-[#dda15e] text-[#252422] rounded-full font-medium hover:bg-[#dda15e]/90 transition-all duration-300 transform hover:scale-105">
+            <div className="flex justify-center space-x-4 font-garamond">
+              <button className="px-8 py-3 bg-[#dda15e] text-[#252422] rounded-full font-garamond font-medium hover:bg-[#dda15e]/90 transition-all duration-300 transform hover:scale-105">
                 Explore Services
               </button>
-              <button className="px-8 py-3 border border-[#f4f3ee] text-[#f4f3ee] rounded-full font-medium hover:bg-[#f4f3ee]/10 transition-all duration-300">
+              <button className="px-8 py-3 border border-[#f4f3ee] text-[#f4f3ee] font-garamond rounded-full font-medium hover:bg-[#f4f3ee]/10 transition-all duration-300">
                 Contact Us
               </button>
             </div>
@@ -306,7 +306,7 @@ const ServicesPage = () => {
       <div className="bg-[#f4f3ee] py-20 px-4 md:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#252422] mb-4">
+            <h2 className="text-4xl md:text-5xl font-garamond font-bold text-[#252422] mb-4">
               Our Services
             </h2>
             <div className="w-24 h-1 bg-[#dda15e] mx-auto" />
@@ -317,7 +317,7 @@ const ServicesPage = () => {
       </div>
 
       {/* Features Section */}
-      <div className="bg-[#252422] text-[#f4f3ee] py-20 px-4 md:px-8">
+      <div className="bg-[#252422] text-[#f4f3ee] py-20 px-4 md:px-8 font-garamond">
         <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
           {[
             {
@@ -338,11 +338,11 @@ const ServicesPage = () => {
           ].map((feature, index) => (
             <div 
               key={index}
-              className="p-8 rounded-xl bg-gradient-to-br from-[#252422] to-[#252422]/80 border border-[#dda15e]/20 hover:border-[#dda15e] transition-all duration-300"
+              className="p-8 font-garamond rounded-xl bg-gradient-to-br from-[#252422] to-[#252422]/80 border border-[#dda15e]/20 hover:border-[#dda15e] transition-all duration-300"
             >
               <feature.icon className="w-12 h-12 text-[#dda15e] mb-4" />
-              <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-              <p className="text-[#f4f3ee]/80">{feature.description}</p>
+              <h3 className="text-xl font-garamond font-bold mb-2">{feature.title}</h3>
+              <p className="text-[#f4f3ee]/80 font-garamond">{feature.description}</p>
             </div>
           ))}
         </div>

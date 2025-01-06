@@ -39,10 +39,10 @@ import pic210 from "../../assets/imgs/ServicesImgs/ServCardImgs/pic210.jpg"
 const FeatureIcon = ({ Icon, label }) => (
     <motion.div
         whileHover={{ scale: 1.05 }}
-        className="flex items-center space-x-2 text-gray-600"
+        className="flex items-center space-x-2 text-gray-600 font-garamond"
     >
         <Icon className="w-4 h-4" />
-        <span className="text-sm">{label}</span>
+        <span className="text-sm font-garamond">{label}</span>
     </motion.div>
 );
 
@@ -116,13 +116,13 @@ const PackageCard = ({ title, description, features, imageSrc, linkTo, isReverse
                             color: isHovered ? accentColor : '#1a1a1a',
                         }}
                         transition={{ duration: 0.3 }}
-                        className="text-3xl lg:text-4xl font-serif mb-4"
+                        className="text-3xl lg:text-4xl font-garamond mb-4"
                     >
                         {title}
                     </motion.h3>
 
                     <motion.p
-                        className="text-gray-600 text-lg leading-relaxed"
+                        className="text-gray-600 text-lg leading-relaxed font-garamond"
                         animate={{
                             opacity: isHovered ? 1 : 0.9,
                         }}
@@ -131,7 +131,7 @@ const PackageCard = ({ title, description, features, imageSrc, linkTo, isReverse
                     </motion.p>
 
                     <motion.div
-                        className="grid grid-cols-2 gap-4 py-6"
+                        className="grid grid-cols-2 gap-4 py-6 font-garamond"
                         animate={{
                             opacity: isHovered ? 1 : 0.8,
                         }}
@@ -147,7 +147,7 @@ const PackageCard = ({ title, description, features, imageSrc, linkTo, isReverse
                     >
                         <Link
                             to={linkTo}
-                            className="group inline-flex items-center space-x-3 font-medium"
+                            className="group inline-flex items-center space-x-3 font-medium font-garamond"
                             style={{ color: accentColor }}
                         >
                             <motion.span
@@ -525,15 +525,15 @@ const Home = () => {
                                 initial={{ opacity: 0, x: -50 }}
                                 animate={{ opacity: isVisible.welcome ? 1 : 0, x: isVisible.welcome ? 0 : -50 }}
                                 transition={{ duration: 0.8, delay: 0.2 }}
-                                className="text-4xl md:text-5xl font-serif text-gray-800 leading-tight"
+                                className="text-4xl md:text-5xl font-garamond text-gray-800 leading-tight"
                             >
-                                Welcome to <span className="text-fdc5f5">Cult Events</span>
+                                Welcome to <span className="text-fdc5f5 font-garamond">Cult Events</span>
                             </motion.h2>
                             <motion.p
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: isVisible.welcome ? 1 : 0 }}
                                 transition={{ duration: 0.8, delay: 0.4 }}
-                                className="text-lg text-gray-600 leading-relaxed"
+                                className="text-lg text-gray-600 leading-relaxed font-garamond"
                             >
                                 We believe every love story deserves a magical celebration. Our team of dedicated wedding planners brings your dreams to life with creativity, passion, and attention to every detail.
                             </motion.p>
@@ -544,7 +544,7 @@ const Home = () => {
                                 <Link
                                     to="/about"
                                     className="group inline-flex items-center space-x-3 text-ffc2d1 
-                                             hover:text-ffcfd2 font-medium transition-colors duration-300"
+                                             hover:text-ffcfd2 font-medium font-garamond transition-colors duration-300"
                                 >
                                     <span>Learn More About Us</span>
                                     <ChevronRight className="h-5 w-5 transform group-hover:translate-x-1 transition-transform" />
@@ -623,7 +623,7 @@ const Home = () => {
                         viewport={{ once: true }}
                         className="text-center "
                     >
-                        <h2 className="text-[#000000] text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 bg-gradient-to-r from-[#f4f3ee] to-[#dda15e] bg-clip-text text-transparent tracking-tight"
+                        <h2 className="text-[#000000] text-4xl md:text-5xl lg:text-6xl font-garamond font-bold mb-6 bg-gradient-to-r from-[#f4f3ee] to-[#dda15e] bg-clip-text text-transparent tracking-tight"
                         >
                             Our Services
                         </h2>
@@ -634,7 +634,7 @@ const Home = () => {
                             transition={{ duration: 0.6, delay: 0.2 }}
                             viewport={{ once: true }}
                         >
-                            <h4 className="text-[#0000]/90 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">
+                            <h4 className="text-[#0000]/90 text-xl md:text-2xl font-garamond font-medium max-w-2xl mx-auto leading-relaxed">
                                 We're here to help you, every step of the way.
                             </h4>
                         </motion.div>
@@ -689,7 +689,7 @@ const Home = () => {
                     transition={{ duration: 0.8 }}
                     className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
                 >
-                    <div className="text-center mb-20">
+                    <div className="text-center mb-20 font-garamond">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -697,7 +697,7 @@ const Home = () => {
                             className="inline-block"
                         >
                             <span className="inline-block px-4 py-2 rounded-full bg-ffc2d1/10 text-ffc2d1 
-                           text-sm font-medium mb-4">
+                           text-sm font-garamond font-medium mb-4">
                                 Luxury Packages
                             </span>
                         </motion.div>
@@ -706,7 +706,7 @@ const Home = () => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-4xl md:text-5xl font-serif text-gray-800 mb-8"
+                            className="text-4xl md:text-5xl font-garamond text-gray-800 mb-8"
                         >
                             Exclusive Wedding Collections
                         </motion.h2>
@@ -716,7 +716,7 @@ const Home = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
-                            className="text-lg text-gray-600 max-w-3xl mx-auto"
+                            className="text-lg text-gray-600 max-w-3xl mx-auto font-garamond"
                         >
                             Choose from our carefully curated wedding packages, each designed to create
                             an extraordinary celebration that reflects your unique love story
@@ -743,7 +743,7 @@ const Home = () => {
                         <Link
                             to="/packages"
                             className="inline-flex items-center px-8 py-4 bg-white hover:bg-ffc2d1 
-                     text-gray-800 hover:text-white rounded-full font-medium 
+                     text-gray-800 hover:text-white rounded-full font-medium font-garamond
                      shadow-xl hover:shadow-2xl transition-all duration-500 
                      transform hover:-translate-y-1 group"
                         >
@@ -777,10 +777,10 @@ const Home = () => {
                     transition={{ duration: 0.8 }}
                     className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
                 >
-                    <h2 className="text-4xl md:text-6xl font-serif text-white mb-8">
+                    <h2 className="text-4xl md:text-6xl font-garamond text-white mb-8">
                         Ready to Begin Your Wedding Journey?
                     </h2>
-                    <p className="text-xl text-white/90 mb-12 max-w-2xl mx-auto">
+                    <p className="text-xl text-white/90 mb-12 max-w-2xl mx-auto font-garamond">
                         Let's create memories that will last a lifetime...
                     </p>
                     <motion.div
@@ -790,7 +790,7 @@ const Home = () => {
                         <Link
                             to="/contact"
                             className="inline-flex items-center px-12 py-5 bg-secondary-dark hover:bg-accent1-dark 
-                                     text-gray-800 rounded-full font-medium text-lg shadow-2xl 
+                                     text-gray-800 rounded-full font-medium font-garamond text-lg shadow-2xl 
                                      hover:shadow-3xl transition-all duration-300"
                         >
                             Get Started

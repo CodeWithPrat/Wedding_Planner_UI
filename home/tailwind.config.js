@@ -8,12 +8,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'savoy-regular': ['SavoyRegular', 'serif'],
-        'savoy-bold': ['Savoy-Bold', 'serif'],
-        'savoy-italic': ['Savoy-Italic', 'serif'],
-        'savoy-roman': ['Savoy-Roman', 'serif'],
-        'savoy-caps': ['SavoyCaps', 'serif'],
-        'savoy-caps-bold': ['SavoyCaps-Bold', 'serif']
+        garamond: ['"EB Garamond"', 'serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        serif: ['Playfair Display', 'Georgia', 'serif'],
       },
       colors: {
         primary: {
@@ -143,10 +140,6 @@ module.exports = {
             opacity: '.85',
           },
         },
-      },
-      fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        serif: ['Playfair Display', 'Georgia', 'serif'],
       },
       spacing: {
         '128': '32rem',

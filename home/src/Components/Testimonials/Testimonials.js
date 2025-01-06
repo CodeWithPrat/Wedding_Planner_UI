@@ -93,23 +93,23 @@ const Testimonials = () => {
   }, [handleNext]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background-50 via-background-100 to-primary-light">
+    <div className="min-h-screen bg-gradient-to-b from-background-50 via-background-100 to-primary-light font-garamond">
       {/* Enhanced Hero Section */}
       <div className="relative h-[45vh] lg:h-[50vh] overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={pic15}
             alt="Happy Couples"
-            className="w-full h-full object-cover transform scale-102 animate-float"
+            className="w-full h-full object-cover font-garamond transform scale-102 animate-float"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-transparent" />
         </div>
         <div className="relative h-full flex items-center justify-center">
           <div className="text-center animate-fade-in-down">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif text-white mb-6 text-shadow-lg">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-garamond text-white mb-6 text-shadow-lg">
               Client Testimonials
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto px-4 font-light animate-fade-in">
+            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto px-4 font-garamond font-light animate-fade-in">
               Real stories from our cherished clients
             </p>
           </div>
@@ -117,7 +117,7 @@ const Testimonials = () => {
       </div>
 
       {/* Enhanced Testimonials Carousel */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 font-garamond">
         <div className="relative">
           <div className="overflow-hidden rounded-4xl shadow-soft-2xl">
             <div className="relative flex items-center min-h-[600px] lg:min-h-[500px]">
@@ -134,29 +134,29 @@ const Testimonials = () => {
                 >
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                     <div className="relative group">
-                      <div className="overflow-hidden rounded-3xl shadow-soft-xl">
+                      <div className="overflow-hidden rounded-3xl shadow-soft-xl font-garamond">
                         <img
                           src={testimonial.image}
                           alt={testimonial.names || testimonial.name}
-                          className="w-full h-[400px] lg:h-[500px] object-cover transform group-hover:scale-110 transition-all duration-500"
+                          className="w-full font-garamond h-[400px] lg:h-[500px] object-cover transform group-hover:scale-110 transition-all duration-500"
                         />
                       </div>
                       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-8">
-                        <span className="inline-block px-6 py-2 bg-accent1 text-white rounded-full text-sm font-medium shadow-lg animate-bounce-subtle">
+                        <span className="inline-block px-6 py-2 bg-accent1 text-white rounded-full font-garamond text-sm font-medium shadow-lg animate-bounce-subtle">
                           {testimonial.eventType}
                         </span>
                       </div>
                     </div>
-                    <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 lg:p-12 shadow-soft-xl transform hover:scale-102 transition-transform duration-300">
+                    <div className="bg-white/90 backdrop-blur-sm rounded-3xl font-garamond p-8 lg:p-12 shadow-soft-xl transform hover:scale-102 transition-transform duration-300">
                       <div className="flex mb-6 animate-pulse-subtle">
                         {[...Array(testimonial.rating)].map((_, i) => (
                           <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
                         ))}
                       </div>
-                      <blockquote className="text-gray-700 text-lg lg:text-xl italic mb-8 font-light leading-relaxed">
+                      <blockquote className="text-gray-700 text-lg lg:text-xl italic mb-8 font-garamond font-light leading-relaxed">
                         "{testimonial.quote}"
                       </blockquote>
-                      <div className="font-serif">
+                      <div className="font-garamond">
                         <p className="text-2xl text-gray-800 mb-2">
                           {testimonial.names || testimonial.name}
                           {testimonial.surname && ` ${testimonial.surname}`}
@@ -198,17 +198,17 @@ const Testimonials = () => {
           <div className="animate-float">
             <Heart className="w-20 h-20 text-accent1 mx-auto mb-8 animate-pulse-subtle" />
           </div>
-          <h2 className="text-4xl lg:text-5xl font-serif text-gray-800 mb-8 animate-fade-in">
+          <h2 className="text-4xl lg:text-5xl font-garamond text-gray-800 mb-8 animate-fade-in">
             Share Your Experience
           </h2>
-          <p className="text-gray-600 text-lg mb-12 max-w-3xl mx-auto">
+          <p className="text-gray-600 font-garamond text-lg mb-12 max-w-3xl mx-auto">
             We love hearing from our clients! If you have worked with us and would like to share
             your thoughts, please contact us or leave a review on our social media pages.
           </p>
           <Link
             to="/contact"
             className="inline-flex items-center px-10 py-4 bg-accent1 hover:bg-accent1-dark 
-                     text-white rounded-full font-medium shadow-soft-xl hover:shadow-soft-2xl 
+                     text-white rounded-full font-garamond font-medium shadow-soft-xl hover:shadow-soft-2xl 
                      transition-all duration-300 transform hover:-translate-y-1 text-lg"
           >
             Share Your Story

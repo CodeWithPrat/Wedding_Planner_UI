@@ -10,7 +10,7 @@ const ServiceMenuDropdown = ({ serviceCategories }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background-50 to-background-300 p-4 sm:p-8 lg:p-12">
+    <div className="min-h-screen bg-gradient-to-b from-background-50 to-background-300 p-4 sm:p-8 lg:p-12 font-garamond">
       <div className="max-w-7xl mx-auto">
         <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {serviceCategories.map((category) => (
@@ -24,7 +24,7 @@ const ServiceMenuDropdown = ({ serviceCategories }) => {
               onMouseEnter={() => setHoveredCard(category.id)}
               onMouseLeave={() => setHoveredCard(null)}
             >
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-48 overflow-hidden font-garamond">
                 <img
                   src={category.image}
                   alt={category.title}
@@ -34,12 +34,12 @@ const ServiceMenuDropdown = ({ serviceCategories }) => {
               </div>
 
               <div
-                className={`cursor-pointer p-6 transition-colors duration-300
+                className={`cursor-pointer p-6 transition-colors duration-300 font-garamond
                   ${activeCategory === category.id ? 'bg-primary-light/30' : ''}`}
                 onClick={() => toggleDropdown(category.id)}
               >
                 <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-2xl font-serif font-bold text-black">
+                  <h2 className="text-2xl font-garamond font-bold text-black">
                     {category.title}
                   </h2>
                   {activeCategory === category.id ? (
@@ -48,18 +48,18 @@ const ServiceMenuDropdown = ({ serviceCategories }) => {
                     <ChevronDown className="w-6 h-6 text-black animate-bounce-subtle" />
                   )}
                 </div>
-                <p className="text-sm text-black/60 line-clamp-2">
+                <p className="text-sm text-black/60 line-clamp-2 font-garamond">
                   {category.description}
                 </p>
               </div>
 
               {activeCategory === category.id && (
-                <ul className="p-6 space-y-3 bg-light-50/80  animate-slide-in-up">
+                <ul className="p-6 space-y-3 bg-light-50/80  animate-slide-in-up font-garamond">
                   {category.services.map((service, index) => (
                     <li
                       key={index}
                       className="transform transition-all duration-300
-                        text-stone-900 font-medium
+                        text-stone-900 font-medium font-garamond
                         bg-primary-light/50  rounded-xl
                         px-4 py-3 shadow-inner-lg hover:bg-primary-light
                         hover:shadow-soft-xl animate-fade-in-up"
@@ -73,7 +73,7 @@ const ServiceMenuDropdown = ({ serviceCategories }) => {
                 </ul>
               )}
 
-              <div className={`absolute inset-0 pointer-events-none transition-opacity duration-400
+              <div className={`absolute inset-0 pointer-events-none transition-opacity duration-400 font-garamond
                 ${hoveredCard === category.id ? 'opacity-100' : 'opacity-0'}`}>
                 <div className="absolute inset-0 bg-gradient-conic from-accent2-light/20 via-transparent to-accent1-light/20" />
               </div>

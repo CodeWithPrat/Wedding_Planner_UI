@@ -116,35 +116,35 @@ const EnhancedCarousel = () => {
                   {/* Decorative Line */}
                   <div className="flex items-center justify-center space-x-4">
                     <div className={`h-px w-12 ${slide.accent}`} />
-                    <span className="text-white/90 uppercase tracking-[0.2em] text-sm">
+                    <span className="text-white/90 uppercase tracking-[0.2em] text-sm font-garamond">
                       Wedding Planning
                     </span>
                     <div className={`h-px w-12 ${slide.accent}`} />
                   </div>
 
-                  <h1 className="font-serif text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 
+                  <h1 className="font-garamond text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 
                     leading-tight tracking-tight transform">
                     {slide.title}
                   </h1>
                   
                   <p className="text-white/90 text-lg sm:text-xl md:text-2xl max-w-2xl mx-auto 
-                    leading-relaxed font-light">
+                    leading-relaxed font-light font-garamond">
                     {slide.subtitle}
                   </p>
                   
                   <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
                     <button
                       className="group relative px-8 py-4 bg-white/90 hover:bg-white text-gray-900
-                        rounded-full font-medium transition-all duration-300 overflow-hidden
+                        rounded-full font-medium font-garamond transition-all duration-300 overflow-hidden
                         transform hover:scale-105 hover:shadow-2xl"
                     >
-                      <span className="relative z-10">Start Your Journey</span>
+                      <span className="relative z-10 font-garamond">Start Your Journey</span>
                       <div className={`absolute inset-0 ${slide.accent} transform scale-x-0 
                         group-hover:scale-x-100 transition-transform duration-500 origin-left`} />
                     </button>
                     
                     <button className="px-8 py-4 text-white border border-white/30 rounded-full
-                      hover:bg-white/10 transition-all duration-300">
+                      hover:bg-white/10 transition-all duration-300 font-garamond">
                       Learn More
                     </button>
                   </div>

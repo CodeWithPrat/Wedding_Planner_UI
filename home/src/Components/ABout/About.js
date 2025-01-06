@@ -81,10 +81,10 @@ const About = () => {
         </div>
         <div className="relative h-full flex items-center justify-center text-center px-4">
           <div className="max-w-4xl animate-fade-in-down">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-white mb-8 text-shadow-lg">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-garamond text-white mb-8 text-shadow-lg">
               Crafting Timeless Wedding Moments
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 font-light animate-fade-in">
+            <p className="text-xl md:text-2xl text-white/90 font-light font-garamond animate-fade-in">
               Where dreams meet expertise, and love stories become legendary celebrations
             </p>
           </div>
@@ -95,30 +95,30 @@ const About = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Why Choose Us Section */}
         <div className="text-center mb-20 animate-on-scroll">
-          <h2 className="text-4xl md:text-5xl font-serif text-gray-800 mb-8 relative inline-block">
+          <h2 className="text-4xl md:text-5xl font-garamond text-gray-800 mb-8 relative inline-block">
             Why Choose Us?
-            <span className="absolute -bottom-4 left-0 right-0 h-1 bg-accent1 transform scale-x-50 transition-transform duration-300 hover:scale-x-100"></span>
+            <span className="absolute -bottom-4 left-0 right-0 h-1 font-garamond bg-accent1 transform scale-x-50 transition-transform duration-300 hover:scale-x-100"></span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 max-w-3xl font-garamond mx-auto leading-relaxed">
             With years of expertise in crafting perfect weddings, we bring your dreams to life with creativity, precision, and passion.
           </p>
         </div>
 
         {/* Features Grid with Hover Effects */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 font-garamond">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="animate-on-scroll group bg-white/90 backdrop-blur-md rounded-2xl p-8 shadow-soft-xl hover:shadow-soft-2xl transition-all duration-400 transform hover:-translate-y-2 hover:bg-gradient-to-br hover:from-white hover:to-primary-light"
+              className="animate-on-scroll group bg-white/90 backdrop-blur-md font-garamond rounded-2xl p-8 shadow-soft-xl hover:shadow-soft-2xl transition-all duration-400 transform hover:-translate-y-2 hover:bg-gradient-to-br hover:from-white hover:to-primary-light"
             >
-              <div className="flex flex-col items-center text-center">
+              <div className="flex flex-col items-center text-center font-garamond">
                 <div className="mb-6 transform transition-transform duration-300 group-hover:scale-110">
                   <feature.icon className="w-16 h-16 text-accent1 group-hover:text-accent1-dark transition-colors duration-300" />
                 </div>
-                <h3 className="text-2xl font-serif text-gray-800 mb-4 group-hover:text-accent2-dark transition-colors duration-300">
+                <h3 className="text-2xl font-garamond text-gray-800 mb-4 group-hover:text-accent2-dark transition-colors duration-300">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed group-hover:text-gray-700">
+                <p className="text-gray-600 font-garamond leading-relaxed group-hover:text-gray-700">
                   {feature.description}
                 </p>
               </div>
@@ -136,11 +136,11 @@ const About = () => {
               <img
                 src={image}
                 alt={`Wedding moment ${index + 1}`}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                className="w-full h-full object-cover font-garamond transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <p className="text-white text-lg font-serif">Happy Couple {index + 1}</p>
+                  <p className="text-white text-lg font-garamond">Happy Couple {index + 1}</p>
                 </div>
               </div>
             </div>
@@ -151,17 +151,17 @@ const About = () => {
         <div className="relative overflow-hidden animate-on-scroll">
           <div className="absolute inset-0 bg-gradient-radial from-accent2-light via-accent1-light to-primary-light opacity-20"></div>
           <div className="relative text-center bg-white/80 backdrop-blur-md rounded-3xl p-12 md:p-16 shadow-soft-2xl transform hover:scale-102 transition-all duration-300">
-            <h3 className="text-3xl md:text-4xl font-serif text-gray-800 mb-8 animate-float">
+            <h3 className="text-3xl md:text-4xl font-garamond text-gray-800 mb-8 animate-float">
               Let's Make Your Dream Wedding a Reality!
             </h3>
-            <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto font-garamond leading-relaxed">
               Every love story deserves a magical celebration. Contact us today to begin planning your perfect wedding.
             </p>
             <button
       onClick={handleClick}
       className="group relative overflow-hidden bg-accent1 hover:bg-accent1-dark text-white px-10 py-4 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
     >
-      <span className="relative z-10 flex items-center justify-center gap-2">
+      <span className="relative z-10 flex items-center justify-center gap-2 font-garamond">
         Start Your Journey
         <Heart className="w-5 h-5 animate-pulse-subtle" />
       </span>

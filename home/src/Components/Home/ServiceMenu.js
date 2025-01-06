@@ -164,7 +164,7 @@ const ServiceMenu = ({ serviceCategories }) => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60" />
                     <motion.h2 
-                      className="absolute bottom-6 left-6 text-3xl font-bold text-white"
+                      className="absolute bottom-6 left-6 text-3xl font-garamond font-bold text-white"
                       initial={{ y: 20, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ delay: 0.2 }}
@@ -181,7 +181,7 @@ const ServiceMenu = ({ serviceCategories }) => {
                       whileTap={{ scale: 0.98 }}
                     >
                       <div className="flex items-center justify-between mb-4">
-                        <p className="text-lg text-gray-700 font-medium line-clamp-2">
+                        <p className="text-lg text-gray-700 font-garamond font-medium line-clamp-2">
                           {category.description}
                         </p>
                         <motion.div
@@ -215,7 +215,7 @@ const ServiceMenu = ({ serviceCategories }) => {
                               exit="hidden"
                               transition={{ delay: index * 0.1 }}
                               className="bg-blue-50/50 backdrop-blur-sm rounded-xl px-6 py-4 
-                                       text-gray-800 font-medium shadow-sm hover:shadow-md
+                                       text-gray-800 font-medium font-garamond shadow-sm hover:shadow-md
                                        transform-gpu transition-all duration-300
                                        hover:bg-blue-100/50 hover:translate-x-2"
                             >

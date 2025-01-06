@@ -18,9 +18,9 @@ const Contact = () => {
 
   const budgetOptions = [
     "7 Lakh",
-    "Within 15 Lakh",
-    "Within 30 Lakh",
-    "above 50 Lakh"
+    "15 Lakh +",
+    "30 Lakh +",
+    "50 Lakh +"
   ];
 
   const validateForm = () => {
@@ -132,16 +132,16 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background p-4 md:p-8">
+    <div className="min-h-screen bg-background p-4 md:p-8 font-garamond">
       
       <div className="max-w-4xl mx-auto">
         <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8">
           {/* Form Header */}
           <div className="text-center mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold text-accent1 mb-4 animate-fade-in-down">
+            <h1 className="text-4xl md:text-5xl font-garamond font-bold text-accent1 mb-4 animate-fade-in-down">
               Get Your Wedding Quote
             </h1>
-            <p className="text-gray-600 animate-fade-in">
+            <p className="text-gray-600 animate-fade-in font-garamond">
               Let us help make your special day perfect
             </p>
           </div>
@@ -150,7 +150,7 @@ const Contact = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Full Name */}
             <div className="animate-fade-in">
-              <label className="block text-gray-700 font-medium mb-2">
+              <label className="block text-gray-700 font-garamond font-medium mb-2">
                 Full Name
               </label>
               <input
@@ -158,12 +158,12 @@ const Contact = () => {
                 name="fullName"
                 value={formData.fullName}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-lg border-2 border-primary focus:border-secondary 
+                className="w-full px-4 py-3 rounded-lg border-2 font-garamond border-primary focus:border-secondary 
                   focus:outline-none transition duration-300"
                 placeholder="Enter your full name"
               />
               {errors.fullName && (
-                <p className="mt-2 text-red-500 text-sm">{errors.fullName}</p>
+                <p className="mt-2 text-red-500 text-sm font-garamond">{errors.fullName}</p>
               )}
             </div>
 
@@ -171,7 +171,7 @@ const Contact = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Phone */}
               <div className="animate-fade-in">
-                <label className="block text-gray-700 font-medium mb-2">
+                <label className="block text-gray-700 font-medium mb-2 font-garamond">
                   Phone Number
                 </label>
                 <input
@@ -180,7 +180,7 @@ const Contact = () => {
                   value={formData.phoneNumber}
                   onChange={handleChange}
                   className="w-full px-4 py-3 rounded-lg border-2 border-primary focus:border-secondary 
-                    focus:outline-none transition duration-300"
+                    focus:outline-none transition duration-300 font-garamond"
                   placeholder="Your phone number"
                 />
                 {errors.phoneNumber && (
@@ -190,7 +190,7 @@ const Contact = () => {
 
               {/* Email */}
               <div className="animate-fade-in">
-                <label className="block text-gray-700 font-medium mb-2">
+                <label className="block text-gray-700 font-medium mb-2 font-garamond">
                   Email Address
                 </label>
                 <input
@@ -198,26 +198,26 @@ const Contact = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border-2 border-primary focus:border-secondary 
+                  className="w-full px-4 py-3 rounded-lg border-2 font-garamond border-primary focus:border-secondary 
                     focus:outline-none transition duration-300"
                   placeholder="Your email address"
                 />
                 {errors.email && (
-                  <p className="mt-2 text-red-500 text-sm">{errors.email}</p>
+                  <p className="mt-2 text-red-500 text-sm font-garamond">{errors.email}</p>
                 )}
               </div>
             </div>
 
             {/* Budget */}
             <div className="animate-fade-in">
-              <label className="block text-gray-700 font-medium mb-2">
+              <label className="block text-gray-700 font-medium font-garamond mb-2">
                 Budget Range
               </label>
               <select
                 name="budget"
                 value={formData.budget}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-lg border-2 border-primary focus:border-secondary 
+                className="w-full px-4 py-3 rounded-lg border-2 border-primary font-garamond focus:border-secondary 
                   focus:outline-none transition duration-300"
               >
                 <option value="">Select your budget range</option>
@@ -226,7 +226,7 @@ const Contact = () => {
                 ))}
               </select>
               {errors.budget && (
-                <p className="mt-2 text-red-500 text-sm">{errors.budget}</p>
+                <p className="mt-2 text-red-500 text-sm font-garamond">{errors.budget}</p>
               )}
             </div>
 
@@ -234,7 +234,7 @@ const Contact = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Event Date */}
               <div className="animate-fade-in">
-                <label className="block text-gray-700 font-medium mb-2">
+                <label className="block text-gray-700 font-garamond font-medium mb-2">
                   Event Date
                 </label>
                 <input
@@ -242,18 +242,18 @@ const Contact = () => {
                   name="eventDate"
                   value={formData.eventDate}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border-2 border-primary focus:border-secondary 
+                  className="w-full px-4 py-3 rounded-lg border-2 border-primary font-garamond focus:border-secondary 
                     focus:outline-none transition duration-300"
                   min={new Date().toISOString().split('T')[0]}
                 />
                 {errors.eventDate && (
-                  <p className="mt-2 text-red-500 text-sm">{errors.eventDate}</p>
+                  <p className="mt-2 text-red-500 text-sm font-garamond">{errors.eventDate}</p>
                 )}
               </div>
 
               {/* Event Days */}
               <div className="animate-fade-in">
-                <label className="block text-gray-700 font-medium mb-2">
+                <label className="block text-gray-700 font-garamond font-medium mb-2">
                   Number of Event Days
                 </label>
                 <input
@@ -261,21 +261,21 @@ const Contact = () => {
                   name="eventDays"
                   value={formData.eventDays}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border-2 border-primary focus:border-secondary 
+                  className="w-full px-4 py-3 rounded-lg border-2 font-garamond border-primary focus:border-secondary 
                     focus:outline-none transition duration-300"
                   min="1"
-                  max="10"
+                  max="20"
                   placeholder="Number of days"
                 />
                 {errors.eventDays && (
-                  <p className="mt-2 text-red-500 text-sm">{errors.eventDays}</p>
+                  <p className="mt-2 text-red-500 text-sm font-garamond">{errors.eventDays}</p>
                 )}
               </div>
             </div>
 
             {/* Location */}
             <div className="animate-fade-in">
-              <label className="block text-gray-700 font-medium mb-2">
+              <label className="block text-gray-700 font-garamond font-medium mb-2">
                 Event Location
               </label>
               <input
@@ -283,18 +283,18 @@ const Contact = () => {
                 name="location"
                 value={formData.location}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-lg border-2 border-primary focus:border-secondary 
+                className="w-full px-4 py-3 rounded-lg border-2 font-garamond border-primary focus:border-secondary 
                   focus:outline-none transition duration-300"
                 placeholder="Enter event location"
               />
               {errors.location && (
-                <p className="mt-2 text-red-500 text-sm">{errors.location}</p>
+                <p className="mt-2 text-red-500 text-sm font-garamond">{errors.location}</p>
               )}
             </div>
 
             {/* Comments */}
             <div className="animate-fade-in">
-              <label className="block text-gray-700 font-medium mb-2">
+              <label className="block text-gray-700 font-garamond font-medium mb-2">
                 Special Requests / Comments
               </label>
               <textarea
@@ -302,7 +302,7 @@ const Contact = () => {
                 value={formData.comments}
                 onChange={handleChange}
                 rows="4"
-                className="w-full px-4 py-3 rounded-lg border-2 border-primary focus:border-secondary 
+                className="w-full px-4 py-3 rounded-lg border-2 font-garamond border-primary focus:border-secondary 
                   focus:outline-none transition duration-300"
                 placeholder="Any special requests or comments..."
               />
@@ -312,12 +312,12 @@ const Contact = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className={`w-full bg-accent1 hover:bg-accent2 text-white font-bold py-4 px-6 
+              className={`w-full bg-accent1 hover:bg-accent2 text-white font-garamond font-bold py-4 px-6 
                 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl
                 ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
             >
               {isLoading ? (
-                <span className="flex items-center justify-center">
+                <span className="flex items-center justify-center font-garamond">
                   <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -335,8 +335,8 @@ const Contact = () => {
       {/* Toast Notification */}
       {toast.show && (
         <div
-          className={`fixed bottom-4 right-4 px-6 py-3 rounded-lg shadow-lg
-            ${toast.type === 'error' ? 'bg-red-500' : 'bg-green-500'} 
+          className={`fixed bottom-4 right-4 px-6 py-3 rounded-lg shadow-lg font-garamond
+            ${toast.type === 'error' ? 'bg-red-500' : 'bg-green-500'}
             text-white animate-slide-in-up`}
         >
           {toast.message}

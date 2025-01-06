@@ -41,11 +41,12 @@ const App = () => {
     primary: '#252422',    // Deep Forest Green
     secondary: '#f4f3ee',  // Cream
     accent: '#dda15e',     // Warm Orange/Brown
+    navbarcolor : '#f8f9fa'
   };
 
   return (
     <Router>
-      <div className={`min-h-screen ${isDarkMode ? 'dark' : ''}`}>
+      <div className={`min-h-screen ${isDarkMode ? 'dark' : ''} font-garamond`}>
         <div style={{ 
           background: `linear-gradient(to bottom right, ${styles.secondary}, ${styles.secondary})`
         }} className="min-h-screen transition-colors duration-300">
@@ -55,18 +56,18 @@ const App = () => {
             animate={{ y: 0 }}
             className={`fixed w-full top-0 z-50 transition-all duration-500`}
             style={{
-              backgroundColor: scrolled ? `${styles.primary}ee` : 'transparent',
+              backgroundColor: scrolled ? `${styles.navbarcolor}ee` : 'transparent',
               backdropFilter: scrolled ? 'blur(10px)' : 'none'
             }}
           >
-            <div className="max-w-[1920px] mx-auto px-6 lg:px-12">
+            <div className="max-w-[1920px] mx-auto px-6 lg:px-12 font-garamond text-slate-950">
               <div className="flex items-center justify-between h-24">
                 {/* Logo */}
                 <motion.div 
                   className="flex-shrink-0 flex items-center space-x-4 group cursor-pointer"
                   whileHover={{ scale: 1.05 }}
                 >
-                  <div className="relative font-savoy">
+                  <div className="relative font-garamond">
                     <img
                       className="h-14 w-14 rounded-xl shadow-lg transition-all duration-300"
                       src={companyData.logo}
@@ -75,8 +76,8 @@ const App = () => {
                     <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
                          style={{ backgroundColor: `${styles.accent}33` }} />
                   </div>
-                  <span style={{ color: scrolled ? styles.secondary : styles.primary }} 
-                        className="text-3xl font-serif font-bold tracking-wide transition-colors duration-300">
+                  <span style={{ color: scrolled ? styles.primary : styles.primary }} 
+                        className="text-3xl font-garamond font-bold tracking-wide transition-colors duration-300">
                     {companyData.name}
                   </span>
                 </motion.div>
@@ -96,12 +97,12 @@ const App = () => {
                         <Link
                           to={link.path}
                           style={{ 
-                            color: scrolled ? styles.secondary : styles.primary,
+                            color: scrolled ? styles.primary : styles.primary,
                           }}
-                          className="px-6 py-3 rounded-xl text-base font-medium transition-all duration-300 relative overflow-hidden group"
+                          className="px-6 py-3 rounded-xl font-garamond text-base font-medium transition-all duration-300 relative overflow-hidden group"
                         >
-                          <span className="relative z-10">{link.name}</span>
-                          <div className="absolute inset-0 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                          <span className="relative font-garamond z-10">{link.name}</span>
+                          <div className="absolute inset-0 transform font-garamond scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
                                style={{ backgroundColor: `${styles.accent}33` }} />
                         </Link>
                       </motion.div>
@@ -130,9 +131,9 @@ const App = () => {
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
                   style={{ 
                     backgroundColor: `${styles.accent}22`,
-                    color: scrolled ? styles.secondary : styles.primary
+                    color: scrolled ? styles.primary : styles.primary
                   }}
-                  className="lg:hidden p-3 rounded-xl transition-all duration-300 shadow-lg"
+                  className="lg:hidden p-3 rounded-xl transition-all font-garamond duration-300 shadow-lg"
                 >
                   {isMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
                 </motion.button>
@@ -160,7 +161,7 @@ const App = () => {
                             to={link.path}
                             onClick={() => setIsMenuOpen(false)}
                             style={{ color: styles.secondary }}
-                            className="block px-6 py-4 rounded-xl transition-all duration-300 text-center text-lg font-medium hover:bg-white/10"
+                            className="block px-6 py-4 rounded-xl transition-all duration-300 text-center text-lg font-garamond font-medium hover:bg-white/10"
                           >
                             {link.name}
                           </Link>
@@ -174,7 +175,7 @@ const App = () => {
           </motion.nav>
 
           {/* Main Content */}
-          <main className="max-w-[1920px] mx-auto px-6 lg:px-12 pt-32 pb-16">
+          <main className="max-w-[1920px] mx-auto px-6 lg:px-12 pt-32 pb-16 font-garamond">
             <AnimatePresence mode="wait">
               <Routes>
                 <Route path="/" element={<Home />} />
@@ -190,7 +191,7 @@ const App = () => {
           </main>
 
           {/* Footer with Custom Colors */}
-          <footer style={{ backgroundColor: styles.primary }} className="shadow-inner">
+          <footer style={{ backgroundColor: styles.primary }} className="shadow-inner font-garamond">
             <div className="max-w-[1920px] mx-auto px-6 lg:px-12 py-16">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
                 {/* Company Info */}
@@ -198,27 +199,27 @@ const App = () => {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="col-span-1 md:col-span-2 space-y-6"
+                  className="col-span-1 md:col-span-2 space-y-6 font-garamond"
                 >
                   <div className="flex items-center space-x-4 group">
                     <img
-                      className="h-12 w-12 rounded-xl shadow-lg transition-all duration-300"
+                      className="h-12 w-12 rounded-xl shadow-lg font-garamond transition-all duration-300"
                       src={companyData.logo}
                       alt={companyData.name}
                     />
                     <span style={{ color: styles.secondary }} 
-                          className="text-2xl font-serif font-bold tracking-wide">
+                          className="text-2xl font-garamond font-bold tracking-wide">
                       {companyData.name}
                     </span>
                   </div>
-                  <p style={{ color: `${styles.secondary}cc` }} className="text-base leading-relaxed max-w-lg">
+                  <p style={{ color: `${styles.secondary}cc` }} className="text-base font-garamond leading-relaxed max-w-lg">
                     {companyData.description}
                   </p>
                   <div className="space-y-2">
-                    <p style={{ color: styles.accent }} className="text-sm font-medium">
+                    <p style={{ color: styles.accent }} className="text-sm font-medium font-garamond">
                       {companyData.contact.email}
                     </p>
-                    <p style={{ color: styles.accent }} className="text-sm font-medium">
+                    <p style={{ color: styles.accent }} className="text-sm font-medium font-garamond">
                       {companyData.contact.phone}
                     </p>
                   </div>
@@ -231,10 +232,10 @@ const App = () => {
                   viewport={{ once: true }}
                   className="space-y-6"
                 >
-                  <h3 style={{ color: styles.secondary }} className="text-xl font-bold">
+                  <h3 style={{ color: styles.secondary }} className="text-xl font-garamond font-bold">
                     Quick Links
                   </h3>
-                  <div className="space-y-4">
+                  <div className="space-y-4 font-garamond">
                     {navigationLinks.map((link) => (
                       <motion.div
                         key={link.path}
@@ -258,12 +259,12 @@ const App = () => {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="space-y-6"
+                  className="space-y-6 font-garamond"
                 >
-                  <h3 style={{ color: styles.secondary }} className="text-xl font-bold">
+                  <h3 style={{ color: styles.secondary }} className="text-xl font-garamond font-bold">
                     Resources
                   </h3>
-                  <div className="space-y-4">
+                  <div className="space-y-4 font-garamond">
                     {['Privacy Policy', 'Terms of Service', 'FAQ', 'Blog', 'Support'].map((item) => (
                       <motion.div
                         key={item}
@@ -284,7 +285,7 @@ const App = () => {
               </div>
 
               {/* Copyright */}
-              <div className="mt-11 pt-8 border-t border-white/20 text-center">
+              <div className="mt-11 pt-8 border-t border-white/20 font-garamond text-center">
                 <p style={{ color: `${styles.secondary}99` }} className="text-sm">
                   © {new Date().getFullYear()} {companyData.name}. All rights reserved.
                 </p>
