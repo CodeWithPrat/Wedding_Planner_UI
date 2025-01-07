@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { 
   Gift, Sun, Brush, Music, HandHelping, Camera, Users, 
   Flower, PartyPopper, Gem, Eclipse, Star, Headphones, 
-  Send, HandHeart, Calendar, Phone, ChevronDown, HandPlatter
+  Send, HandHeart, Calendar, Phone, HandPlatter
 } from "lucide-react";
+import { Link } from 'react-router-dom';
 
 import pic401 from "../../assets/imgs/SixteenDaysImgs/pic401.png"
 import pic402 from "../../assets/imgs/SixteenDaysImgs/pic402.jpg"
@@ -24,25 +25,6 @@ import pic415 from "../../assets/imgs/SixteenDaysImgs/pic415.jpg"
 import pic416 from "../../assets/imgs/SixteenDaysImgs/pic416.jpg"
 
 const SixteenDaysPlan = () => {
-  const [expandedDay, setExpandedDay] = useState(null);
-  const [isVisible, setIsVisible] = useState(false);
-  const [activeFilter, setActiveFilter] = useState('all');
-
-  useEffect(() => {
-    setIsVisible(true);
-    const handleScroll = () => {
-      const elements = document.querySelectorAll('.scroll-trigger');
-      elements.forEach(elem => {
-        const rect = elem.getBoundingClientRect();
-        if (rect.top <= window.innerHeight * 0.75) {
-          elem.classList.add('visible');
-        }
-      });
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const weddingDays = [
     {
@@ -255,17 +237,30 @@ const SixteenDaysPlan = () => {
     }
   ];
 
-  const handleDayClick = (day) => {
-    setExpandedDay(expandedDay === day ? null : day);
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
   };
 
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 }
+  };
+
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#f4f3ee] to-[#f4f3ee] font-garamond">
+    <div className="min-h-screen bg-[#f4f3ee]">
       {/* Hero Section */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="relative overflow-hidden rounded-b-3xl font-garamond bg-gradient-to-r from-pink-50 via-purple-50 to-indigo-50 p-6 md:p-12 lg:p-16"
+        className="relative overflow-hidden rounded-b-3xl bg-gradient-to-r from-[#f8f9fa] to-[#f4f3ee] p-6 md:p-12 lg:p-16 border-b-4 border-[#dda15e]"
       >
         <motion.div
           initial={{ y: 50, opacity: 0 }}
@@ -273,125 +268,178 @@ const SixteenDaysPlan = () => {
           transition={{ duration: 0.8 }}
           className="relative z-10 max-w-7xl mx-auto"
         >
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-garamond font-bold bg-gradient-to-r from-[#252422] to-[#252422] bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-garamond font-bold text-[#dda15e] mb-4">
             16-Day Grand
-            <span className="block font-garamond">Wedding Package</span>
+            <span className="block">Wedding Package</span>
           </h1>
           
           <div className="mt-8 flex flex-col md:flex-row gap-6 items-start md:items-center">
             <motion.div 
               whileHover={{ scale: 1.05 }}
-              className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-xl shadow-lg"
+              className="flex items-center gap-2 bg-white/90 px-6 py-3 rounded-xl shadow-lg border-2 border-[#dda15e]"
             >
-              <span className="text-2xl font-bold font-garamond text-purple-600">₹30L - 1Cr</span>
+              <span className="text-2xl font-bold font-garamond text-[#dda15e]">₹30L - 1Cr</span>
               <span className="text-gray-600">Starting Range</span>
             </motion.div>
-            
-            <div className="flex flex-wrap gap-4">
-              {['Calendar', 'Phone', 'Camera'].map((icon, i) => (
-                <motion.button
-                  key={i}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-xl shadow-lg hover:bg-purple-50 transition-colors"
-                >
-                  {icon === 'Calendar' ? <Calendar className="text-purple-600" /> :
-                   icon === 'Phone' ? <Phone className="text-purple-600" /> :
-                   <Camera className="text-purple-600" />}
-                  <span className="font-medium font-garamond text-gray-800">
-                    {icon === 'Calendar' ? 'Plan Wedding' :
-                     icon === 'Phone' ? 'Contact Us' : 'View Gallery'}
-                  </span>
-                </motion.button>
-              ))}
-            </div>
           </div>
         </motion.div>
-        
-        <div className="absolute top-0 right-0 w-96 h-96 bg-purple-200/30 rounded-full filter blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-pink-200/30 rounded-full filter blur-3xl" />
       </motion.div>
 
       {/* Timeline Grid */}
-      <div className="max-w-7xl mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {weddingDays.map((day, index) => (
-            <motion.div
-              key={day.day}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow"
-              style={{
-                height: expandedDay === day.day ? 'auto' : 'fit-content',
-                alignSelf: 'start'
-              }}
-            >
-              <div
-                onClick={() => handleDayClick(day.day)}
-                className="cursor-pointer p-6 bg-gradient-to-r from-purple-50 to-pink-50"
-              >
-                <div className="flex justify-between items-center font-garamond">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center">
-                      <day.icon className="w-6 h-6 text-purple-600" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold font-garamond text-gray-900">Day {day.day}</h3>
-                      <p className="text-gray-600 font-garamond">{day.title}</p>
-                    </div>
-                  </div>
-                  <motion.div animate={{ rotate: expandedDay === day.day ? 180 : 0 }}>
-                    <ChevronDown className="w-5 h-5 text-gray-600" />
-                  </motion.div>
+      <motion.div 
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="max-w-7xl mx-auto px-4 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+      >
+        {weddingDays.map((day, index) => (
+          <motion.div
+            key={day.day}
+            variants={item}
+            whileHover={{ 
+              scale: 1.02,
+              transition: { duration: 0.2 }
+            }}
+            className="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-2xl border-2 border-[#dda15e]/20"
+          >
+            {/* Card Header */}
+            <div className="bg-gradient-to-r from-[#dda15e]/10 to-[#f8f9fa] p-6">
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-full bg-[#dda15e]/20 flex items-center justify-center">
+                  <day.icon className="w-7 h-7 text-[#dda15e]" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold font-garamond text-[#dda15e]">Day {day.day}</h3>
+                  <p className="text-lg text-gray-700 font-garamond">{day.title}</p>
                 </div>
               </div>
+            </div>
 
-              <AnimatePresence>
-                {expandedDay === day.day && (
+            {/* Card Image */}
+            <div className="relative overflow-hidden h-48">
+              <img 
+                src={day.image}
+                alt={day.title}
+                className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+            </div>
+
+            {/* Card Content */}
+            <div className="p-6 space-y-4">
+              <p className="text-gray-700 font-garamond text-lg leading-relaxed">
+                {day.desc}
+              </p>
+              
+              <div className="space-y-3">
+                {day.items.map((item, i) => (
                   <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="overflow-hidden"
+                    key={i}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.1 }}
+                    className="flex items-center gap-3"
                   >
-                    <div className="p-6 bg-white font-garamond">
-                      {/* Image */}
-                      <div className="mb-4 rounded-lg overflow-hidden">
-                        <img 
-                          src={day.image} 
-                          alt={day.title} 
-                          className="w-full h-48 object-cover"
-                        />
-                      </div>
-                      
-                      {/* Description */}
-                      <p className="text-gray-700 mb-4 font-garamond">{day.desc}</p>
-                      
-                      {/* Items */}
-                      <ul className="space-y-3">
-                        {day.items.map((item, i) => (
-                          <motion.li
-                            key={i}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: i * 0.1 }}
-                            className="flex items-center gap-3 font-garamond"
-                          >
-                            <div className="w-1.5 h-1.5 rounded-full bg-purple-400 font-garamond" />
-                            <span className="text-gray-700 font-garamond">{item}</span>
-                          </motion.li>
-                        ))}
-                      </ul>
-                    </div>
+                    <div className="w-2 h-2 rounded-full bg-[#dda15e]" />
+                    <span className="text-gray-700 font-garamond">{item}</span>
                   </motion.div>
-                )}
-              </AnimatePresence>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="max-w-7xl mx-auto px-4 py-16 bg-[#f8f9fa] rounded-3xl my-16 relative overflow-hidden"
+      >
+        {/* Decorative Elements */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-[#dda15e]/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#dda15e]/10 rounded-full translate-y-1/2 -translate-x-1/2" />
+
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl md:text-5xl font-garamond font-bold text-center text-[#dda15e] mb-12"
+        >
+          Package Includes
+        </motion.h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+          {packageIncludes.map((item, index) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.2 }}
+              whileHover={{ 
+                scale: 1.05,
+                transition: { duration: 0.2 }
+              }}
+              className="bg-white p-6 rounded-xl shadow-lg border-2 border-[#dda15e]/20 hover:border-[#dda15e]/40 transition-all duration-300"
+            >
+              <div className="w-16 h-16 rounded-full bg-[#dda15e]/20 flex items-center justify-center mx-auto mb-4">
+                <item.icon className="w-8 h-8 text-[#dda15e]" />
+              </div>
+              
+              <h3 className="text-xl font-garamond font-bold text-center text-gray-800 mb-2">
+                {item.title}
+              </h3>
+              
+              <p className="text-center text-gray-600 font-garamond leading-relaxed">
+                {item.description}
+              </p>
+
+              <motion.div 
+                className="w-12 h-1 bg-[#dda15e]/40 mx-auto mt-4 rounded-full"
+                whileHover={{ width: "100%", transition: { duration: 0.3 } }}
+              />
             </motion.div>
           ))}
         </div>
-      </div>
+
+        {/* Call to Action */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-16 text-center"
+        >
+          <Link
+          to="/contact"
+          >
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-[#dda15e] text-white font-garamond text-lg px-8 py-3 rounded-full shadow-lg hover:bg-[#dda15e]/90 transition-colors"
+          >
+            Book Your Package
+          </motion.button>
+          </Link>
+          
+
+        </motion.div>
+      </motion.div>
+
+      {/* Scroll to Top Button */}
+      <motion.button
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        className="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-[#dda15e] text-white flex items-center justify-center shadow-lg hover:bg-[#dda15e]/90 transition-colors"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+      </motion.button>
     </div>
   );
 };
