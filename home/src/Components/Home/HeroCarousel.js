@@ -167,7 +167,7 @@ const EnhancedCarousel = () => {
       <div className="absolute inset-x-4 sm:inset-x-8 top-1/2 -translate-y-1/2 flex justify-between pointer-events-none">
         <button
           onClick={prevSlide}
-          className="p-2 sm:p-3 rounded-full bg-black/30 backdrop-blur-sm
+          className="p-2 sm:p-3 rounded-full bg-black/30 
             text-white pointer-events-auto transform transition-all duration-300
             hover:bg-black/50 hover:scale-110 group"
         >
@@ -175,7 +175,7 @@ const EnhancedCarousel = () => {
         </button>
         <button
           onClick={nextSlide}
-          className="p-2 sm:p-3 rounded-full bg-black/30 backdrop-blur-sm
+          className="p-2 sm:p-3 rounded-full bg-black/30 
             text-white pointer-events-auto transform transition-all duration-300
             hover:bg-black/50 hover:scale-110 group"
         >

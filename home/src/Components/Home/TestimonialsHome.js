@@ -36,7 +36,7 @@ const TestimonialCard = ({ testimonial, index, isActive, total }) => {
         {/* Card background layers */}
         <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-accent/10 rounded-3xl 
                     transform rotate-2 group-hover:rotate-3 transition-transform duration-300" />
-        <div className="absolute inset-0 bg-white/50 backdrop-blur-sm rounded-3xl 
+        <div className="absolute inset-0 bg-white/50 rounded-3xl 
                     transform -rotate-1 group-hover:rotate-0 transition-transform duration-300" />
         
         {/* Main content */}

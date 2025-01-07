@@ -109,7 +109,7 @@ const About = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="animate-on-scroll group bg-white/90 backdrop-blur-md font-garamond rounded-2xl p-8 shadow-soft-xl hover:shadow-soft-2xl transition-all duration-400 transform hover:-translate-y-2 hover:bg-gradient-to-br hover:from-white hover:to-primary-light"
+              className="animate-on-scroll group bg-white/90  font-garamond rounded-2xl p-8 shadow-soft-xl hover:shadow-soft-2xl transition-all duration-400 transform hover:-translate-y-2 hover:bg-gradient-to-br hover:from-white hover:to-primary-light"
             >
               <div className="flex flex-col items-center text-center font-garamond">
                 <div className="mb-6 transform transition-transform duration-300 group-hover:scale-110">
@@ -150,7 +150,7 @@ const About = () => {
         {/* Enhanced Call to Action */}
         <div className="relative overflow-hidden animate-on-scroll">
           <div className="absolute inset-0 bg-gradient-radial from-accent2-light via-accent1-light to-primary-light opacity-20"></div>
-          <div className="relative text-center bg-white/80 backdrop-blur-md rounded-3xl p-12 md:p-16 shadow-soft-2xl transform hover:scale-102 transition-all duration-300">
+          <div className="relative text-center bg-white/80  rounded-3xl p-12 md:p-16 shadow-soft-2xl transform hover:scale-102 transition-all duration-300">
             <h3 className="text-3xl md:text-4xl font-garamond text-gray-800 mb-8 animate-float">
               Let's Make Your Dream Wedding a Reality!
             </h3>

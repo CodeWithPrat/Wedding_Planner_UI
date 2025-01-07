@@ -178,7 +178,7 @@ const App = () => {
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
                     style={{ backgroundColor: `${styles.primary}fa` }}
-                    className="lg:hidden absolute top-full left-0 w-full backdrop-blur-xl shadow-xl overflow-hidden rounded-b-2xl"
+                    className="lg:hidden absolute top-full left-0 w-full  shadow-xl overflow-hidden rounded-b-2xl"
                   >
                     <div className="flex flex-col space-y-2 px-6 py-6">
                       {navigationLinks.map((link, index) => (

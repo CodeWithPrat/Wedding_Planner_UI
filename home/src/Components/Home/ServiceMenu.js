@@ -129,7 +129,7 @@ const ServiceMenu = ({ serviceCategories }) => {
         onClick={prevSlide}
         disabled={currentSlide === 0 && !isDragging}
         className="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-20 
-                 bg-white/90 p-4 rounded-full shadow-lg backdrop-blur-md
+                 bg-white/90 p-4 rounded-full shadow-lg
                  transition-all duration-300 hover:bg-blue-50 hover:scale-110
                  disabled:opacity-50 disabled:hover:scale-100
                  border border-gray-100 group"
@@ -141,7 +141,7 @@ const ServiceMenu = ({ serviceCategories }) => {
         onClick={nextSlide}
         disabled={currentSlide === maxSlides && !isDragging}
         className="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-20 
-                 bg-white/90 p-4 rounded-full shadow-lg backdrop-blur-md
+                 bg-white/90 p-4 rounded-full shadow-lg
                  transition-all duration-300 hover:bg-blue-50 hover:scale-110
                  disabled:opacity-50 disabled:hover:scale-100
                  border border-gray-100 group"
@@ -173,7 +173,7 @@ const ServiceMenu = ({ serviceCategories }) => {
               onMouseLeave={() => setIsHovered(null)}
             >
               <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transform transition-all duration-300
-                           hover:-translate-y-1 overflow-hidden border border-gray-100 backdrop-blur-lg">
+                           hover:-translate-y-1 overflow-hidden border border-gray-100">
                 <div className="relative h-64 lg:h-72 overflow-hidden group font-garamond">
                   <img
                     src={category.image}
@@ -234,8 +234,7 @@ const ServiceMenu = ({ serviceCategories }) => {
                           key={index}
                           className="bg-gray-50/80 p-4 rounded-xl text-gray-700
                                    hover:bg-blue-50/80 transition-all duration-300
-                                   shadow-sm hover:shadow-md transform hover:-translate-x-1
-                                   backdrop-blur-sm border border-gray-100/50"
+                                   shadow-sm hover:shadow-md transform hover:-translate-x-1 border border-gray-100/50"
                         >
                           {service}
                         </li>

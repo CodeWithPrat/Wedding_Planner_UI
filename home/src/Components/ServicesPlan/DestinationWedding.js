@@ -279,7 +279,7 @@ const DestinationWedding = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 whileHover={{ scale: 1.03 }}
-                                className="bg-white p-6 rounded-xl shadow-lg backdrop-blur-md font-garamond bg-white/90"
+                                className="bg-white p-6 rounded-xl shadow-lg font-garamond bg-white/90"
                             >
                                 <h3 className="text-xl font-semibold font-garamond text-[#252422] mb-4">{item.title}</h3>
                                 <p className="text-gray-600 font-garamond">{item.desc}</p>

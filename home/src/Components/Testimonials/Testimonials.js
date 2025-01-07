@@ -147,7 +147,7 @@ const Testimonials = () => {
                         </span>
                       </div>
                     </div>
-                    <div className="bg-white/90 backdrop-blur-sm rounded-3xl font-garamond p-8 lg:p-12 shadow-soft-xl transform hover:scale-102 transition-transform duration-300">
+                    <div className="bg-white/90 rounded-3xl font-garamond p-8 lg:p-12 shadow-soft-xl transform hover:scale-102 transition-transform duration-300">
                       <div className="flex mb-6 animate-pulse-subtle">
                         {[...Array(testimonial.rating)].map((_, i) => (
                           <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
@@ -176,7 +176,7 @@ const Testimonials = () => {
           <button
             onClick={handlePrev}
             className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 
-                     bg-white/90 backdrop-blur-sm p-4 rounded-full shadow-soft-xl hover:bg-accent1 
+                     bg-white/90 p-4 rounded-full shadow-soft-xl hover:bg-accent1 
                      transition-all duration-300 transform hover:scale-110 group"
           >
             <ChevronLeft className="w-6 h-6 group-hover:text-white transition-colors" />
@@ -184,7 +184,7 @@ const Testimonials = () => {
           <button
             onClick={handleNext}
             className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 
-                     bg-white/90 backdrop-blur-sm p-4 rounded-full shadow-soft-xl hover:bg-accent1 
+                     bg-white/90 p-4 rounded-full shadow-soft-xl hover:bg-accent1 
                      transition-all duration-300 transform hover:scale-110 group"
           >
             <ChevronRight className="w-6 h-6 group-hover:text-white transition-colors" />

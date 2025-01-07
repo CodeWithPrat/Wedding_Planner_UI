@@ -99,7 +99,7 @@ const Packages = () => {
           {packages.map((pkg, index) => (
             <div
               key={index}
-              className={`relative rounded-3xl bg-white/90 backdrop-blur-sm transition-all duration-400 font-garamond
+              className={`relative rounded-3xl bg-white/90  transition-all duration-400 font-garamond
                          hover:shadow-soft-2xl transform hover:-translate-y-2 overflow-hidden
                          ${pkg.isPopular ? 'ring-4 ring-accent2' : ''}
                          animate-slide-in-up`}
@@ -178,7 +178,7 @@ const Packages = () => {
 
         {/* Enhanced Additional Information */}
         <div className="mt-20 text-center animate-fade-in-up font-garamond">
-          <div className="max-w-3xl mx-auto bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-soft-xl">
+          <div className="max-w-3xl mx-auto bg-white/80 rounded-3xl p-8 shadow-soft-xl">
             <Star className="w-10 h-10 text-accent1 mx-auto mb-4 animate-float" />
             <p className="text-lg text-gray-600 mb-6 font-garamond">
               All packages include basic amenities and can be customized to your needs.
