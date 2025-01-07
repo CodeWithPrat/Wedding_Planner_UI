@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
-    Heart, Calendar, Award, Globe, Utensils, Book, Scissors, Gift,
-    Clock, Users, Star, ChevronRight, ArrowRight, Sparkles,
-    ChevronDown, MapPin, Camera, Music, UtensilsCrossed, Plane, Hotel
+    Calendar, Utensils, Book, Scissors, Gift,
+    Clock, Users, ChevronRight, ArrowRight, Sparkles,
+    MapPin, Camera, Music, UtensilsCrossed, Plane, Hotel
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 import EnhancedCarousel from './HeroCarousel';
 import TestimonialsHome from './TestimonialsHome';
@@ -23,7 +23,6 @@ import vid3 from "./../../assets/imgs/HomeImgs/vid3.mp4"
 
 import pic101 from "../../assets/imgs/HomeImgs/pic101.jpeg"
 import pic102 from "../../assets/imgs/HomeImgs/pic102.jpg"
-
 
 import pic201 from "../../assets/imgs/ServicesImgs/ServCardImgs/pic201.jpg"
 import pic202 from "../../assets/imgs/ServicesImgs/ServCardImgs/pic202.jpeg"
@@ -273,61 +272,6 @@ const Home = () => {
         }
     ];
 
-    const stats = [
-        {
-            number: "500+",
-            label: "Weddings Planned",
-            icon: Heart,
-            color: "#ffc2d1"
-        },
-        {
-            number: "50+",
-            label: "Destinations",
-            icon: Globe,
-            color: "#ffcfd2"
-        },
-        {
-            number: "98%",
-            label: "Happy Couples",
-            icon: Star,
-            color: "#fdc5f5"
-        },
-        {
-            number: "15+",
-            label: "Years Experience",
-            icon: Award,
-            color: "#faedcd"
-        }
-    ];
-
-    const services = [
-        {
-            icon: Calendar,
-            title: "Full Wedding Planning",
-            description: "From venue selection to the last dance, we handle every detail of your special day with meticulous care and attention.",
-            color: "#ffc2d1"
-        },
-        {
-            icon: Clock,
-            title: "Day-of Coordination",
-            description: "Relax and enjoy your wedding day while our experienced coordinators ensure everything runs perfectly.",
-            color: "#ffcfd2"
-        },
-        {
-            icon: Users,
-            title: "Destination Weddings",
-            description: "Create magical moments at stunning locations worldwide, from beach resorts to historic castles.",
-            color: "#fdc5f5"
-        },
-        {
-            icon: Globe,
-            title: "Destination Wedding Package",
-            description: "Experience luxury destination weddings starting from ₹15 Lakhs. Choose from exotic beaches, palace venues, or international locations.",
-            color: "#faedcd"
-        }
-    ];
-
-
     const serviceCategories = [
         {
             id: 1,
@@ -344,7 +288,8 @@ const Home = () => {
                 "Legal & Documentation Support",
                 "Pre-Wedding Photoshoot",
                 "Custom Invitations Design"
-            ]
+            ],
+            path: "/service-one"
         },
         {
             id: 2,
@@ -360,7 +305,8 @@ const Home = () => {
                 "Welcome Kits Distribution",
                 "Airport Transfers",
                 "Local Tours Organization"
-            ]
+            ],
+            path: "/service-two"
         },
         {
             id: 3,
@@ -376,7 +322,8 @@ const Home = () => {
                 "Photo Booth Setup",
                 "Lighting Design",
                 "Floral Arrangements"
-            ]
+            ],
+            path: "/service-three"
         },
         {
             id: 4,
@@ -392,7 +339,8 @@ const Home = () => {
                 "Choreography Services",
                 "Fireworks Display",
                 "Interactive Entertainment"
-            ]
+            ],
+            path: "/service-four"
         },
         {
             id: 5,
@@ -409,7 +357,8 @@ const Home = () => {
                 "Custom Wedding Cakes",
                 "Dietary Accommodations",
                 "Signature Cocktails"
-            ]
+            ],
+            path: "/service-five"
         },
         {
             id: 6,
@@ -426,7 +375,8 @@ const Home = () => {
                 "Photo Albums",
                 "Live Streaming",
                 "360° Photography"
-            ]
+            ],
+            path: "/service-six"
         },
         {
             id: 7,
@@ -443,7 +393,8 @@ const Home = () => {
                 "Ritual Coordination",
                 "Family Coordination",
                 "Traditional Music"
-            ]
+            ],
+            path: "/service-seven"
         },
         {
             id: 8,
@@ -460,7 +411,8 @@ const Home = () => {
                 "Guest Gift Management",
                 "Special Assistance",
                 "Emergency Support"
-            ]
+            ],
+            path: "/service-eight"
         },
         {
             id: 9,
@@ -477,7 +429,8 @@ const Home = () => {
                 "Personal Styling",
                 "Family Styling",
                 "Pre-wedding Beauty"
-            ]
+            ],
+            path: "/service-nine"
         },
         {
             id: 10,
@@ -494,7 +447,8 @@ const Home = () => {
                 "Photo Album Design",
                 "Video Editing",
                 "Memory Preservation"
-            ]
+            ],
+            path: "/service-ten"
         }
     ];
 
@@ -564,12 +518,6 @@ const Home = () => {
         }
     }, [isHovered, heroSlides.length]); // Add heroSlides.length to the dependency array
 
-    const slideVariants = {
-        enter: { opacity: 0, scale: 1.1 },
-        center: { opacity: 1, scale: 1 },
-        exit: { opacity: 0, scale: 0.9 }
-    };
-
     return (
         <div className="min-h-screen bg-gradient-to-b from-f8f7ff to-fffcf2">
             {/* Hero Section */}
@@ -608,7 +556,7 @@ const Home = () => {
                                 <Link
                                     to="/about"
                                     className="group inline-flex items-center space-x-3 text-ffc2d1 
-                                             hover:text-ffcfd2 font-medium font-garamond transition-colors duration-300"
+                                                hover:text-ffcfd2 font-medium font-garamond transition-colors duration-300"
                                 >
                                     <span>Learn More About Us</span>
                                     <ChevronRight className="h-5 w-5 transform group-hover:translate-x-1 transition-transform" />
@@ -626,8 +574,7 @@ const Home = () => {
                                         y: isVisible.welcome ? 0 : 50
                                     }}
                                     transition={{ duration: 0.8, delay: 0.2 * index }}
-                                    className={`relative rounded-2xl overflow-hidden shadow-2xl 
-                                              ${index % 2 === 1 ? 'mt-12' : ''}`}
+                                    className={`relative rounded-2xl overflow-hidden shadow-2xl ${index % 2 === 1 ? 'mt-12' : ''}`}
                                 >
                                     <img
                                         src={pic}
@@ -641,40 +588,6 @@ const Home = () => {
                     </div>
                 </motion.div>
             </section>
-
-            {/* Enhanced Stats Section */}
-            {/* <section id="stats" className="py-20 bg-gradient-to-r from-ffc2d1/10 to-fdc5f5/10">
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: isVisible.stats ? 1 : 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-                >
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {stats.map((stat, index) => (
-                            <motion.div
-                                key={index}
-                                whileHover={{ scale: 1.05 }}
-                                className="relative group"
-                            >
-                                <div className="absolute inset-0 bg-white rounded-2xl transform 
-                                              rotate-3 group-hover:rotate-6 transition-transform duration-300" />
-                                <div className="relative p-8 rounded-2xl bg-white/90 backdrop-blur-sm 
-                                              shadow-xl hover:shadow-2xl transition-all duration-300">
-                                    <stat.icon
-                                        className="w-12 h-12 mb-6"
-                                        style={{ color: stat.color }}
-                                    />
-                                    <div className="text-4xl font-serif text-gray-800 mb-3">
-                                        {stat.number}
-                                    </div>
-                                    <div className="text-gray-600">{stat.label}</div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.div>
-            </section> */}
 
             <section id="services" className="relative py-24 bg-[#f4f3ee] overflow-hidden">
                 {/* Content Container */}
@@ -760,8 +673,7 @@ const Home = () => {
                             viewport={{ once: true }}
                             className="inline-block"
                         >
-                            <span className="inline-block px-4 py-2 rounded-full bg-ffc2d1/10 text-ffc2d1 
-                           text-sm font-garamond font-medium mb-4">
+                            <span className="inline-block px-4 py-2 rounded-full bg-ffc2d1/10 text-ffc2d1 text-sm font-garamond font-medium mb-4">
                                 Luxury Packages
                             </span>
                         </motion.div>
@@ -807,9 +719,9 @@ const Home = () => {
                         <Link
                             to="/packages"
                             className="inline-flex items-center px-8 py-4 bg-white hover:bg-ffc2d1 
-                     text-gray-800 hover:text-white rounded-full font-medium font-garamond
-                     shadow-xl hover:shadow-2xl transition-all duration-500 
-                     transform hover:-translate-y-1 group"
+                            text-gray-800 hover:text-white rounded-full font-medium font-garamond
+                            shadow-xl hover:shadow-2xl transition-all duration-500 
+                            transform hover:-translate-y-1 group"
                         >
                             <span>View All Wedding Collections</span>
                             <motion.div
@@ -859,8 +771,8 @@ const Home = () => {
                         <Link
                             to="/contact"
                             className="inline-flex items-center px-12 py-5 bg-secondary-dark hover:bg-accent1-dark 
-                                     text-gray-800 rounded-full font-medium font-garamond text-lg shadow-2xl 
-                                     hover:shadow-3xl transition-all duration-300"
+                                        text-gray-800 rounded-full font-medium font-garamond text-lg shadow-2xl 
+                                        hover:shadow-3xl transition-all duration-300"
                         >
                             Get Started
                             <ArrowRight className="ml-3 h-6 w-6" />

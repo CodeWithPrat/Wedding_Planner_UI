@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { Sun, Moon, Menu, X, ChevronUp } from 'lucide-react';
+import { Menu, X, ChevronUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { companyData, navigationLinks } from './Components/Data/Data';
 import About from './Components/ABout/About';
@@ -13,6 +13,18 @@ import SixteenDaysPlan from './Components/ServicesPlan/SixteenDaysPlan';
 import DestinationWedding from './Components/ServicesPlan/DestinationWedding';
 
 import companyLogo from "./assets/imgs/CultBlackLogo2.png"
+
+import ServiceOneDesign from './Components/SecondaryServices/ServiceOne/ServiceOneDesign';
+import ServiceTwoDesign from './Components/SecondaryServices/ServiceTwo/ServiceTwoDesign';
+import ServiceThreeDesign from './Components/SecondaryServices/ServiceThree/serviceThreeDesign';
+import ServiceFourDesign from './Components/SecondaryServices/ServiceFour/serviceFourDesign';
+import ServiceFiveDesign from './Components/SecondaryServices/ServiceFive/serviceFiveDesign';
+import ServiceSixDesign from './Components/SecondaryServices/ServiceSix/serviceSixDesign';
+import ServiceSevenDesign from './Components/SecondaryServices/ServiceSeven/ServiceSevenDesign';
+import ServiceEightDesign from './Components/SecondaryServices/ServiceEight/serviceEightDesign';
+import ServiceNineDesign from './Components/SecondaryServices/ServiceNine/ServiceNineDesign';
+import ServiceTenDesign from './Components/SecondaryServices/ServiceTen/ServiceTenDesign';
+
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -83,7 +95,7 @@ const App = () => {
                   </motion.div>
 
                   {/* Stylized company name */}
-                  <motion.div
+                  {/* <motion.div
                     className="relative"
                     whileHover={{ y: -2 }}
                     transition={{ duration: 0.2 }}
@@ -97,7 +109,7 @@ const App = () => {
                         className="absolute -bottom-1 left-0 w-0 h-0.5 bg-current transition-all duration-300 group-hover:w-full"
                       />
                     </span>
-                  </motion.div>
+                  </motion.div> */}
                 </motion.div>
 
 
@@ -205,6 +217,17 @@ const App = () => {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/sixteendays" element={<SixteenDaysPlan />} />
                 <Route path="/destination-wedding" element={<DestinationWedding />} />
+                
+                <Route path="/service-one" element={<ServiceOneDesign />} />
+                <Route path="/service-two" element={<ServiceTwoDesign />} />
+                <Route path="/service-three" element={<ServiceThreeDesign />} />
+                <Route path="/service-four" element={<ServiceFourDesign />} />
+                <Route path="/service-five" element={<ServiceFiveDesign />} />
+                <Route path="/service-six" element={<ServiceSixDesign />} />
+                <Route path="/service-seven" element={<ServiceSevenDesign />} />
+                <Route path="/service-eight" element={<ServiceEightDesign />} />
+                <Route path="/service-nine" element={<ServiceNineDesign />} />
+                <Route path="/service-ten" element={<ServiceTenDesign />} />
               </Routes>
             </AnimatePresence>
           </main>
@@ -226,10 +249,10 @@ const App = () => {
                       src={companyData.logo}
                       alt={companyData.name}
                     />
-                    <span style={{ color: styles.secondary }}
+                    {/* <span style={{ color: styles.secondary }}
                       className="text-2xl font-garamond font-bold tracking-wide">
                       {companyData.name}
-                    </span>
+                    </span> */}
                   </div>
                   <p style={{ color: `${styles.secondary}cc` }} className="text-base font-garamond leading-relaxed max-w-lg">
                     {companyData.description}

@@ -312,7 +312,7 @@ const Contact = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className={`w-full bg-accent1 hover:bg-accent2 text-white font-garamond font-bold py-4 px-6 
+              className={`w-full bg-pink-400 hover:bg-pink-500 text-white font-garamond font-bold py-4 px-6 
                 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl
                 ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
             >

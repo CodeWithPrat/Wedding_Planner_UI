@@ -198,16 +198,18 @@ const ServiceMenu = ({ serviceCategories }) => {
 
                   <div className="flex items-center justify-between">
                     <button
-                      onClick={() => navigate(`/services/${category.id}`)}
+                      onClick={() => navigate(category.path)} // Changed from /services/${category.id} to use category.path
                       className="bg-[#dda15e] text-white px-6 py-3 rounded-xl font-medium
-                               hover:bg-[#ac7638] transition-all duration-300 shadow-md
-                               hover:shadow-lg transform hover:-translate-y-0.5
-                               active:translate-y-0 relative overflow-hidden group"
+             hover:bg-[#ac7638] transition-all duration-300 shadow-md
+             hover:shadow-lg transform hover:-translate-y-0.5
+             active:translate-y-0 relative overflow-hidden group"
                     >
                       <span className="relative z-10">Learn More</span>
-                      <div className="absolute inset-0 bg-[#dda15e] transform scale-x-0 
-                                  group-hover:scale-x-100 transition-transform 
-                                  duration-300 origin-left" />
+                      <div
+                        className="absolute inset-0 bg-[#dda15e] transform scale-x-0 
+                group-hover:scale-x-100 transition-transform 
+                duration-300 origin-left"
+                      />
                     </button>
 
                     <button
@@ -215,7 +217,7 @@ const ServiceMenu = ({ serviceCategories }) => {
                         activeCategory === category.id ? null : category.id
                       )}
                       className="p-3 hover:bg-gray-100 rounded-full transition-all duration-300
-                               hover:shadow-md"
+             hover:shadow-md"
                     >
                       {activeCategory === category.id ? (
                         <ChevronUp className="w-6 h-6 text-[#dda15e]" />
