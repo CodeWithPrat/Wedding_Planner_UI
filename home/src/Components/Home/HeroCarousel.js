@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import pic1 from "./../../assets/imgs/HomeImgs/pic1.jpg"
 import pic3 from "./../../assets/imgs/HomeImgs/pic3.jpg"
 import pic4 from "./../../assets/imgs/HomeImgs/pic4.jpg"
@@ -77,7 +78,7 @@ const EnhancedCarousel = () => {
   };
 
   return (
-    <div 
+    <div
       className="relative mx-auto overflow-hidden bg-black w-full h-screen max-h-[800px] min-h-[500px]"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -87,15 +88,13 @@ const EnhancedCarousel = () => {
       {slides.map((slide, index) => (
         <div
           key={index}
-          className={`absolute inset-0 transition-all duration-700 ease-in-out ${
-            index === currentSlide 
-              ? 'opacity-100 translate-x-0 scale-100' 
-              : `opacity-0 scale-105 ${
-                  direction > 0 
-                    ? 'translate-x-full' 
-                    : '-translate-x-full'
-                }`
-          }`}
+          className={`absolute inset-0 transition-all duration-700 ease-in-out ${index === currentSlide
+              ? 'opacity-100 translate-x-0 scale-100'
+              : `opacity-0 scale-105 ${direction > 0
+                ? 'translate-x-full'
+                : '-translate-x-full'
+              }`
+            }`}
         >
           {/* Image and Overlays */}
           <div className="relative h-full w-full">
@@ -104,11 +103,11 @@ const EnhancedCarousel = () => {
               alt={slide.title}
               className="h-full w-full object-cover"
             />
-            
+
             {/* Gradient Overlays */}
             <div className={`absolute inset-0 bg-gradient-to-b ${slide.overlayColor}`} />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-            
+
             {/* Content */}
             <div className="absolute inset-0 flex items-center justify-center px-4 sm:px-8 md:px-12">
               <div className="max-w-5xl w-full">
@@ -126,27 +125,36 @@ const EnhancedCarousel = () => {
                     leading-tight tracking-tight transform">
                     {slide.title}
                   </h1>
-                  
+
                   <p className="text-white/90 text-lg sm:text-xl md:text-2xl max-w-2xl mx-auto 
                     leading-relaxed font-light font-garamond">
                     {slide.subtitle}
                   </p>
-                  
+
                   <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-                    <button
-                      className="group relative px-8 py-4 bg-white/90 hover:bg-white text-gray-900
+                    <Link
+                      to="/contact"
+                    >
+                      <button
+                        className="group relative px-8 py-4 bg-white/90 hover:bg-white text-gray-900
                         rounded-full font-medium font-garamond transition-all duration-300 overflow-hidden
                         transform hover:scale-105 hover:shadow-2xl"
-                    >
-                      <span className="relative z-10 font-garamond">Start Your Journey</span>
-                      <div className={`absolute inset-0 ${slide.accent} transform scale-x-0 
+                      >
+                        <span className="relative z-10 font-garamond">Start Your Journey</span>
+                        <div className={`absolute inset-0 ${slide.accent} transform scale-x-0 
                         group-hover:scale-x-100 transition-transform duration-500 origin-left`} />
-                    </button>
-                    
-                    <button className="px-8 py-4 text-white border border-white/30 rounded-full
+                      </button>
+                    </Link>
+
+                    <Link
+                      to="/about"
+                    >
+                      <button className="px-8 py-4 text-white border border-white/30 rounded-full
                       hover:bg-white/10 transition-all duration-300 font-garamond">
-                      Learn More
-                    </button>
+                        Learn More
+                      </button>
+                    </Link>
+
                   </div>
                 </div>
               </div>

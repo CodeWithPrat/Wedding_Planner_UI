@@ -209,7 +209,7 @@ const ServiceMenuDropdown = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background-50 to-background-300 p-4 sm:p-8 lg:p-12 font-garamond">
+    <div className="min-h-full bg-gradient-to-b from-background-50 to-background-300 p-4 sm:p-8 lg:p-12 font-garamond">
       <div className="max-w-7xl mx-auto">
         <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {serviceCategories.map((category) => (

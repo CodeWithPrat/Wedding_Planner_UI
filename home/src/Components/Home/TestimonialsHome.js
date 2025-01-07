@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { motion, AnimatePresence, useAnimation } from 'framer-motion';
 import { useSwipeable } from 'react-swipeable';
+import { Link } from 'react-router-dom';
 
 // Testimonial Card Component
 const TestimonialCard = ({ testimonial, index, isActive, total }) => {
@@ -290,13 +291,18 @@ const TestimonialsHome = ({ testimonials }) => {
           <motion.button
             whileHover={{ scale: 1.05, y: -3 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 md:px-10 py-3 md:py-4 bg-white text-black rounded-full font-garamond 
+            className="px-8 md:px-10 py-3 md:py-4 bg-pink-300 text-black rounded-full font-garamond 
                      text-base md:text-lg hover:bg-accent/90 transition-all duration-300 
                      shadow-lg hover:shadow-xl relative overflow-hidden group"
           >
+            <Link
+            to="/contact"
+            >
             <span className="relative z-10">Share Your Experience With Cult Events</span> 
-            <div className="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 
+            <div className="absolute inset-0 bg-pink-200 transform scale-x-0 group-hover:scale-x-100 
                           transition-transform duration-500 origin-left opacity-10" />
+            </Link>
+            
           </motion.button>
         </motion.div>
       </div>

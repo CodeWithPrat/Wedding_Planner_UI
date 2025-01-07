@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Check, Heart, Crown, Diamond, Sparkles, ArrowRight, Star } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Packages = () => {
   const [hoveredPackage, setHoveredPackage] = useState(null);
@@ -111,7 +112,7 @@ const Packages = () => {
                   MOST POPULAR
                 </div>
               )}
-              
+
               <div className="p-8 lg:p-10">
                 {/* Package Header */}
                 <div className="flex items-center mb-6">
@@ -141,8 +142,8 @@ const Packages = () => {
                 {/* Enhanced Features List */}
                 <ul className="space-y-4 mb-8">
                   {pkg.features.map((feature, idx) => (
-                    <li 
-                      key={idx} 
+                    <li
+                      key={idx}
                       className={`flex items-start transition-all duration-300 font-garamond
                                 ${hoveredPackage === index ? 'transform translate-x-2' : ''}`}
                     >
@@ -155,16 +156,21 @@ const Packages = () => {
                 </ul>
 
                 {/* Enhanced CTA Button */}
-                <button
-                  className={`w-full py-4 px-6 rounded-full font-medium font-garamond transition-all duration-300
-                             flex items-center justify-center group
-                             ${pkg.isPopular 
-                               ? `bg-${pkg.color} text-white hover:bg-${pkg.color}-dark` 
-                               : `bg-${pkg.color}/10 text-gray-800 hover:bg-${pkg.color}/20`}`}
+                <Link
+                  to="/contact"
                 >
-                  Choose {pkg.name} Package
-                  <ArrowRight className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
-                </button>
+                  <button
+                    className={`w-full py-4 px-6 rounded-full font-medium font-garamond transition-all duration-300
+                             flex items-center justify-center group
+                             ${pkg.isPopular
+                        ? `bg-${pkg.color} text-white hover:bg-${pkg.color}-dark`
+                        : `bg-${pkg.color}/10 text-gray-800 hover:bg-${pkg.color}/20`}`}
+                  >
+                    Choose {pkg.name} Package
+                    <ArrowRight className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </Link>
+
               </div>
             </div>
           ))}
@@ -178,12 +184,17 @@ const Packages = () => {
               All packages include basic amenities and can be customized to your needs.
               Let us help you create the wedding of your dreams!
             </p>
-            <button className="inline-flex items-center px-8 py-3 rounded-full bg-accent1/10 text-accent1 
-                             hover:bg-accent1 hover:text-white font-medium font-garamond transition-all duration-300
+            <Link
+              to="/contact"
+            >
+              <button className="inline-flex items-center px-8 py-3 rounded-full bg-accent1/10 text-pink-400 
+                             hover:bg-pink-500 hover:text-white font-medium font-garamond transition-all duration-300
                              transform hover:-translate-y-1">
-              Contact us for custom requirements
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </button>
+                Contact us for custom requirements
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </button>
+            </Link>
+
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import ServiceMenuDropdown from './ServiceDropdown';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 // Import background image
 import backgroundImage from "../../assets/imgs/ServicesImgs/pic13.jpeg";
 
@@ -229,7 +230,7 @@ const ServicesPage = () => {
   return (
     <div className="relative min-h-screen font-garamond">
       {/* Progress bar */}
-      <div 
+      <div
         className="fixed top-0 left-0 h-1 bg-gradient-to-r from-[#dda15e] to-[#252422] z-50 transition-all duration-300"
         style={{ width: `${scrollProgress}%` }}
       />
@@ -238,7 +239,7 @@ const ServicesPage = () => {
       <div className="relative h-[70vh] overflow-hidden">
         <div className="absolute inset-0">
           <div className="w-full h-full bg-gradient-to-br from-[#252422] via-[#252422]/90 to-[#dda15e]/80" />
-          <div 
+          <div
             className="absolute inset-0 bg-cover bg-center mix-blend-overlay opacity-40"
             style={{ backgroundImage: `url(${backgroundImage})` }}
           />
@@ -287,12 +288,14 @@ const ServicesPage = () => {
             </div>
 
             <div className="flex justify-center space-x-4 font-garamond">
-              <button className="px-8 py-3 bg-[#dda15e] text-[#252422] rounded-full font-garamond font-medium hover:bg-[#dda15e]/90 transition-all duration-300 transform hover:scale-105">
-                Explore Services
-              </button>
-              <button className="px-8 py-3 border border-[#f4f3ee] text-[#f4f3ee] font-garamond rounded-full font-medium hover:bg-[#f4f3ee]/10 transition-all duration-300">
-                Contact Us
-              </button>
+              <Link
+                to="/contact"
+              >
+                <button className="px-8 py-3 border border-[#f4f3ee] text-[#f4f3ee] font-garamond rounded-full font-medium hover:bg-[#f4f3ee]/10 transition-all duration-300">
+                  Contact Us
+                </button>
+              </Link>
+
             </div>
           </motion.div>
 
@@ -317,8 +320,8 @@ const ServicesPage = () => {
       </div>
 
       {/* Features Section */}
-      <div className="bg-[#252422] text-[#f4f3ee] py-20 px-4 md:px-8 font-garamond">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+      <div className="bg-[#252422] text-[#f4f3ee] py-20  md:px-8 font-garamond">
+        <div className="max-w-full mx-auto grid md:grid-cols-3 gap-8">
           {[
             {
               icon: Globe,
@@ -336,7 +339,7 @@ const ServicesPage = () => {
               description: "Every element carefully crafted to perfection"
             }
           ].map((feature, index) => (
-            <div 
+            <div
               key={index}
               className="p-8 font-garamond rounded-xl bg-gradient-to-br from-[#252422] to-[#252422]/80 border border-[#dda15e]/20 hover:border-[#dda15e] transition-all duration-300"
             >
