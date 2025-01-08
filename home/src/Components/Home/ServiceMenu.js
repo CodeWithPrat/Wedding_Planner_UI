@@ -139,7 +139,7 @@ const ServiceMenu = ({ serviceCategories }) => {
     if (!isMobile) {
       return {
         width: `${100 / itemsToShow}%`,
-        height: 'auto'
+        height: '100%'
       };
     }
 
@@ -150,10 +150,10 @@ const ServiceMenu = ({ serviceCategories }) => {
     const baseStyles = {
       position: 'absolute',
       width: '100%',
-      height: expandedCardId ? 'auto' : '470px', // Dynamic height when expanded
+      height: '470px', // Fixed height for mobile
       transition: `all ${CONSTANTS.TRANSITION_DURATION}ms cubic-bezier(0.4, 0, 0.2, 1)`,
     };
-
+    
     if (isActive) {
       return {
         ...baseStyles,

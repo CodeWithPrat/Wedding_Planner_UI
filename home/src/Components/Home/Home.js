@@ -314,7 +314,7 @@ const Home = () => {
             title: "Wedding Décor",
             icon: Sparkles,
             image: pic203,
-            description: "Transform your venue into a magical setting",
+            description: "TProfessional Weddings with Personalized Flourishes",
             bgClass: "bg-secondary",
             services: [
                 "Mandap Décor",
@@ -402,7 +402,7 @@ const Home = () => {
             title: "Guest Management",
             icon: Users,
             image: pic208,
-            description: "Comprehensive guest experience coordination",
+            description: "Our culture is built around meeting customer needs",
             bgClass: "bg-accent2",
             services: [
                 "Welcome Ceremony",
@@ -420,7 +420,7 @@ const Home = () => {
             title: "Styling & Grooming",
             icon: Scissors,
             image: pic209,
-            description: "Complete beauty and styling solutions",
+            description: "Complete beauty and styling solutions for Groom and Bloom",
             bgClass: "bg-secondary",
             services: [
                 "Bridal Makeup",
@@ -438,7 +438,7 @@ const Home = () => {
             title: "Post-Wedding Services",
             icon: Gift,
             image: pic210,
-            description: "Ensuring perfect endings and new beginnings",
+            description: "Ensuring perfect endings and new beginnings for your special day",
             bgClass: "bg-accent1",
             services: [
                 "Reception Planning",
@@ -749,7 +749,7 @@ const Home = () => {
 
 
             {/* Premium Packages Section */}
-            <section className="py-5 bg-gradient-to-b from-fffcf2 to-faedcd overflow-hidden">
+            <section className="py-10 bg-gradient-to-b from-fffcf2 to-faedcd overflow-hidden">
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
