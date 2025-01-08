@@ -1,10 +1,26 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { 
-  Gift, Sun, Brush, Music, HandHelping, Camera, Users, 
-  Flower, PartyPopper, Gem, Eclipse, Star, Headphones, 
-  Send, HandHeart, Calendar, Phone, HandPlatter
-} from "lucide-react";
+  Flower, 
+  Heart, 
+  Sun, 
+  Brush, 
+  Crown, 
+  Music2, 
+  Flame, 
+  Stars, 
+  School, 
+  ScrollText, 
+  Droplets, 
+  FlowerIcon, 
+  Users, 
+  Gem, 
+  Bird, 
+  Home, 
+  Star,
+  Camera,
+  Gift
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 import pic401 from "../../assets/imgs/SixteenDaysImgs/pic401.png"
@@ -24,194 +40,212 @@ import pic414 from "../../assets/imgs/SixteenDaysImgs/pic414.jpg"
 import pic415 from "../../assets/imgs/SixteenDaysImgs/pic415.jpg"
 import pic416 from "../../assets/imgs/SixteenDaysImgs/pic416.jpg"
 
+import tilakcer from "../../assets/imgs/SixteenDaysImgs/tilakCerImg.png"
+import kalashimg from "../../assets/imgs/SixteenDaysImgs/kalashimg.jpg"
+import navagraha from "../../assets/imgs/SixteenDaysImgs/Navagraha.png"
+import mandap from "../../assets/imgs/SixteenDaysImgs/mandap.jpeg"
+import kashi from "../../assets/imgs/SixteenDaysImgs/kashiyatra.jpg"
+import snana from "../../assets/imgs/SixteenDaysImgs/snana.jpg"
+import pravesha from "../../assets/imgs/SixteenDaysImgs/pravesha.jpg"
+
 const SixteenDaysPlan = () => {
 
   const weddingDays = [
     {
       day: 1,
-      title: "Lagna Patrika (Engagement Ceremony)",
+      title: "Ganesh Puja (Invoking Blessings)",
       items: [
-        "Venue with traditional décor",
-        "Simple stage for rituals",
-        "Live music or traditional instrumental"
+        "Traditional setup for Ganesh puja",
+        "Priest arrangements",
+        "Sacred items for ritual"
       ],
-      icon: Gift,
-      image: pic401,
-      desc: "The engagement ceremony marks the official announcement of the wedding, featuring rituals, music, and a traditionally decorated venue."
+      icon: Flower,
+      image: pic405,
+      desc: "The wedding begins with a Ganesh Puja, where Lord Ganesha, the remover of obstacles, is worshiped. This ensures the ceremony proceeds without any hindrances. Both families participate, seeking divine blessings for the union."
     },
     {
       day: 2,
-      title: "Haldi Ceremony (Bride & Groom)",
+      title: "Engagement Ceremony (Sakharpuda or Nischaytam)",
       items: [
-        "Floral and turmeric-themed décor",
-        "Outdoor or indoor setup",
-        "Photo and video coverage"
+        "Traditional décor setup",
+        "Exchange of gifts and symbolic items",
+        "Priest for horoscope consultation"
       ],
-      icon: Sun,
-      image: pic402,
-      desc: "A vibrant and colorful pre-wedding ritual where turmeric is applied to the bride and groom for blessings and radiance."
+      icon: Heart,
+      image: pic415,
+      desc: "The bride and groom exchange symbolic items (like sugar or betel leaves) to formalize the alliance. Families exchange gifts, and the priest announces the wedding date after consulting horoscopes."
     },
     {
       day: 3,
-      title: "Mehndi Night",
+      title: "Haldi Ceremony (Purification)",
       items: [
-        "Vibrant décor with fairy lights and floral installations",
-        "Professional mehndi artists for guests",
-        "Music or DJ setup with traditional songs"
+        "Turmeric paste preparation",
+        "Separate setups for bride and groom",
+        "Traditional decorations"
       ],
-      icon: Brush,
-      image: pic403,
-      desc: "An evening of celebration where intricate mehndi designs are applied, accompanied by music and dance."
+      icon: Sun,
+      image: pic402,
+      desc: "Turmeric paste is applied to the bride and groom separately at their respective homes. Turmeric is believed to purify the body and enhance beauty while symbolizing prosperity and fertility."
     },
     {
       day: 4,
-      title: "Sangeet",
+      title: "Mehndi Ceremony (Henna Application)",
       items: [
-        "Grand stage and dance floor setup",
-        "Choreographer for performances",
-        "Sound, lighting, and visuals",
-        "Celebrity performer or live band (optional)"
+        "Professional mehndi artists",
+        "Music arrangement",
+        "Seating and refreshments for guests"
       ],
-      icon: Music,
-      image: pic404,
-      desc: "A lively night of music, dance, and performances by family and friends to celebrate the upcoming wedding."
+      icon: Brush,
+      image: pic403,
+      desc: "The bride's hands and feet are adorned with intricate henna designs. This day is celebrated with music and dance by women in the family. Mehndi is considered auspicious and represents joy."
     },
     {
       day: 5,
-      title: "Ganesh Pooja (Traditional Rituals)",
+      title: "Tilak Ceremony (Mark of Acceptance)",
       items: [
-        "Mandap décor for pooja",
-        "Floral and spiritual arrangements"
+        "Traditional items for tilak",
+        "Seating arrangement for families",
+        "Gift exchange setup"
       ],
-      icon: HandHelping,
-      image: pic405,
-      desc: "A sacred ritual to invoke blessings from Lord Ganesh for the smooth conduct of the wedding ceremonies."
+      icon: Crown,
+      image: tilakcer,
+      desc: "The groom's family visits the bride's house, where the bride's father applies a tilak (vermilion mark) on the groom's forehead, signifying his acceptance as a son-in-law."
     },
     {
       day: 6,
-      title: "Pre-Wedding Shoot",
+      title: "Sangeet (Musical Night)",
       items: [
-        "Destination or themed shoot with professional photographers",
-        "Drone and cinematic shots included"
+        "Stage and sound system",
+        "Dance floor setup",
+        "Performance arrangements"
       ],
-      icon: Camera,
-      image: pic406,
-      desc: "A creative and memorable photo shoot capturing the love story of the couple in stunning locations."
+      icon: Music2,
+      image: pic404,
+      desc: "A joyous evening of music, dance, and performances is organized, where family members and friends celebrate together. This fosters bonding between both families."
     },
     {
       day: 7,
-      title: "Vara Pooja",
+      title: "Kalash Sthapana (Establishing the Sacred Pot)",
       items: [
-        "Groom's special ritual setup",
-        "Traditional seating arrangement for families"
+        "Decorated Kalash",
+        "Mango leaves and coconut",
+        "Sacred items for ritual"
       ],
-      icon: Users,
-      image: pic407,
-      desc: "A ceremony to honor the groom and his family, signifying the union of two families."
+      icon: Flame,
+      image: kalashimg,
+      desc: "A Kalash (holy pot) filled with water and decorated with mango leaves and a coconut is established in the bride's and groom's homes. This symbolizes the presence of divine energy."
     },
     {
       day: 8,
-      title: "Bride’s Gauri Pooja",
+      title: "Navagraha Puja (Worship of the Nine Planets)",
       items: [
-        "Exclusive floral arrangements for the bride’s rituals"
+        "Puja items for nine planets",
+        "Priest arrangements",
+        "Traditional decorations"
       ],
-      icon: Flower,
-      image: pic408,
-      desc: "A ritual dedicated to Goddess Gauri, seeking her blessings for a prosperous married life."
+      icon: Stars,
+      image: navagraha,
+      desc: "A puja is performed to appease the Navagrahas (nine celestial planets) and seek their blessings for the couple's harmonious future."
     },
     {
       day: 9,
-      title: "Reception Night",
+      title: "Mandap Construction & Decoration",
       items: [
-        "Luxury venue with stage setup and grand décor",
-        "Lighting effects (LED walls, chandeliers)",
-        "Multi-cuisine buffet with live counters",
-        "Entertainment (live music, fireworks)"
+        "Mandap structure and materials",
+        "Floral decorations",
+        "Traditional rangoli"
       ],
-      icon: PartyPopper,
-      image: pic409,
-      desc: "A grand celebration to introduce the newlyweds to friends and family, with food, entertainment, and festivities."
+      icon: School,
+      image: mandap,
+      desc: "The Mandap (wedding canopy) is built and decorated. It represents the sacred space where the couple will take their vows. Traditional items like banana leaves, flowers, and rangoli are used."
     },
     {
       day: 10,
-      title: "Marriage Day",
+      title: "Kashi Yatra (Symbolic Renunciation)",
       items: [
-        "Lavish mandap and seating arrangement for guests (up to 2000+)",
-        "Custom stage with elaborate floral and theme décor",
-        "High-end sound system and ceremonial music",
-        "Photography and videography coverage of the entire event",
-        "Guest hospitality and logistics"
+        "Traditional attire for groom",
+        "Props for ceremonial act",
+        "Setup for ritual"
       ],
-      icon: Gem,
-      image: pic410,
-      desc: "The most auspicious day when the couple takes their wedding vows in a beautifully decorated mandap."
+      icon: ScrollText,
+      image: kashi,
+      desc: "The groom enacts a symbolic renunciation, declaring he will remain a celibate ascetic. The bride's father or brother persuades him to accept family life and marry the bride."
     },
     {
       day: 11,
-      title: "Post-Marriage Lunch",
+      title: "Mangal Snan (Auspicious Bath)",
       items: [
-        "Traditional meal arrangement for close family and friends"
+        "Bath ritual items",
+        "Traditional herbs and flowers",
+        "Sacred water arrangement"
       ],
-      icon: Eclipse,
-      image: pic411,
-      desc: "An intimate lunch gathering for the families and close friends to celebrate the union."
+      icon: Droplets,
+      image: snana,
+      desc: "The bride and groom take an early morning ritual bath, signifying the cleansing of their bodies and spirits before the wedding ceremony."
     },
     {
       day: 12,
-      title: "Satyanarayana Pooja",
+      title: "Gauri Puja (Worship of Goddess Parvati)",
       items: [
-        "Simple mandap décor",
-        "Comfortable seating arrangements"
+        "Puja items for Goddess Gauri",
+        "Traditional decorations",
+        "Seating for women participants"
       ],
-      icon: Star,
-      image: pic412,
-      desc: "A spiritual ritual conducted to seek blessings for peace and prosperity in the couple’s new life together."
+      icon: FlowerIcon,
+      image: pic407,
+      desc: "The bride worships Goddess Gauri (a form of Parvati) for marital bliss and a long-lasting, harmonious relationship. This is often done with other women in the family."
     },
     {
       day: 13,
-      title: "Family Cultural Night",
+      title: "Baraat (Groom's Procession)",
       items: [
-        "Interactive games, cultural performances, and entertainment",
-        "Open-mic style speeches for family and friends"
+        "Music band arrangement",
+        "Transportation decoration",
+        "Lighting and effects"
       ],
-      icon: Headphones,
+      icon: Users,
       image: pic413,
-      desc: "A fun-filled night of cultural activities, games, and performances to engage all family members."
+      desc: "The groom, dressed in regal attire, arrives at the bride's home or wedding venue with a grand procession of friends and family, accompanied by music and dancing."
     },
     {
       day: 14,
-      title: "Traditional Send-off Ceremony",
+      title: "Wedding Ceremony",
       items: [
-        "Elegant setup for farewell rituals",
-        "Floral décor and vehicle arrangement for bride and groom’s send-off"
+        "Complete mandap setup",
+        "Sacred fire arrangement",
+        "Priest and ritual items",
+        "Seating for families"
       ],
-      icon: Send,
-      image: pic414,
-      desc: "An emotional ceremony marking the bride and groom’s departure as a married couple."
+      icon: Gem,
+      image: pic410,
+      desc: "The wedding rituals, officiated by a priest, include Kanyadaan, Vivah Homa, and Saptapadi, where the couple takes seven steps around the fire, taking vows of unity, respect, and loyalty."
     },
     {
       day: 15,
-      title: "Reception (Groom's Side)",
+      title: "Vidaai (Bride's Farewell)",
       items: [
-        "Venue and décor similar to Day 9 reception",
-        "Coordination for catering and entertainment at groom’s location"
+        "Traditional farewell items",
+        "Vehicle decoration",
+        "Rice and flowers for ritual"
       ],
-      icon: HandHeart,
-      image: pic415,
-      desc: "A celebratory reception hosted by the groom’s family to welcome the bride."
+      icon: Bird,
+      image: pic414,
+      desc: "The bride bids an emotional farewell to her family as she departs to her husband's home. This symbolizes her transition into her new life."
     },
     {
       day: 16,
-      title: "Thank You Dinner",
+      title: "Griha Pravesh (Welcoming the Bride)",
       items: [
-        "Intimate setup for the couple, family, and key guests",
-        "Simple décor and gourmet dining experience"
+        "Welcome ritual items",
+        "Rice-filled pot",
+        "Traditional decorations"
       ],
-      icon: HandPlatter,
-      image: pic416,
-      desc: "A warm and intimate dinner to express gratitude to those who made the wedding a success."
+      icon: Home,
+      image: pravesha,
+      desc: "The bride is welcomed into the groom's home with a ceremonial Griha Pravesh. She kicks a pot of rice at the entrance, symbolizing prosperity and abundance she brings to her new family."
     }
   ];
+  
 
 
   const packageIncludes = [

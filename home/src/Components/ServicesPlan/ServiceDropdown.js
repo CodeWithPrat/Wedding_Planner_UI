@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ChevronDown, ChevronUp, } from "lucide-react";
 import {
   Calendar, Utensils, Book, Scissors, Gift,
-  Users, Sparkles, Camera, Music, Plane
+  Users, Sparkles, Camera, Music, Plane,IdCard 
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -17,6 +17,8 @@ import pic207 from "../../assets/imgs/ServicesImgs/ServCardImgs/pic207.jpeg"
 import pic208 from "../../assets/imgs/ServicesImgs/ServCardImgs/pic208.jpg"
 import pic209 from "../../assets/imgs/ServicesImgs/ServCardImgs/pic209.jpg"
 import pic210 from "../../assets/imgs/ServicesImgs/ServCardImgs/pic210.jpg"
+
+import pic211 from "../../assets/imgs/ServicesImgs/ServCardImgs/giftinvite.jpg"
 
 
 const ServiceMenuDropdown = () => {
@@ -205,6 +207,23 @@ const ServiceMenuDropdown = () => {
         "Memory Preservation"
       ],
       path: "/service-ten"
+    },
+    {
+      id: 11,
+      title: "invitation and gift Services",
+      icon: IdCard ,
+      image: pic211,
+      description: "For us, it's 'presence over presents",
+      bgClass: "bg-accent1",
+      services: [
+        "Royal/Traditional Wedding Invitation and gift Services",
+        "Destination Wedding Invitation and gift Services",
+        "Modern/Minimalist Wedding Invitation and gift Services",
+        "Eco-Friendly Wedding Invitation and gift Services",
+        "Luxury Wedding Invitation and gift Services",
+        "Theme-Based Wedding Invitation and gift Services",
+      ],
+      path: "/service-eleven"
     }
   ];
 

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import {
     Calendar, Utensils, Book, Scissors, Gift,
     Clock, Users, ChevronRight, ArrowRight, Sparkles,
-    MapPin, Camera, Music, UtensilsCrossed, Plane, Hotel
+    MapPin, Camera, Music, UtensilsCrossed, Plane, Hotel, IdCard
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -34,6 +34,7 @@ import pic207 from "../../assets/imgs/ServicesImgs/ServCardImgs/pic207.jpeg"
 import pic208 from "../../assets/imgs/ServicesImgs/ServCardImgs/pic208.jpg"
 import pic209 from "../../assets/imgs/ServicesImgs/ServCardImgs/pic209.jpg"
 import pic210 from "../../assets/imgs/ServicesImgs/ServCardImgs/pic210.jpg"
+import pic211 from "../../assets/imgs/ServicesImgs/ServCardImgs/giftinvite.jpg"
 
 import pic16 from "../../assets/imgs/TestimonialImgs/pic16.jpg"
 import pic17 from "../../assets/imgs/TestimonialImgs/pic17.jpg"
@@ -449,6 +450,23 @@ const Home = () => {
                 "Memory Preservation"
             ],
             path: "/service-ten"
+        },
+        {
+            id: 11,
+            title: "invitation and gift Services",
+            icon: IdCard,
+            image: pic211,
+            description: "Making Moments Memorable with Elegant Invitations and Gifts",
+            bgClass: "bg-accent1",
+            services: [
+                "Royal/Traditional Wedding Invitation and gift Services",
+                "Destination Wedding Invitation and gift Services",
+                "Modern/Minimalist Wedding Invitation and gift Services",
+                "Eco-Friendly Wedding Invitation and gift Services",
+                "Luxury Wedding Invitation and gift Services",
+                "Theme-Based Wedding Invitation and gift Services",
+            ],
+            path: "/service-eleven"
         }
     ];
 
@@ -524,7 +542,7 @@ const Home = () => {
             <EnhancedCarousel />
 
             {/* Welcome Section */}
-            <section id="welcome" className="py-24 bg-gradient-to-b from-fffcf2 to-faedcd">
+            <section id="welcome" className="py-20 bg-gradient-to-b from-fffcf2 to-faedcd">
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: isVisible.welcome ? 1 : 0, y: isVisible.welcome ? 0 : 50 }}
@@ -589,76 +607,149 @@ const Home = () => {
                 </motion.div>
             </section>
 
-            <section id="services" className="relative py-24 bg-[#f4f3ee] overflow-hidden">
-                {/* Content Container */}
-                <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 relative">
-                    {/* Header with Animation */}
+            <section id="services" className="relative bg-gradient-to-b from-[#f4f3ee] to-[#f8f7f2] py-4 lg:py-4 overflow-hidden">
+                {/* Background Patterns */}
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    {/* Grid Pattern */}
+                    <div className="absolute inset-0 opacity-[0.03]"
+                        style={{
+                            backgroundImage: `radial-gradient(#000 1px, transparent 1px)`,
+                            backgroundSize: '32px 32px'
+                        }} />
+
+                    {/* Floating Shapes */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{
+                            opacity: [0.05, 0.08, 0.05],
+                            scale: [1, 1.2, 1],
+                            rotate: [0, 360]
+                        }}
+                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                        className="absolute top-12 left-20 w-64 h-64 rounded-full bg-[#dda15e]/10"
+                    />
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{
+                            opacity: [0.08, 0.12, 0.08],
+                            scale: [1, 1.1, 1],
+                            rotate: [360, 0]
+                        }}
+                        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                        className="absolute bottom-40 right-20 w-96 h-96 rounded-full bg-[#d3853d]/10"
+                    />
+                </div>
+
+                {/* Content Container with Enhanced Spacing */}
+                <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    {/* Header with Refined Animation */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        viewport={{ once: true }}
-                        className="text-center "
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        className="text-center max-w-4xl mx-auto mb-5 md:mb-5 lg:mb-9"
                     >
-                        <h2 className="text-[#000000] text-4xl md:text-5xl lg:text-6xl font-garamond font-bold mb-6 bg-gradient-to-r from-[#d3853d] to-[#df9433] bg-clip-text text-transparent tracking-tight"
-                        >
-                            Our Services
-                        </h2>
+                        {/* Enhanced Title */}
+                        <div className="relative inline-block">
+                            <motion.h2
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6 }}
+                                viewport={{ once: true }}
+                                className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl 
+                         font-garamond font-bold mb-6 
+                         bg-gradient-to-r from-[#d3853d] to-[#df9433] 
+                         bg-clip-text text-transparent 
+                         tracking-tight leading-tight"
+                            >
+                                Our Services
+                            </motion.h2>
+                            <motion.div
+                                initial={{ scaleX: 0 }}
+                                whileInView={{ scaleX: 1 }}
+                                transition={{ duration: 1, delay: 0.3 }}
+                                viewport={{ once: true }}
+                                className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-[#d3853d]/20 via-[#df9433]/40 to-[#d3853d]/20 transform origin-left"
+                            />
+                        </div>
 
-                        <motion.div
+                        {/* Enhanced Subtitle */}
+                        <motion.h4
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
                             viewport={{ once: true }}
+                            className="text-[#000000]/80 text-xl md:text-2xl lg:text-3xl 
+                       font-garamond font-medium 
+                       max-w-2xl mx-auto 
+                       leading-relaxed mt-6"
                         >
-                            <h4 className="text-[#0000]/90 text-xl md:text-2xl font-garamond font-medium max-w-2xl mx-auto leading-relaxed">
-                                We're here to help you, every step of the way.
-                            </h4>
-                        </motion.div>
+                            We're here to help you, every step of the way.
+                        </motion.h4>
 
-                        {/* Decorative Line */}
-                        <motion.div
-                            initial={{ scaleX: 0 }}
-                            whileInView={{ scaleX: 1 }}
-                            transition={{ duration: 0.8, delay: 0.4 }}
-                            viewport={{ once: true }}
-                            className="w-24 h-1 bg-[#252422] mx-auto mt-8 rounded-full"
-                        />
+                        {/* Decorative Elements */}
+                        <div className="flex items-center justify-center gap-2 mt-8">
+                            <motion.div
+                                initial={{ scale: 0 }}
+                                whileInView={{ scale: 1 }}
+                                transition={{ duration: 0.4, delay: 0.6 }}
+                                viewport={{ once: true }}
+                                className="w-2 h-2 rounded-full bg-[#d3853d]"
+                            />
+                            <motion.div
+                                initial={{ scaleX: 0 }}
+                                whileInView={{ scaleX: 1 }}
+                                transition={{ duration: 0.6, delay: 0.7 }}
+                                viewport={{ once: true }}
+                                className="w-24 h-1 bg-gradient-to-r from-[#d3853d] to-[#df9433] rounded-full"
+                            />
+                            <motion.div
+                                initial={{ scale: 0 }}
+                                whileInView={{ scale: 1 }}
+                                transition={{ duration: 0.4, delay: 0.8 }}
+                                viewport={{ once: true }}
+                                className="w-2 h-2 rounded-full bg-[#df9433]"
+                            />
+                        </div>
                     </motion.div>
 
-                    {/* Service Menu with Stagger Animation */}
+                    {/* Service Menu with Enhanced Container */}
                     <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        variants={{
-                            visible: {
-                                transition: {
-                                    staggerChildren: 0.2
-                                }
-                            }
-                        }}
-                        className="relative z-10"
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        className="relative z-20 max-w-full mx-auto"
                     >
                         <ServiceMenu serviceCategories={serviceCategories} />
                     </motion.div>
                 </div>
 
-                {/* Bottom Wave Decoration */}
-                <div className="absolute bottom-0 left-0 right-0">
-                    <svg
-                        className="w-full h-24 fill-[#dda15e]/10"
-                        viewBox="0 0 1200 120"
-                        preserveAspectRatio="none"
-                    >
-                        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" />
-                    </svg>
+                {/* Enhanced Bottom Wave */}
+                <div className="absolute bottom-0 left-0 right-0 pointer-events-none">
+                    <div className="relative">
+                        <svg
+                            className="w-full h-24 fill-[#dda15e]/10 transform translate-y-1"
+                            viewBox="0 0 1200 120"
+                            preserveAspectRatio="none"
+                        >
+                            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" />
+                        </svg>
+                        <svg
+                            className="w-full h-24 fill-[#dda15e]/5 absolute bottom-0 transform translate-y-1/2"
+                            viewBox="0 0 1200 120"
+                            preserveAspectRatio="none"
+                        >
+                            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" />
+                        </svg>
+                    </div>
                 </div>
             </section>
 
 
             {/* Premium Packages Section */}
-            <section className="py-24 bg-gradient-to-b from-fffcf2 to-faedcd overflow-hidden">
+            <section className="py-5 bg-gradient-to-b from-fffcf2 to-faedcd overflow-hidden">
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}

@@ -24,6 +24,8 @@ import ServiceSevenDesign from './Components/SecondaryServices/ServiceSeven/Serv
 import ServiceEightDesign from './Components/SecondaryServices/ServiceEight/serviceEightDesign';
 import ServiceNineDesign from './Components/SecondaryServices/ServiceNine/ServiceNineDesign';
 import ServiceTenDesign from './Components/SecondaryServices/ServiceTen/ServiceTenDesign';
+import InvitationServicesDesign from './Components/SecondaryServices/ServiceEleven/ServiceElevenDesign';
+import ScrollToTop from './Components/Navigation/ScrollToTop';
 
 
 const App = () => {
@@ -60,6 +62,7 @@ const App = () => {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className={`min-h-screen ${isDarkMode ? 'dark' : ''} font-garamond`}>
         <div style={{
           background: `linear-gradient(to bottom right, ${styles.secondary}, ${styles.secondary})`
@@ -206,7 +209,7 @@ const App = () => {
           </motion.nav>
 
           {/* Main Content */}
-          <main className="max-w-[1920px] mx-auto px-6 lg:px-12 pt-32 pb-16 font-garamond">
+          <main className="max-w-[1920px] mx-auto px-6 lg:px-12 pt-24 pb-16 font-garamond">
             <AnimatePresence mode="wait">
               <Routes>
                 <Route path="/" element={<Home />} />
@@ -228,6 +231,7 @@ const App = () => {
                 <Route path="/service-eight" element={<ServiceEightDesign />} />
                 <Route path="/service-nine" element={<ServiceNineDesign />} />
                 <Route path="/service-ten" element={<ServiceTenDesign />} />
+                <Route path="/service-eleven" element={<InvitationServicesDesign />} />
               </Routes>
             </AnimatePresence>
           </main>
