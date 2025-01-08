@@ -542,7 +542,7 @@ const Home = () => {
             <EnhancedCarousel />
 
             {/* Welcome Section */}
-            <section id="welcome" className="py-20 bg-gradient-to-b from-fffcf2 to-faedcd">
+            <section id="welcome" className=" py-14 md:py-14 lg:py-20 bg-gradient-to-b from-fffcf2 to-faedcd">
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: isVisible.welcome ? 1 : 0, y: isVisible.welcome ? 0 : 50 }}
@@ -773,7 +773,7 @@ const Home = () => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-4xl md:text-5xl font-garamond text-gray-800 mb-8"
+                            className="text-4xl md:text-5xl font-garamond text-gray-800 mb-4"
                         >
                             Exclusive Wedding Collections
                         </motion.h2>
@@ -805,7 +805,7 @@ const Home = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.4 }}
-                        className="text-center mt-20"
+                        className="text-center mt-8"
                     >
                         <Link
                             to="/packages"
@@ -827,7 +827,7 @@ const Home = () => {
             </section>
 
             {/* Testimonials Section */}
-            <section className="">
+            <section className=" mt-6">
                 <TestimonialsHome testimonials={testimonials} />
             </section>
 

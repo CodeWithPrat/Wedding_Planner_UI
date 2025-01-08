@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { Menu, X, ChevronUp } from 'lucide-react';
+import { Menu, X, ChevronUp, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { companyData, navigationLinks } from './Components/Data/Data';
 import About from './Components/ABout/About';
@@ -117,6 +117,7 @@ const App = () => {
 
 
                 {/* Desktop Navigation */}
+                {/* Desktop Navigation */}
                 <div className="hidden lg:block">
                   <div className="flex items-center space-x-8">
                     {navigationLinks.map((link, index) => (
@@ -141,21 +142,35 @@ const App = () => {
                         </Link>
                       </motion.div>
                     ))}
-                    {/* <motion.button
+
+                    {/* Add Phone Call Button */}
+                    <motion.div
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
-                      onClick={toggleTheme}
-                      style={{ 
-                        backgroundColor: `${styles.accent}22`,
-                        color: scrolled ? styles.secondary : styles.primary
-                      }}
-                      className="p-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: navigationLinks.length * 0.1 }}
                     >
-                      {isDarkMode ? 
-                        <Sun className="h-6 w-6" /> : 
-                        <Moon className="h-6 w-6" />
-                      }
-                    </motion.button> */}
+                      <button
+                        onClick={() => window.location.href = `tel:+919482588199`}
+                        className="group relative flex items-center gap-3 bg-gradient-to-r from-[#faedcd] to-[#d5bdaf] 
+                 hover:from-[#faedcd] hover:to-[#d4a373] text-white px-6 py-3 rounded-full
+                 transform hover:scale-105 transition-all duration-300 shadow-lg
+                 hover:shadow-xl active:scale-95"
+                      >
+                        {/* Animated ring effect */}
+                        <div className="absolute inset-0 rounded-full animate-ping bg-[#d4a373] opacity-20"></div>
+
+                        {/* Phone icon with rotation animation */}
+                        <div className="relative flex items-center justify-center w-8 h-8 
+                     group-hover:rotate-12 transition-transform duration-300">
+                          <Phone className="w-6 h-6" />
+                        </div>
+
+                        {/* Button text */}
+                        <span className="text-lg font-semibold tracking-wide">Call</span>
+                      </button>
+                    </motion.div>
                   </div>
                 </div>
 
@@ -181,7 +196,7 @@ const App = () => {
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
                     style={{ backgroundColor: `${styles.primary}fa` }}
-                    className="lg:hidden absolute top-full left-0 w-full  shadow-xl overflow-hidden rounded-b-2xl"
+                    className="lg:hidden absolute top-full left-0 w-full shadow-xl overflow-hidden rounded-b-2xl"
                   >
                     <div className="flex flex-col space-y-2 px-6 py-6">
                       {navigationLinks.map((link, index) => (
@@ -201,6 +216,38 @@ const App = () => {
                           </Link>
                         </motion.div>
                       ))}
+
+                      {/* Add Phone Call Button to mobile menu */}
+                      <motion.div
+                        initial={{ x: -50, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: navigationLinks.length * 0.1 }}
+                        className="px-6 py-2"
+                      >
+                        <button
+                          onClick={() => {
+                            window.location.href = `tel:+919482588199`;
+                            setIsMenuOpen(false);
+                          }}
+                          className="w-full group relative flex items-center justify-center gap-3 
+                     bg-gradient-to-r from-[#faedcd] to-[#d4a373] 
+                     hover:from-[#faedcd] hover:to-[#d4a373] text-white px-6 py-3 
+                     rounded-full transform hover:scale-105 transition-all duration-300 
+                     shadow-lg hover:shadow-xl active:scale-95"
+                        >
+                          {/* Animated ring effect */}
+                          <div className="absolute inset-0 rounded-full animate-ping bg-[#d4a373] opacity-20"></div>
+
+                          {/* Phone icon with rotation animation */}
+                          <div className="relative flex items-center justify-center w-8 h-8 
+                         group-hover:rotate-12 transition-transform duration-300">
+                            <Phone className="w-6 h-6" />
+                          </div>
+
+                          {/* Button text */}
+                          <span className="text-lg font-semibold tracking-wide">Call</span>
+                        </button>
+                      </motion.div>
                     </div>
                   </motion.div>
                 )}
@@ -220,7 +267,7 @@ const App = () => {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/sixteendays" element={<SixteenDaysPlan />} />
                 <Route path="/destination-wedding" element={<DestinationWedding />} />
-                
+
                 <Route path="/service-one" element={<ServiceOneDesign />} />
                 <Route path="/service-two" element={<ServiceTwoDesign />} />
                 <Route path="/service-three" element={<ServiceThreeDesign />} />

@@ -216,11 +216,11 @@ const TestimonialsHome = ({ testimonials }) => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="inline-block px-6 py-2 bg-accent/10 text-black rounded-full text-sm font-garamond mb-4"
+            className="inline-block px-6 py-2 bg-accent/10 text-black rounded-full text-sm font-garamond mb-2"
           >
             Testimonials
           </motion.span>
-          <h2 className="text-3xl md:text-4xl lg:text-6xl font-garamond font-bold text-black mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-6xl font-garamond font-bold text-black mb-2">
             What Our Clients Say
           </h2>
           <div className="w-24 md:w-36 h-1 bg-accent mx-auto rounded-full mb-6 transform transition-all duration-300 hover:scale-x-110" />

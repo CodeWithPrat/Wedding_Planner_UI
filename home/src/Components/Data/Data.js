@@ -1,4 +1,5 @@
 import cultlogo from "../../assets/imgs/CultEventOfficialLogo2.png"
+import ResponsivePhoneCallButtons from "../Home/PhoneCallBtn";
 
 export const companyData = {
     name: "Cult Events",
@@ -23,8 +24,8 @@ export const companyData = {
     { name: "Services", path: "/services" },
     { name: "Packages", path: "/Packages" },
     { name: "Testimonials", path: "/testimonials" },
-    { name: "Contact", path: "/contact" }
-  ];
+    { name: "Contact", path: "/contact" },
+];
   
   export const services = [
     {
