@@ -162,7 +162,7 @@ const TestimonialCarousel = () => {
 
         {/* Mobile View */}
         <div
-          className="relative h-[450px] md:hidden mt-[-45px] mb-14"
+          className="relative h-[450px] md:hidden mt-[-45px] mb-24"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}

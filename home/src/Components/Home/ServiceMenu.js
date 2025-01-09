@@ -289,7 +289,7 @@ const ServiceMenu = ({ serviceCategories }) => {
         onTouchEnd={touchHandlers.end}
       >
         <motion.div
-          className={`flex relative ${isMobile ? 'min-h-[400px]' : ''}`}
+          className={`flex relative ${isMobile ? 'min-h-[460px]' : ''}`}
           style={{
             height: isMobile && expandedCardId ? 'auto' : undefined,
             minHeight: isMobile && expandedCardId ? '750px' : undefined

@@ -128,7 +128,7 @@ const EnhancedCarousel = () => {
   return (
     <div
       className={`relative mx-auto overflow-hidden bg-black w-full ${
-        isLandscape ? 'h-screen' : 'h-screen max-h-[800px]'
+        isLandscape ? 'h-screen' : 'h-screen max-h-[700px]'
       } min-h-[500px]`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

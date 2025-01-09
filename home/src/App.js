@@ -256,7 +256,7 @@ const App = () => {
           </motion.nav>
 
           {/* Main Content */}
-          <main className="max-w-[1920px] mx-auto px-6 lg:px-12 pt-24 pb-16 font-garamond">
+          <main className="max-w-[1920px] mx-auto px-1 lg:px-10 pt-24 pb-14 font-garamond">
             <AnimatePresence mode="wait">
               <Routes>
                 <Route path="/" element={<Home />} />

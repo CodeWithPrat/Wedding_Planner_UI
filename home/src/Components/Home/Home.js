@@ -513,24 +513,24 @@ const Home = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 className="space-y-6"
                             >
-                                <h1 className="text-4xl md:text-5xl lg:text-6xl font-garamond text-gray-800 leading-tight">
+                                <h1 className="text-3xl md:text-5xl lg:text-6xl font-garamond text-gray-800 leading-tight">
                                     Welcome to <span className="text-fdc5f5 font-garamond">Cult Events</span>
                                 </h1>
-                                <p className="text-lg md:text-xl text-gray-600 leading-relaxed font-garamond">
+                                <p className="text-md md:text-xl text-gray-600 leading-relaxed font-garamond">
                                     We believe every love story deserves a magical celebration. Our team of dedicated wedding planners brings your dreams to life with creativity, passion, and attention to every detail.
                                 </p>
-                                <div className="w-auto flex flex-wrap gap-4">
+                                <div className="w-auto flex flex-wrap gap-3">
                                     {/* First Button */}
                                     <motion.button
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
                                         onClick={() => navigate('/contact')}
                                         type="button" // Add explicit type
-                                        className="px-6 py-3 bg-[#d4a373] text-black rounded-full font-medium shadow-lg hover:bg-opacity-90 transition-all cursor-pointer"
+                                        className="px-3 py-3 bg-[#d4a373] text-black rounded-full font-medium shadow-lg hover:bg-opacity-90 transition-all cursor-pointer"
                                     >
                                         <span className="flex items-center gap-2">
                                             Start Planning
-                                            <ExternalLink className="w-4 h-4 transform group-hover:translate-x-0.5 transition-transform" />
+                                            <ExternalLink className="w-5 h-5 transform group-hover:translate-x-0.5 transition-transform" />
                                         </span>
                                     </motion.button>
 
