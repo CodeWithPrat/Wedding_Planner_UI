@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
     Calendar, Utensils, Book, Scissors, Gift,
     Clock, Users, ChevronRight, ArrowRight, Sparkles,
-    MapPin, Camera, Music, UtensilsCrossed, Plane, Hotel, IdCard
+    MapPin, Camera, Music, UtensilsCrossed, Plane, Hotel, IdCard, Heart, Star, ExternalLink
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -36,12 +36,7 @@ import pic209 from "../../assets/imgs/ServicesImgs/ServCardImgs/pic209.jpg"
 import pic210 from "../../assets/imgs/ServicesImgs/ServCardImgs/pic210.jpg"
 import pic211 from "../../assets/imgs/ServicesImgs/ServCardImgs/giftinvite.jpg"
 
-import pic16 from "../../assets/imgs/TestimonialImgs/pic16.jpg"
-import pic17 from "../../assets/imgs/TestimonialImgs/pic17.jpg"
-import pic18 from "../../assets/imgs/TestimonialImgs/pic18.jpg"
-import pic19 from "../../assets/imgs/TestimonialImgs/pic19.jpg"
-import pic20 from "../../assets/imgs/TestimonialImgs/pic20.jpg"
-import pic21 from "../../assets/imgs/TestimonialImgs/pic21.jpg"
+
 
 const FeatureIcon = ({ Icon, label }) => (
     <motion.div
@@ -181,10 +176,14 @@ const PackageCard = ({ title, description, features, imageSrc, linkTo, isReverse
     );
 };
 
+
+
 const Home = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isVisible, setIsVisible] = useState({});
     const [isHovered, setIsHovered] = useState(false);
+
+    const navigate = useNavigate();
 
     const packages = [
         {
@@ -470,61 +469,13 @@ const Home = () => {
         }
     ];
 
-    const testimonials = [
-        {
-            id: 1,
-            name: "Raghavendra Rao",
-            role: "Anandam Retirement Community",
-            image: pic18,
-            quote: "Working with Cult Event was an absolute pleasure! They organized our grand opening ceremony flawlessly. The attention to detail, beautiful décor, and seamless coordination exceeded our expectations. Highly recommend their services!",
-            rating: 5,
-            eventType: "Corporate Event"
-        },
-        {
-            id: 2,
-            names: "Priya & Arjun",
-            surname: "Sharma",
-            image: pic16,
-            quote: "Our wedding was a dream come true, all thanks to Cult Event! From the stunning venue to the exceptional catering, every moment was perfect. Their team made sure everything went smoothly, allowing us to enjoy our special day without any worries!",
-            rating: 5,
-            eventType: "Wedding Ceremony"
-        },
-        {
-            id: 3,
-            names: "Anita & Ravi",
-            surname: "Kumar",
-            image: pic17,
-            quote: "We chose Cult Event for our destination wedding, and it was the best decision ever! They took care of everything from travel arrangements to decorations. Our guests are still raving about the beautiful setup and delicious food!",
-            rating: 5,
-            eventType: "Destination Wedding"
-        },
-        {
-            id: 4,
-            name: "Deepak Jain",
-            role: "Corporate Client",
-            image: pic19,
-            quote: "Our annual corporate event was a huge success, thanks to Cult Event! They managed everything professionally, from the venue selection to the entertainment. Their creativity and organization made our event truly memorable!",
-            rating: 5,
-            eventType: "Corporate Event"
-        },
-        {
-            id: 5,
-            names: "Meena & Rajesh",
-            surname: "Singh",
-            image: pic20,
-            quote: "Thank you, Cult Event, for making our anniversary celebration so special! The décor was stunning, and the team was incredibly attentive. We couldn't have asked for a better experience!",
-            rating: 5,
-            eventType: "Anniversary Celebration"
-        },
-        {
-            id: 6,
-            names: "Nisha & Vinay",
-            surname: "Gupta",
-            image: pic21,
-            quote: "Our engagement was an amazing experience, all thanks to the team at Cult Event! They brought our vision to life with beautiful decorations and a fantastic atmosphere. We received so many compliments from our guests!",
-            rating: 5,
-            eventType: "Engagement Ceremony"
-        }
+
+
+    const features = [
+        { icon: Heart, title: "Personalized Planning", description: "Tailored to your unique love story" },
+        { icon: Calendar, title: "Seamless Coordination", description: "Every detail perfectly timed" },
+        { icon: Users, title: "Expert Team", description: "Dedicated professionals at your service" },
+        { icon: Star, title: "Magical Moments", description: "Creating memories that last forever" }
     ];
 
     useEffect(() => {
@@ -542,66 +493,111 @@ const Home = () => {
             <EnhancedCarousel />
 
             {/* Welcome Section */}
-            <section id="welcome" className=" py-14 md:py-14 lg:py-20 bg-gradient-to-b from-fffcf2 to-faedcd">
+            <section className="relative py-7 md:py-16 lg:py-20 overflow-hidden ">
+                {/* Decorative background elements */}
+                <div className="absolute inset-0 opacity-10">
+                    <div className="absolute top-0 left-0 w-64 h-64 bg-fdc5f5 rounded-full filter blur-3xl transform -translate-x-1/2 -translate-y-1/2" />
+                    <div className="absolute bottom-0 right-0 w-64 h-64 bg-ffc2d1 rounded-full filter blur-3xl transform translate-x-1/2 translate-y-1/2" />
+                </div>
+
                 <motion.div
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: isVisible.welcome ? 1 : 0, y: isVisible.welcome ? 0 : 50 }}
-                    transition={{ duration: 0.8 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
                     className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
                 >
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                        {/* Left Column - Text Content */}
                         <div className="space-y-8">
-                            <motion.h2
-                                initial={{ opacity: 0, x: -50 }}
-                                animate={{ opacity: isVisible.welcome ? 1 : 0, x: isVisible.welcome ? 0 : -50 }}
-                                transition={{ duration: 0.8, delay: 0.2 }}
-                                className="text-4xl md:text-5xl font-garamond text-gray-800 leading-tight"
-                            >
-                                Welcome to <span className="text-fdc5f5 font-garamond">Cult Events</span>
-                            </motion.h2>
-                            <motion.p
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: isVisible.welcome ? 1 : 0 }}
-                                transition={{ duration: 0.8, delay: 0.4 }}
-                                className="text-lg text-gray-600 leading-relaxed font-garamond"
-                            >
-                                We believe every love story deserves a magical celebration. Our team of dedicated wedding planners brings your dreams to life with creativity, passion, and attention to every detail.
-                            </motion.p>
                             <motion.div
-                                whileHover={{ scale: 1.02 }}
-                                className="inline-block"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="space-y-6"
                             >
-                                <Link
-                                    to="/about"
-                                    className="group inline-flex items-center space-x-3 text-ffc2d1 
-                                                hover:text-ffcfd2 font-medium font-garamond transition-colors duration-300"
-                                >
-                                    <span>Learn More About Us</span>
-                                    <ChevronRight className="h-5 w-5 transform group-hover:translate-x-1 transition-transform" />
-                                </Link>
+                                <h1 className="text-4xl md:text-5xl lg:text-6xl font-garamond text-gray-800 leading-tight">
+                                    Welcome to <span className="text-fdc5f5 font-garamond">Cult Events</span>
+                                </h1>
+                                <p className="text-lg md:text-xl text-gray-600 leading-relaxed font-garamond">
+                                    We believe every love story deserves a magical celebration. Our team of dedicated wedding planners brings your dreams to life with creativity, passion, and attention to every detail.
+                                </p>
+                                <div className="w-auto flex flex-wrap gap-4">
+                                    {/* First Button */}
+                                    <motion.button
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        onClick={() => navigate('/contact')}
+                                        type="button" // Add explicit type
+                                        className="px-6 py-3 bg-[#d4a373] text-black rounded-full font-medium shadow-lg hover:bg-opacity-90 transition-all cursor-pointer"
+                                    >
+                                        <span className="flex items-center gap-2">
+                                            Start Planning
+                                            <ExternalLink className="w-4 h-4 transform group-hover:translate-x-0.5 transition-transform" />
+                                        </span>
+                                    </motion.button>
+
+                                    {/* Second Button */}
+                                    <motion.button
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        onClick={() => navigate('/about')}
+                                        type="button" // Add explicit type
+                                        className="group inline-flex items-center px-6 py-3 space-x-2 text-[#000000] hover:text-[#96742a] font-medium transition-colors duration-300 cursor-pointer"
+                                    >
+                                        <span className="flex items-center gap-2">
+                                            Learn More
+                                            <ChevronRight className="h-5 w-5 transform group-hover:translate-x-1 transition-transform" />
+                                        </span>
+                                    </motion.button>
+                                </div>
                             </motion.div>
+
+                            {/* Features Grid */}
+                            <div className="grid grid-cols-2 gap-6 mt-12">
+                                {features.map((Feature, index) => (
+                                    <motion.div
+                                        key={index}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.1 * index }}
+                                        className="p-4 bg-white bg-opacity-50 rounded-xl"
+                                    >
+                                        <Feature.icon className="h-8 w-8 text-fdc5f5 mb-2" />
+                                        <h3 className="font-garamond text-lg font-medium text-gray-800">{Feature.title}</h3>
+                                        <p className="text-gray-600 text-sm">{Feature.description}</p>
+                                    </motion.div>
+                                ))}
+                            </div>
                         </div>
-                        <div className="grid grid-cols-2 gap-6">
-                            {[pic4, pic5, pic6, pic7].map((pic, index) => (
-                                <motion.div
-                                    key={index}
-                                    whileHover={{ scale: 1.05 }}
-                                    initial={{ opacity: 0, y: 50 }}
-                                    animate={{
-                                        opacity: isVisible.welcome ? 1 : 0,
-                                        y: isVisible.welcome ? 0 : 50
-                                    }}
-                                    transition={{ duration: 0.8, delay: 0.2 * index }}
-                                    className={`relative rounded-2xl overflow-hidden shadow-2xl ${index % 2 === 1 ? 'mt-12' : ''}`}
-                                >
-                                    <img
-                                        src={pic}
-                                        alt={`Wedding moment ${index + 1}`}
-                                        className="w-full h-full object-cover"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                                </motion.div>
-                            ))}
+
+                        {/* Right Column - Image Grid */}
+                        <div className="relative">
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                className="grid grid-cols-2 gap-4 md:gap-6"
+                            >
+                                {[pic4, pic5, pic6, pic7].map((pic, index) => (
+                                    <motion.div
+                                        key={index}
+                                        whileHover={{ scale: 1.05 }}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.2 * index }}
+                                        className={`relative rounded-2xl overflow-hidden shadow-2xl ${index % 2 === 1 ? 'mt-8' : ''
+                                            }`}
+                                    >
+                                        <img
+                                            src={pic}
+                                            alt={`Wedding moment ${index + 1}`}
+                                            className="w-full h-64 object-cover"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                                    </motion.div>
+                                ))}
+                            </motion.div>
+
+                            {/* Decorative elements */}
+                            <div className="absolute -right-8 -bottom-8 w-64 h-64 bg-ffc2d1 opacity-20 rounded-full filter blur-3xl" />
+                            <div className="absolute -left-8 -top-8 w-64 h-64 bg-fdc5f5 opacity-20 rounded-full filter blur-3xl" />
                         </div>
                     </div>
                 </motion.div>
@@ -725,26 +721,6 @@ const Home = () => {
                         <ServiceMenu serviceCategories={serviceCategories} />
                     </motion.div>
                 </div>
-
-                {/* Enhanced Bottom Wave */}
-                <div className="absolute bottom-0 left-0 right-0 pointer-events-none">
-                    <div className="relative">
-                        <svg
-                            className="w-full h-24 fill-[#dda15e]/10 transform translate-y-1"
-                            viewBox="0 0 1200 120"
-                            preserveAspectRatio="none"
-                        >
-                            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" />
-                        </svg>
-                        <svg
-                            className="w-full h-24 fill-[#dda15e]/5 absolute bottom-0 transform translate-y-1/2"
-                            viewBox="0 0 1200 120"
-                            preserveAspectRatio="none"
-                        >
-                            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" />
-                        </svg>
-                    </div>
-                </div>
             </section>
 
 
@@ -828,11 +804,11 @@ const Home = () => {
 
             {/* Testimonials Section */}
             <section className=" mt-6">
-                <TestimonialsHome testimonials={testimonials} />
+                <TestimonialsHome />
             </section>
 
             {/* Enhanced CTA Section */}
-            <section id="cta" className="relative py-32 overflow-hidden">
+            <section id="cta" className="relative py-32 overflow-hidden mb-[-50px]">
                 <div className="absolute inset-0">
                     <video
                         src={vid1}
@@ -847,7 +823,7 @@ const Home = () => {
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: isVisible.cta ? 1 : 0, y: isVisible.cta ? 0 : 50 }}
                     transition={{ duration: 0.8 }}
-                    className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+                    className="relative max-w-full mx-auto px-4 sm:px-6 lg:px-8 text-center"
                 >
                     <h2 className="text-4xl md:text-6xl font-garamond text-white mb-8">
                         Ready to Begin Your Wedding Journey?

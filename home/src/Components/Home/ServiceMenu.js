@@ -153,7 +153,7 @@ const ServiceMenu = ({ serviceCategories }) => {
       height: '470px', // Fixed height for mobile
       transition: `all ${CONSTANTS.TRANSITION_DURATION}ms cubic-bezier(0.4, 0, 0.2, 1)`,
     };
-    
+
     if (isActive) {
       return {
         ...baseStyles,
@@ -289,7 +289,7 @@ const ServiceMenu = ({ serviceCategories }) => {
         onTouchEnd={touchHandlers.end}
       >
         <motion.div
-          className={`flex relative ${isMobile ? 'min-h-[500px]' : ''}`}
+          className={`flex relative ${isMobile ? 'min-h-[400px]' : ''}`}
           style={{
             height: isMobile && expandedCardId ? 'auto' : undefined,
             minHeight: isMobile && expandedCardId ? '750px' : undefined

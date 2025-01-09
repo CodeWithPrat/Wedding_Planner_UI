@@ -148,13 +148,13 @@ const ServiceFiveDesign = () => {
                   {service.description}
                 </p>
 
-                <motion.button
+                {/* <motion.button
                   whileHover={{ x: 5 }}
                   className="flex items-center text-[#dda15e] font-garamond font-semibold"
                 >
                   Learn More 
                   <ArrowRight className="ml-2 w-4 h-4" />
-                </motion.button>
+                </motion.button> */}
 
                 <motion.div
                   initial={{ width: 0 }}

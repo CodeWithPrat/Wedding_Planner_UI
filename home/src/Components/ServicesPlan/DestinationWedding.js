@@ -12,6 +12,7 @@ import {
     Heart,
     ChevronDown
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 import pic301 from "../../assets/imgs/DestinationWeddingImgs/pic301.jpg"
 import pic302 from "../../assets/imgs/DestinationWeddingImgs/pic302.jpg"
@@ -108,16 +109,19 @@ const DestinationWedding = () => {
                         >
                             Create unforgettable memories in breathtaking locations
                         </motion.p>
-                        <motion.button
-                            initial={{ y: 20, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            transition={{ delay: 0.6 }}
-                            className="bg-[#dda15e] text-white px-6 md:px-8 font-garamond py-2 md:py-3 rounded-full text-base md:text-lg hover:bg-[#252422] transition-all"
-                        >
-                            Start Planning
-                        </motion.button>
+                        <Link to="/contact">
+                            <motion.button
+                                initial={{ y: 20, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                transition={{ delay: 0.6 }}
+                                className="bg-[#dda15e] text-white px-6 md:px-8 font-garamond py-2 md:py-3 rounded-full text-base md:text-lg hover:bg-[#252422] transition-all"
+                            >
+                                Start Planning
+                            </motion.button>
+                        </Link>
+
                     </div>
 
                     {/* Carousel Navigation Dots */}
@@ -129,8 +133,8 @@ const DestinationWedding = () => {
                                 whileHover={{ scale: 1.2 }}
                                 whileTap={{ scale: 0.9 }}
                                 className={`h-2 transition-all duration-300 rounded-full ${activeImage === index
-                                        ? 'w-6 bg-[#dda15e]'
-                                        : 'w-2 bg-white/50 hover:bg-white/80'
+                                    ? 'w-6 bg-[#dda15e]'
+                                    : 'w-2 bg-white/50 hover:bg-white/80'
                                     }`}
                                 aria-label={`Go to slide ${index + 1}`}
                             />
@@ -244,13 +248,16 @@ const DestinationWedding = () => {
                                             </motion.li>
                                         ))}
                                     </ul>
-                                    <motion.button
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        className="w-full font-garamond bg-[#dda15e] text-white py-3 rounded-lg hover:bg-[#252422] transition-colors"
-                                    >
-                                        Choose Package
-                                    </motion.button>
+                                    <Link to="/contact">
+                                        <motion.button
+                                            whileHover={{ scale: 1.05 }}
+                                            whileTap={{ scale: 0.95 }}
+                                            className="w-full font-garamond bg-[#dda15e] text-white py-3 rounded-lg hover:bg-[#252422] transition-colors"
+                                        >
+                                            Choose Package
+                                        </motion.button>
+                                    </Link>
+
                                 </div>
                             </motion.div>
                         ))}
@@ -325,16 +332,19 @@ const DestinationWedding = () => {
                     >
                         Let's create your perfect destination wedding together
                     </motion.p>
-                    <motion.button
-                        initial={{ y: 20, opacity: 0 }}
-                        whileInView={{ y: 0, opacity: 1 }}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        transition={{ delay: 0.4 }}
-                        className="bg-[#dda15e] font-garamond text-white px-8 py-3 rounded-full text-lg hover:bg-white hover:text-[#252422] transition-all"
-                    >
-                        Contact Us Today
-                    </motion.button>
+                    <Link to="/contact">
+                        <motion.button
+                            initial={{ y: 20, opacity: 0 }}
+                            whileInView={{ y: 0, opacity: 1 }}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            transition={{ delay: 0.4 }}
+                            className="bg-[#dda15e] font-garamond text-white px-8 py-3 rounded-full text-lg hover:bg-white hover:text-[#252422] transition-all"
+                        >
+                            Contact Us Today
+                        </motion.button>
+                    </Link>
+
                 </div>
             </motion.div>
         </div>

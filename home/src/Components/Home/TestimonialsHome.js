@@ -1,313 +1,289 @@
 import React, { useState, useEffect } from 'react';
-import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
-import { motion, AnimatePresence, useAnimation } from 'framer-motion';
-import { useSwipeable } from 'react-swipeable';
-import { Link } from 'react-router-dom';
+import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
 
-// Testimonial Card Component
-const TestimonialCard = ({ testimonial, index, isActive, total }) => {
-  // Calculate opacity and scale based on position
-  const getStyles = () => {
-    if (!isActive) {
-      return {
-        opacity: 0.3,
-        scale: 0.85,
-        y: 20
-      };
+import pic16 from "../../assets/imgs/TestimonialImgs/pic16.jpg"
+import pic17 from "../../assets/imgs/TestimonialImgs/pic17.jpg"
+import pic18 from "../../assets/imgs/TestimonialImgs/pic18.jpg"
+import pic19 from "../../assets/imgs/TestimonialImgs/pic19.jpg"
+import pic20 from "../../assets/imgs/TestimonialImgs/pic20.jpg"
+import pic21 from "../../assets/imgs/TestimonialImgs/pic21.jpg"
+
+const TestimonialCarousel = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [position, setPosition] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  const testimonials = [
+    {
+      id: 1,
+      name: "Raghavendra Rao",
+      role: "Anandam Retirement Community",
+      image: pic18,
+      quote: "Working with Cult Event was an absolute pleasure! They organized our grand opening ceremony flawlessly. The attention to detail, beautiful décor, and seamless coordination exceeded our expectations. Highly recommend their services!",
+      rating: 5,
+      eventType: "Corporate Event"
+    },
+    {
+      id: 2,
+      names: "Priya & Arjun",
+      surname: "Sharma",
+      image: pic16,
+      quote: "Our wedding was a dream come true, all thanks to Cult Event! From the stunning venue to the exceptional catering, every moment was perfect. Their team made sure everything went smoothly, allowing us to enjoy our special day without any worries!",
+      rating: 5,
+      eventType: "Wedding Ceremony"
+    },
+    {
+      id: 3,
+      names: "Anita & Ravi",
+      surname: "Kumar",
+      image: pic17,
+      quote: "We chose Cult Event for our destination wedding, and it was the best decision ever! They took care of everything from travel arrangements to decorations. Our guests are still raving about the beautiful setup and delicious food!",
+      rating: 5,
+      eventType: "Destination Wedding"
+    },
+    {
+      id: 4,
+      name: "Deepak Jain",
+      role: "Corporate Client",
+      image: pic19,
+      quote: "Our annual corporate event was a huge success, thanks to Cult Event! They managed everything professionally, from the venue selection to the entertainment. Their creativity and organization made our event truly memorable!",
+      rating: 5,
+      eventType: "Corporate Event"
+    },
+    {
+      id: 5,
+      names: "Meena & Rajesh",
+      surname: "Singh",
+      image: pic20,
+      quote: "Thank you, Cult Event, for making our anniversary celebration so special! The décor was stunning, and the team was incredibly attentive. We couldn't have asked for a better experience!",
+      rating: 5,
+      eventType: "Anniversary Celebration"
+    },
+    {
+      id: 6,
+      names: "Nisha & Vinay",
+      surname: "Gupta",
+      image: pic21,
+      quote: "Our engagement was an amazing experience, all thanks to the team at Cult Event! They brought our vision to life with beautiful decorations and a fantastic atmosphere. We received so many compliments from our guests!",
+      rating: 5,
+      eventType: "Engagement Ceremony"
     }
-    return {
-      opacity: 1,
-      scale: 1,
-      y: 0
-    };
+  ];
+
+  // Constants for desktop view
+  const CARD_WIDTH = 400; // Width of each card
+  const CARD_GAP = 24; // Gap between cards
+  const ANIMATION_SPEED = 50; // Lower number = faster animation
+
+  // Mobile view handlers
+  const handleNext = () => {
+    if (!isAnimating) {
+      setIsAnimating(true);
+      setActiveIndex((prev) => (prev + 1) % testimonials.length);
+      setTimeout(() => setIsAnimating(false), 500);
+    }
+  };
+
+  const handlePrev = () => {
+    if (!isAnimating) {
+      setIsAnimating(true);
+      setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+      setTimeout(() => setIsAnimating(false), 500);
+    }
+  };
+
+  const handleTouchStart = (e) => {
+    setTouchStart(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!isAnimating) {
+      if (touchStart - touchEnd > 75) {
+        handleNext();
+      }
+      if (touchStart - touchEnd < -75) {
+        handlePrev();
+      }
+    }
+  };
+
+  // Desktop animation effect
+  useEffect(() => {
+    if (window.innerWidth >= 768) {
+      const animate = () => {
+        setPosition((prev) => {
+          const newPosition = prev - 1;
+          const maxOffset = -(testimonials.length * (CARD_WIDTH + CARD_GAP));
+          return newPosition <= maxOffset ? 0 : newPosition;
+        });
+      };
+
+      const interval = setInterval(animate, ANIMATION_SPEED);
+      return () => clearInterval(interval);
+    }
+  }, [testimonials.length]);
+
+  // Mobile view card style handler
+  const getCardStyle = (index) => {
+    const isActive = index === activeIndex;
+    const isPrev = (index === activeIndex - 1) || (activeIndex === 0 && index === testimonials.length - 1);
+    const isNext = (index === activeIndex + 1) || (activeIndex === testimonials.length - 1 && index === 0);
+
+    let classes = 'absolute transition-all duration-500 ease-out';
+
+    if (window.innerWidth < 768) {
+      if (isActive) {
+        return `${classes} left-1/2 -translate-x-1/2 scale-100 opacity-100 z-30`;
+      }
+      if (isPrev) {
+        return `${classes} left-0 -translate-x-[10%] scale-90 opacity-70 z-20`;
+      }
+      if (isNext) {
+        return `${classes} right-0 translate-x-[10%] scale-90 opacity-70 z-20`;
+      }
+      return `${classes} left-1/2 -translate-x-1/2 scale-75 opacity-0 z-10`;
+    }
+
+    return classes;
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={getStyles()}
-      transition={{
-        duration: 0.4,
-        ease: "easeOut"
-      }}
-      className="relative w-full"
-    >
-      <div className="relative group cursor-pointer">
-        {/* Card background layers */}
-        <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-accent/10 rounded-3xl 
-                    transform rotate-2 group-hover:rotate-3 transition-transform duration-300" />
-        <div className="absolute inset-0 bg-white/50 rounded-3xl 
-                    transform -rotate-1 group-hover:rotate-0 transition-transform duration-300" />
-        
-        {/* Main content */}
-        <div className="relative p-6 md:p-8 bg-white/90 rounded-3xl shadow-xl hover:shadow-2xl 
-                    transition-all duration-300 transform group-hover:-translate-y-2">
-          {/* Profile section */}
-          <div className="flex items-center gap-4 md:gap-6 mb-6">
-            <motion.div
-              whileHover={{ scale: 1.05, rotate: 3 }}
-              className="relative"
+    <div className="relative w-full bg-[#f4f3ee] py-2 md:py-2 overflow-hidden font-garamond">
+      <div className="max-w-full mx-auto px-4">
+        <h2 className="text-4xl md:text-5xl text-center mb-16 text-[#dda15e] font-bold">
+          Client Testimonials
+        </h2>
+
+        {/* Mobile View */}
+        <div
+          className="relative h-[450px] md:hidden mt-[-45px] mb-14"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          {testimonials.map((testimonial, index) => (
+            <div
+              key={testimonial.id}
+              className={`w-[100%] ${getCardStyle(index)}`}
             >
-              <div className="absolute inset-0 bg-accent/20 rounded-full transform rotate-6" />
-              <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-4 border-white shadow-lg relative">
-                {testimonial.image ? (
-                  <img 
-                    src={testimonial.image}
-                    alt={`${testimonial.names || testimonial.name} ${testimonial.surname || ''}`}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-full bg-accent/10 flex items-center justify-center">
-                    <span className="text-xl md:text-2xl font-semibold text-accent">
-                      {(testimonial.names?.[0] || testimonial.name?.[0] || '?')}
-                    </span>
-                  </div>
-                )}
-              </div>
-            </motion.div>
-            
-            <div className="flex-1">
-              <motion.div 
-                whileHover={{ x: 3 }}
-                className="space-y-1"
-              >
-                <h4 className="text-lg md:text-xl font-garamond font-semibold text-slate-800">
-                  {testimonial.names || testimonial.name}
-                  {testimonial.surname && (
-                    <span className="ml-1 text-slate-700">{testimonial.surname}</span>
-                  )}
-                </h4>
-                {testimonial.role && (
-                  <p className="text-sm text-gray-600 font-garamond">
-                    {testimonial.role}
-                  </p>
-                )}
-              </motion.div>
-              <div className="flex items-center gap-2 md:gap-3 mt-2">
-                <p className="text-sm text-gray-950 font-garamond italic">
-                  {testimonial.eventType}
-                </p>
-                <div className="h-4 w-px bg-accent/30" />
-                <div className="flex gap-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <Star 
-                      key={i}
-                      className={`w-3 h-3 md:w-4 md:h-4 ${
-                        i < testimonial.rating 
-                          ? 'fill-amber-500 text-amber-500' 
-                          : 'fill-gray-200 text-gray-200'
-                      }`} 
+              <div className="bg-gradient-to-br from-[#f8f9fa] to-[#f4f3ee] rounded-3xl shadow-2xl p-6 md:p-8 transition-all duration-300 hover:shadow-3xl border border-[#dda15e]/10">
+                <div className="relative mb-8">
+                  <div className="w-24 h-24 mx-auto relative">
+                    <div className="absolute inset-0 bg-[#dda15e] rounded-full opacity-10"></div>
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name || testimonial.names}
+                      className="w-full h-full object-cover rounded-full ring-4 ring-[#dda15e]/20"
                     />
-                  ))}
+                    <Quote className="absolute -bottom-2 -right-2 w-8 h-8 text-[#dda15e] bg-[#f8f9fa] rounded-full p-1" />
+                  </div>
+                </div>
+
+                <div className="text-center">
+                  <div className="flex justify-center gap-1 mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 fill-[#dda15e] text-[#dda15e]" />
+                    ))}
+                  </div>
+
+                  <p className="text-lg mb-6 italic text-gray-700 leading-relaxed">
+                    {testimonial.quote}
+                  </p>
+
+                  <div className="pt-4 mt-4 border-t border-[#dda15e]/10">
+                    <h3 className="text-xl font-semibold text-[#dda15e]">
+                      {testimonial.name || `${testimonial.names} ${testimonial.surname}`}
+                    </h3>
+                    <p className="text-gray-600 mt-1">
+                      {testimonial.role || testimonial.eventType}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Quote section */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="relative"
-          >
-            <Quote className="absolute -top-4 -left-2 w-8 h-8 md:w-10 md:h-10 text-pink-700 transform -rotate-12" />
-            <motion.p
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="text-zinc-700 font-garamond text-base md:text-lg leading-relaxed pl-6 md:pl-8 italic"
-            >
-              {testimonial.quote}
-            </motion.p>
-          </motion.div>
-
-          {/* Decorative corners */}
-          <div className="absolute top-0 right-0 w-16 h-16 md:w-20 md:h-20 overflow-hidden rounded-tr-3xl">
-            <div className="absolute top-0 right-0 w-6 h-6 md:w-8 md:h-8 bg-accent/5 transform rotate-45 translate-x-3 -translate-y-3" />
-          </div>
-          <div className="absolute bottom-0 left-0 w-16 h-16 md:w-20 md:h-20 overflow-hidden rounded-bl-3xl">
-            <div className="absolute bottom-0 left-0 w-6 h-6 md:w-8 md:h-8 bg-accent/5 transform rotate-45 -translate-x-3 translate-y-3" />
-          </div>
+          ))}
         </div>
-      </div>
-    </motion.div>
-  );
-};
 
-const TestimonialsHome = ({ testimonials }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  const controls = useAnimation();
-
-  // Check if device is mobile
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  // Handle navigation
-  const navigate = (newDirection) => {
-    if (isDragging) return;
-    
-    const newIndex = (activeIndex + newDirection + testimonials.length) % testimonials.length;
-    setActiveIndex(newIndex);
-    
-    controls.start({
-      x: [-newDirection * 50, 0],
-      transition: { duration: 0.3 }
-    });
-  };
-
-  // Swipe handlers
-  const swipeHandlers = useSwipeable({
-    onSwipeStart: () => setIsDragging(true),
-    onSwipedLeft: () => {
-      setIsDragging(false);
-      navigate(1);
-    },
-    onSwipedRight: () => {
-      setIsDragging(false);
-      navigate(-1);
-    },
-    preventDefaultTouchmoveEvent: true,
-    trackMouse: true,
-    delta: 50, // Minimum swipe distance
-    swipeDuration: 500, // Maximum time for swipe
-    trackTouch: true
-  });
-
-  // Get visible testimonials based on device
-  const getVisibleTestimonials = () => {
-    if (isMobile) {
-      return [testimonials[activeIndex]];
-    }
-    
-    let visibleCards = testimonials.slice(activeIndex, activeIndex + 3);
-    if (visibleCards.length < 3) {
-      visibleCards = [...visibleCards, ...testimonials.slice(0, 3 - visibleCards.length)];
-    }
-    return visibleCards;
-  };
-
-  return (
-    <div className="relative w-full overflow-hidden bg-gradient-to-b from-[#f4f3ee] via-[#f4f3ee] to-[#f4f3ee]">
-      {/* Background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 bg-accent1/5 rounded-full blur-3xl" />
-        <div className="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 bg-accent1/5 rounded-full blur-3xl" />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        {/* Header */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-12 md:mb-16"
-        >
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="inline-block px-6 py-2 bg-accent/10 text-black rounded-full text-sm font-garamond mb-2"
+        {/* Desktop View */}
+        <div className="hidden md:block relative h-[400px] overflow-hidden mt-[-45px]">
+          <div 
+            className="flex transition-transform duration-300 ease-linear"
+            style={{
+              transform: `translateX(${position}px)`,
+              gap: `${CARD_GAP}px`,
+            }}
           >
-            Testimonials
-          </motion.span>
-          <h2 className="text-3xl md:text-4xl lg:text-6xl font-garamond font-bold text-black mb-2">
-            What Our Clients Say
-          </h2>
-          <div className="w-24 md:w-36 h-1 bg-accent mx-auto rounded-full mb-6 transform transition-all duration-300 hover:scale-x-110" />
-          <p className="text-lg md:text-xl text-gray-700 font-garamond max-w-2xl mx-auto leading-relaxed">
-            Real stories from our happy couples and clients who trusted us with their special moments
-          </p>
-        </motion.div>
+            {[...testimonials, ...testimonials].map((testimonial, index) => (
+              <div
+                key={`${testimonial.id}-${index}`}
+                className="flex-shrink-0"
+                style={{ width: `${CARD_WIDTH}px` }}
+              >
+                <div className="bg-gradient-to-br from-[#f8f9fa] to-[#f4f3ee] rounded-3xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl border border-[#dda15e]/10">
+                  <div className="relative mb-6">
+                    <div className="w-20 h-20 mx-auto relative">
+                      <div className="absolute inset-0 bg-[#dda15e] rounded-full opacity-10"></div>
+                      <img
+                        src={testimonial.image}
+                        alt={testimonial.name || testimonial.names}
+                        className="w-full h-full object-cover rounded-full ring-4 ring-[#dda15e]/20"
+                      />
+                      <Quote className="absolute -bottom-2 -right-2 w-6 h-6 text-[#dda15e] bg-[#f8f9fa] rounded-full p-1" />
+                    </div>
+                  </div>
 
-        {/* Testimonials slider */}
-        <div className="relative" {...swipeHandlers}>
-          <motion.div animate={controls}>
-            <div className={`grid ${isMobile ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'} gap-6 md:gap-8`}>
-              {getVisibleTestimonials().map((testimonial, index) => (
-                <TestimonialCard 
-                  key={`${testimonial.id}-${index}`}
-                  testimonial={testimonial}
-                  index={index}
-                  isActive={isMobile ? true : index === Math.floor(getVisibleTestimonials().length / 2)}
-                  total={testimonials.length}
-                />
-              ))}
-            </div>
-          </motion.div>
+                  <div className="text-center">
+                    <div className="flex justify-center gap-1 mb-3">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-[#dda15e] text-[#dda15e]" />
+                      ))}
+                    </div>
 
-          {/* Navigation */}
-          <div className="flex justify-center items-center gap-4 mt-8 md:mt-12">
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={() => navigate(-1)}
-              className="p-2 md:p-3 rounded-full bg-white shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-accent" />
-            </motion.button>
-            
-            <div className="flex gap-2">
-              {testimonials.map((_, index) => (
-                <motion.div
-                  key={index}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                    index === activeIndex ? 'bg-accent w-6' : 'bg-accent/30'
-                  }`}
-                  whileHover={{ scale: 1.2 }}
-                  onClick={() => setActiveIndex(index)}
-                />
-              ))}
-            </div>
+                    <p className="text-base mb-4 italic text-gray-700 leading-relaxed line-clamp-4">
+                      {testimonial.quote}
+                    </p>
 
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={() => navigate(1)}
-              className="p-2 md:p-3 rounded-full bg-white shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-accent" />
-            </motion.button>
+                    <div className="pt-3 mt-3 border-t border-[#dda15e]/10">
+                      <h3 className="text-lg font-semibold text-[#dda15e]">
+                        {testimonial.name || `${testimonial.names} ${testimonial.surname}`}
+                      </h3>
+                      <p className="text-sm text-gray-600 mt-1">
+                        {testimonial.role || testimonial.eventType}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Call to action */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="text-center mt-8 md:mt-10 mb-5"
-        >
-          <motion.button
-            whileHover={{ scale: 1.05, y: -3 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 md:px-10 py-3 md:py-4 bg-pink-300 text-black rounded-full font-garamond 
-                     text-base md:text-lg hover:bg-accent/90 transition-all duration-300 
-                     shadow-lg hover:shadow-xl relative overflow-hidden group"
+        {/* Navigation buttons (mobile only) */}
+        <div className="md:hidden absolute top-1/2 -translate-y-1/2 w-full px-4">
+          <button
+            onClick={handlePrev}
+            className="absolute left-6 w-10 h-10 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-sm shadow-lg hover:bg-[#dda15e] hover:text-white transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#dda15e] focus:ring-opacity-50"
+            aria-label="Previous testimonial"
           >
-            <Link
-            to="/contact"
-            >
-            <span className="relative z-10">Share Your Experience With Cult Events</span> 
-            <div className="absolute inset-0 bg-pink-200 transform scale-x-0 group-hover:scale-x-100 
-                          transition-transform duration-500 origin-left opacity-10" />
-            </Link>
-            
-          </motion.button>
-        </motion.div>
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          <button
+            onClick={handleNext}
+            className="absolute right-6 w-10 h-10 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-sm shadow-lg hover:bg-[#dda15e] hover:text-white transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#dda15e] focus:ring-opacity-50"
+            aria-label="Next testimonial"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
-export default TestimonialsHome;
+export default TestimonialCarousel;
