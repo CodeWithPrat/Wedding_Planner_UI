@@ -5,7 +5,59 @@ import pic1 from "./../../assets/imgs/HomeImgs/pic1.jpg"
 import pic3 from "./../../assets/imgs/HomeImgs/pic3.jpg"
 import pic4 from "./../../assets/imgs/HomeImgs/pic4.jpg"
 
+// Custom hook for screen size detection
+const useScreenSize = () => {
+  const [screenSize, setScreenSize] = useState({
+    isMobile: false,
+    isLandscape: false
+  });
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setScreenSize({
+        isMobile: window.innerWidth <= 768, // Standard mobile breakpoint
+        isLandscape: window.innerWidth > window.innerHeight && window.innerWidth < 1024
+      });
+    };
+
+    // Check on mount
+    checkScreenSize();
+
+    // Add event listener
+    window.addEventListener('resize', checkScreenSize);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
+  return screenSize;
+};
+
+// Custom hook for detecting mobile screen
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768); // Standard mobile breakpoint
+    };
+
+    // Check initially
+    checkMobile();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', checkMobile);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  return isMobile;
+};
+
+
 const EnhancedCarousel = () => {
+  const isMobile = useIsMobile();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [touchStart, setTouchStart] = useState(null);
@@ -125,11 +177,37 @@ const EnhancedCarousel = () => {
     setTouchStart(null);
   };
 
+  const getMobileStyles = () => ({
+    container: 'h-[calc(100vh-60px)] min-h-[400px]', // Adjusted height for mobile
+    heading: 'text-2xl sm:text-3xl', // Smaller text for mobile
+    subtitle: 'text-base sm:text-lg',
+    description: 'text-sm hidden sm:block', // Hide description on very small screens
+    features: 'gap-2 mt-2',
+    buttons: 'space-y-2 mt-4',
+    navigationArrows: 'w-4 h-4',
+    progressIndicators: 'bottom-4 space-x-2'
+  });
+
+  // Desktop styles (your existing styles)
+  const getDesktopStyles = () => ({
+    container: 'h-screen max-h-[700px] min-h-[500px]',
+    heading: 'text-4xl sm:text-5xl md:text-6xl lg:text-7xl',
+    subtitle: 'text-xl sm:text-2xl',
+    description: 'text-base sm:text-lg',
+    features: 'gap-6 mt-2',
+    buttons: 'space-y-4 sm:space-y-0 sm:space-x-6 mt-8',
+    navigationArrows: 'w-6 h-6 sm:w-8 sm:h-8',
+    progressIndicators: 'bottom-8 space-x-4'
+  });
+
+  const styles = isMobile ? getMobileStyles() : getDesktopStyles();
+
   return (
     <div
-      className={`relative mx-auto overflow-hidden bg-black w-full ${
-        isLandscape ? 'h-screen' : 'h-screen max-h-[700px]'
-      } min-h-[500px]`}
+      className={`relative mx-auto overflow-hidden bg-black w-full transition-height duration-300 mt-[-25px] ease-in-out ${isMobile
+          ? 'h-[400px]'
+          : 'h-[800px]'
+        }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onTouchStart={handleTouchStart}
@@ -138,22 +216,19 @@ const EnhancedCarousel = () => {
       {slides.map((slide, index) => (
         <div
           key={index}
-          className={`absolute inset-0 transition-all duration-700 ease-in-out ${
-            index === currentSlide
+          className={`absolute inset-0 transition-all duration-700 ease-in-out ${index === currentSlide
               ? 'opacity-100 translate-x-0 scale-100'
-              : `opacity-0 scale-105 ${
-                  direction > 0 ? 'translate-x-full' : '-translate-x-full'
-                }`
-          }`}
+              : `opacity-0 scale-105 ${direction > 0 ? 'translate-x-full' : '-translate-x-full'
+              }`
+            }`}
         >
           {/* Image and Overlays */}
           <div className="relative h-full w-full">
             <img
               src={slide.imageUrl}
               alt={slide.title}
-              className={`h-full w-full object-cover ${
-                isLandscape ? 'object-center' : ''
-              }`}
+              className={`h-full w-full object-cover ${isLandscape ? 'object-center' : ''
+                }`}
             />
 
             {/* Gradient Overlays */}
@@ -161,69 +236,63 @@ const EnhancedCarousel = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
 
             {/* Content */}
-            <div className={`absolute inset-0 flex items-center justify-center px-4 sm:px-8 md:px-12 ${
-              isLandscape ? 'landscape-content' : ''
-            }`}>
-              <div className={`max-w-6xl w-full ${isLandscape ? 'flex items-center' : ''}`}>
-                <div className={`text-center space-y-4 ${isLandscape ? 'space-y-2' : 'space-y-6'}`}>
-                  {/* Highlight Badge */}
-                  <div className="flex justify-center">
-                    <span className={`${slide.accent} text-white px-4 py-1 rounded-full text-sm font-medium tracking-wide transform -translate-y-2 opacity-90`}>
-                      {slide.highlight}
-                    </span>
-                  </div>
+            <div className={`absolute inset-0 flex items-center justify-center px-4 ${isMobile ? 'py-8' : 'sm:px-8 md:px-12'
+              }`}>
+              <div className={`max-w-6xl w-full ${isMobile ? 'space-y-4' : ''}`}>
+                {/* Highlight Badge */}
+                <div className="flex justify-center">
+                  <span className={`${slide.accent} text-white px-4 py-1 rounded-full ${isMobile ? 'text-xs' : 'text-sm'
+                    } font-medium tracking-wide transform -translate-y-2 opacity-90`}>
+                    {slide.highlight}
+                  </span>
+                </div>
 
-                  {/* Main Content */}
-                  <div className={`space-y-4 ${isLandscape ? 'space-y-2' : 'space-y-6'}`}>
-                    <h1 className={`font-garamond text-white leading-tight tracking-tight ${
-                      isLandscape ? 'text-3xl' : 'text-4xl sm:text-5xl md:text-6xl lg:text-7xl'
+                {/* Main Content */}
+                <div className={`text-center ${isMobile ? 'space-y-3' : 'space-y-6'}`}>
+                  <h1 className={`font-garamond text-white leading-tight tracking-tight ${isMobile ? 'text-3xl' : 'text-4xl sm:text-5xl md:text-6xl lg:text-7xl'
                     }`}>
-                      {slide.title}
-                    </h1>
+                    {slide.title}
+                  </h1>
 
-                    <p className={`text-white/90 font-light font-garamond mx-auto ${
-                      isLandscape ? 'text-lg max-w-xl' : 'text-xl sm:text-2xl max-w-3xl'
-                    }`}>
-                      {slide.subtitle}
-                    </p>
+                  <p className={`text-white/90 font-light font-garamond mx-auto ${isMobile ? 'text-lg' : 'text-xl sm:text-2xl'
+                    } max-w-3xl`}>
+                    {slide.subtitle}
+                  </p>
 
-                    <p className={`text-white/80 font-garamond mx-auto ${
-                      isLandscape ? 'text-sm max-w-lg hidden sm:block' : 'text-base sm:text-lg max-w-2xl'
-                    }`}>
+                  {!isMobile && (
+                    <p className="text-white/80 font-garamond mx-auto text-base sm:text-lg max-w-2xl">
                       {slide.description}
                     </p>
+                  )}
 
-                    {/* Features */}
-                    <div className={`flex flex-wrap justify-center gap-4 mx-auto ${
-                      isLandscape ? 'max-w-xl mt-2' : 'gap-6 max-w-3xl mt-8'
+                  {/* Features */}
+                  <div className={`flex flex-wrap justify-center gap-4 mx-auto ${isMobile ? 'mt-4' : 'gap-6 max-w-3xl mt-8'
                     }`}>
-                      {slide.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-center space-x-2 text-white/90">
-                          <feature.icon className={`${isLandscape ? 'w-4 h-4' : 'w-5 h-5'}`} />
-                          <span className="font-garamond">{feature.text}</span>
-                        </div>
-                      ))}
-                    </div>
+                    {slide.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-center space-x-2 text-white/90">
+                        <feature.icon className={isMobile ? 'w-4 h-4' : 'w-5 h-5'} />
+                        <span className={`font-garamond ${isMobile ? 'text-sm' : ''}`}>
+                          {feature.text}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
 
-                    {/* CTA Buttons */}
-                    <div className={`flex flex-col sm:flex-row items-center justify-center ${
-                      isLandscape ? 'space-y-2 sm:space-y-0 sm:space-x-4 mt-4' : 'space-y-4 sm:space-y-0 sm:space-x-6 mt-8'
+                  {/* CTA Buttons */}
+                  <div className={`flex flex-col sm:flex-row items-center justify-center ${isMobile ? 'space-y-3 mt-6' : 'space-y-4 sm:space-y-0 sm:space-x-6 mt-8'
                     }`}>
-                      <Link to="/contact">
-                        <button className={`group relative bg-white/90 hover:bg-white text-gray-900 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-2xl ${
-                          isLandscape ? 'px-6 py-2 text-sm' : 'px-8 py-4'
+                    <Link to="/contact">
+                      <button className={`group relative bg-white/90 hover:bg-white text-gray-900 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-2xl ${isMobile ? 'px-6 py-2 text-sm' : 'px-8 py-4'
                         }`}>
-                          <span className="relative z-10 font-garamond">Start Your Journey</span>
-                        </button>
-                      </Link>
-                      <Link to="/about">
-                        <button className={`text-white border border-white/30 rounded-full hover:bg-white/10 transition-all duration-300 font-garamond ${
-                          isLandscape ? 'px-6 py-2 text-sm' : 'px-8 py-4'
+                        <span className="relative z-10 font-garamond">Start Your Journey</span>
+                      </button>
+                    </Link>
+                    <Link to="/about">
+                      <button className={`text-white border border-white/30 rounded-full hover:bg-white/10 transition-all duration-300 font-garamond ${isMobile ? 'px-6 py-2 text-sm' : 'px-8 py-4'
                         }`}>
-                          Learn More
-                        </button>
-                      </Link>
-                    </div>
+                        Learn More
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -232,49 +301,40 @@ const EnhancedCarousel = () => {
         </div>
       ))}
 
-      {/* Navigation Arrows */}
-      <div className="absolute inset-x-4 sm:inset-x-8 top-1/2 -translate-y-1/2 flex justify-between pointer-events-none">
-        <button
-          onClick={prevSlide}
-          className={`p-2 rounded-full bg-black/30 text-white pointer-events-auto transform transition-all duration-300 hover:bg-black/50 hover:scale-110 group ${
-            isLandscape ? 'sm:p-2' : 'sm:p-3'
-          }`}
-        >
-          <ChevronLeft className={`transform group-hover:-translate-x-1 transition-transform ${
-            isLandscape ? 'w-5 h-5' : 'w-6 h-6 sm:w-8 sm:h-8'
-          }`} />
-        </button>
-        <button
-          onClick={nextSlide}
-          className={`p-2 rounded-full bg-black/30 text-white pointer-events-auto transform transition-all duration-300 hover:bg-black/50 hover:scale-110 group ${
-            isLandscape ? 'sm:p-2' : 'sm:p-3'
-          }`}
-        >
-          <ChevronRight className={`transform group-hover:translate-x-1 transition-transform ${
-            isLandscape ? 'w-5 h-5' : 'w-6 h-6 sm:w-8 sm:h-8'
-          }`} />
-        </button>
-      </div>
+      {/* Navigation Arrows - Hidden on mobile */}
+      {!isMobile && (
+        <div className="absolute inset-x-4 sm:inset-x-8 top-1/2 -translate-y-1/2 flex justify-between pointer-events-none">
+          <button
+            onClick={prevSlide}
+            className="p-2 sm:p-3 rounded-full bg-black/30 text-white pointer-events-auto transform transition-all duration-300 hover:bg-black/50 hover:scale-110 group"
+          >
+            <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8 transform group-hover:-translate-x-1 transition-transform" />
+          </button>
+          <button
+            onClick={nextSlide}
+            className="p-2 sm:p-3 rounded-full bg-black/30 text-white pointer-events-auto transform transition-all duration-300 hover:bg-black/50 hover:scale-110 group"
+          >
+            <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8 transform group-hover:translate-x-1 transition-transform" />
+          </button>
+        </div>
+      )}
 
       {/* Progress Indicators */}
-      <div className={`absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 ${
-        isLandscape ? 'space-x-2' : 'bottom-8 space-x-4'
-      }`}>
+      <div className={`absolute bottom-4 left-1/2 transform -translate-x-1/2 flex ${isMobile ? 'space-x-2' : 'bottom-8 space-x-4'
+        }`}>
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => handleSlideChange(index)}
-            className={`group relative transition-all duration-500 ${
-              isLandscape
-                ? currentSlide === index ? 'w-8 h-2' : 'w-2 h-2 hover:w-4'
+            className={`group relative transition-all duration-500 ${isMobile
+                ? currentSlide === index ? 'w-6 h-2' : 'w-2 h-2'
                 : currentSlide === index ? 'w-12 h-3' : 'w-3 h-3 hover:w-6'
-            } rounded-full`}
+              } rounded-full`}
           >
             <div className="absolute inset-0 bg-white/30 rounded-full group-hover:bg-white/50 transition-colors duration-300" />
             <div
-              className={`absolute inset-0 rounded-full transition-all duration-500 ${
-                currentSlide === index ? 'bg-white' : 'bg-transparent'
-              }`}
+              className={`absolute inset-0 rounded-full transition-all duration-500 ${currentSlide === index ? 'bg-white' : 'bg-transparent'
+                }`}
             />
           </button>
         ))}

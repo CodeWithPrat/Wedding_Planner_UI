@@ -654,10 +654,10 @@ const Home = () => {
                                 transition={{ duration: 0.6 }}
                                 viewport={{ once: true }}
                                 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl 
-                         font-garamond font-bold mb-6 
+                         font-garamond mb-6 
                          bg-gradient-to-r from-[#d3853d] to-[#df9433] 
                          bg-clip-text text-transparent 
-                         tracking-tight leading-tight"
+                         tracking-tight leading-tight "
                             >
                                 Our Services
                             </motion.h2>
@@ -749,7 +749,7 @@ const Home = () => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-4xl md:text-5xl font-garamond text-gray-800 mb-4"
+                            className="text-4xl md:text-5xl font-garamond  text-[#d3853d] mb-4"
                         >
                             Exclusive Wedding Collections
                         </motion.h2>

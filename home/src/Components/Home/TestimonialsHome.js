@@ -156,7 +156,7 @@ const TestimonialCarousel = () => {
   return (
     <div className="relative w-full bg-[#f4f3ee] py-2 md:py-2 overflow-hidden font-garamond">
       <div className="max-w-full mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl text-center mb-16 text-[#dda15e] font-bold">
+        <h2 className="text-4xl md:text-5xl text-center mb-16 text-[#d3853d]">
           Client Testimonials
         </h2>
 

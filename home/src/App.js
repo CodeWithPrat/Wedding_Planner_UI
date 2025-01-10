@@ -78,7 +78,7 @@ const App = () => {
             }}
           >
             <div className="max-w-[1920px] mx-auto px-6 lg:px-12 font-garamond text-slate-950">
-              <div className="flex items-center justify-between h-24">
+              <div className="flex items-center justify-between h-18">
                 {/* Logo */}
                 <motion.div
                   className="flex items-center space-x-6"
